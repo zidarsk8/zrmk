@@ -7,6 +7,8 @@ $(document).ready(function(){
 		var building;
 		$('#SelectedBuildingHolder').html('<img id="SelectedBuilding" src="'+this.firstChild.src+'" width="'+(this.firstChild.width*2)+'" height="'+(this.firstChild.height*2)+'" />')
 		
+		$("#button_toggle_bsc").trigger("click");
+		
 		$.each(data.Tab_Building_view, function(index){
 			if (this.Code_Building == buildingID){
 				building = this;
@@ -23,6 +25,7 @@ $(document).ready(function(){
 				}
 			});
 		});
+		location.href = "#building_selection_container";
 	});
 	
 	
