@@ -34,6 +34,8 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 	<script type="application/javascript" language="JavaScript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
 	<script type="application/javascript" language="JavaScript" src="js/functions.js"></script>
 	<script type="application/javascript" language="JavaScript" src="js/general.js"></script>
+	<script type="application/javascript" language="JavaScript" src="js/fillSelectOptions.js"></script>
+	<script type="application/javascript" language="JavaScript" src="js/buildngSelectedHandler.js"></script>
 </head>
 
 <body id="index" class="home">
@@ -51,7 +53,8 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 	
 	<section id="content" class="body">
 		
-		<?php include 'php/buildingTable.php';?>
+		<?php include 'php/buildingTableSelect.php';?>
+		<?php include 'php/buildingTweak.php';?>
 		
 		<table width="800" class="calc_table">
 			<caption>Energy Balance Calculation</caption>
@@ -203,25 +206,6 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 				</tr>
 			</tbody>
 		</table>	
-		
-		<div id="Tab_Building_Holder" class="holder">
-			<p><h3>Tab_Building</h3></p>
-			<select id="select_Tab_Building"></select> 
-			<input type="button" value="show Data" id="show_Tab_Building_data_button" />
-			<br>
-			<div id="Tab_Building_data_table"></div>
-		</div>
-		
-		
-		<div id="Tab_Building_Holder" class="holder">
-			<p><h3>Tab_Building</h3></p>
-			<select id="select_Tab_Building"></select> 
-			<input type="button" value="show Data" id="show_Tab_Building_data_button" />
-			<br>
-			<div id="Tab_Building_data_table"></div>
-		</div>
-		
-		
 		
 		<div id="Tab_Building_Holder" class="holder">
 			<p><h3>Tab_Building</h3></p>

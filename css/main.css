@@ -18,19 +18,6 @@ ul {
 	margin: 1em 0 1.5em 1.5em;
 }
 
-/* Thead */
-thead td {
-	font-size: 0.95em;
-	text-align: left;
-	padding-bottom: 1em;
-}
-
-/* Tbody */
-tbody td {
-	margin: 0px;
-	padding: 0px;
-}
-
 .body {
 	clear: both;
 	margin: 0 auto;
@@ -288,23 +275,42 @@ li:last-child .hentry,#content>.hentry {
 	width: 140px;
 }
 
+
+/* Thead */
+thead td {
+	font-size: 0.95em;
+	text-align: left;
+	padding-bottom: 1em;
+}
+
+/* Tbody */
+tbody td {
+	margin: 0px;
+	padding: 0px;
+}
+
+
 .calc_table{
 	border-top: 1px solid #222;
 	margin: 0px;
 }
 .buildings_table_element{
-	border: 1px solid #222;
+	border: 1px solid #cdf;
 	padding: 5px;
-	margin: 5px;
-	width: 120px;
+	width: 140px;
 	height: 140px;
+	text-align: center;
+	border-spacing: 10px;
+	border-radius: 7px;
+}
+.buildings_table_element:hover{
+	background-color: #e3eae6;
 }
 .holder {
 	padding: 10px;
 	margin: 10px;
 	border: 1px solid #999;
 	background-color: #f0f6f3;
-	float: left;
 	font-size: .80em
 }
 
@@ -312,11 +318,21 @@ li:last-child .hentry,#content>.hentry {
 	background-color: #e3eae6;
 }
 
+.centerText{
+	text-align: center;
+}
 
+#SelectedBuildingHolder{
+	width: 300px;
+	border: 1px solid #cdf;
+	padding: 15px;
+	border-spacing: 10px;
+	border-radius: 7px;
+}
 
-
-
-
+.selectBuilding{
+	width: 260px;
+}
 
 
 
