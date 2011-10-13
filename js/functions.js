@@ -119,15 +119,20 @@ function CreateDetailView(objArray, theme, enableHeader) {
 }
 
 
-	function checkDuplicateIds(){
-		// Warning Duplicate IDs
-		$('[id]').each(function(){
-		  var ids = $('[id=\''+this.id+'\']');
-		  if(ids.length>1 && ids[0]==this){
-		  	console.warn('Multiple IDs #'+this.id);
-		  	return;
-		  }
-		});
-		console.log('No multiple IDs');
+function checkDuplicateIds(){
+	// Warning Duplicate IDs
+	$('[id]').each(function(){
+	  	var ids = $('[id=\''+this.id+'\']');
+	  	if(ids.length>1 && ids[0]==this){
+	  		console.warn('Multiple IDs #'+this.id);
+	  		return;
+	  	}
+	});
+	console.log('No multiple IDs');
+}
+	
+function addS(key,val){
+	if (typeof val != 'undefined' && val !=""){
+		sData[curDataSet][key]=val;
 	}
-	checkDuplicateIds();
+}
