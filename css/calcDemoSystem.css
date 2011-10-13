@@ -19,7 +19,11 @@
        
        .tr {text-align: right;}
        
-       .is { width:50px; }
+       .is { width:80px; }
+       
+       .ac {text-align: center; }
+       
+       .tr_is input { width:80px; }
        
        .bottomBorderDark {
        	border-bottom: 1px solid #000305;
