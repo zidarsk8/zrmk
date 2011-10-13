@@ -9,7 +9,8 @@ $(document).ready(function(){
 		
 		toggleStuff($("#button_toggle_bsc")[0] ,false);
 		toggleStuff($('#button_toggle_btc')[0] ,true);
-				
+		
+		//sData[cur] = new Object();
 		sData[cur]["Code_Building"] = buildingID;
 		
 		$.each(data.Tab_Building_view, function(index){
@@ -40,6 +41,5 @@ $(document).ready(function(){
 		
 		location.href = "#building_selection_container";
 	});
-	
 	
 });
