@@ -6,7 +6,7 @@
     <td>Bulding</td>
     <td colspan="7"><input id="Code_Building" name="Code_Building" type="text" /></td>
     <td colspan="2">Reference area</td>
-    <td>AC,ref <input id="A_C_Ref" name="A_C_Ref" type="text" /> m^2</td>
+    <td>A<sub>C,ref</sub> <input id="A_C_Ref" name="A_C_Ref" type="text" /> m<sup>2</sup></td>
   </tr>
   <tr>
     <td>Climate</td>
@@ -29,16 +29,16 @@
     </tr>
   <tr>
     <td></td>
-    <td>Uoriginal,i<br />W/(m²K)</td>
+    <td>U<sub>original,i</sub><br />W/(m<sup>2</sup>K)</td>
     <td></td>
     <td></td>
-    <td>Uactual,i<br />W/(m²K)</td>
+    <td>U<sub>actual,i</sub><br />W/(m<sup>2</sup>K)</td>
     <td></td>
-    <td>Aenv,i<br />m²</td>
+    <td>A<sub>env,i</sub><br />m<sup>2</sup></td>
     <td></td>
-    <td>btr,i</td>
+    <td>b<sub>tr,i</sub></td>
     <td></td>
-    <td>Htr,i<br />W/K</td>
+    <td>H<sub>tr,i</sub><br />W/K</td>
   </tr>
 
   
@@ -185,11 +185,11 @@
 
   <tr>
     <td colspan="4"></td>
-    <td>DUtb</td>
+    <td>delta U<sub>tb</sub></td>
     <td></td>
-    <td>S Aenvelope,i</td>
+    <td>Sum A<sub>envelope,i</sub></td>
     <td colspan="3"></td>
-    <td>Htr,tb</td>
+    <td>H<sub>tr,tb</sub></td>
   </tr>
 
   <tr>
@@ -223,32 +223,32 @@
         </tr>
         <tr>
           <td></td>
-          <td>cp,air</td>
-          <td>by use<br />nair,use</td>
-          <td>by infiltration<br />nair,infiltration</td>
+          <td>c<sub>p,air</sub></td>
+          <td>by use<br />n<sub>air,use</sub></td>
+          <td>by infiltration<br />n<sub>air,infiltration</sub></td>
           <td></td>
-          <td>AC,ref</td>
+          <td>A<sub>C,ref</sub></td>
           <td></td>
-          <td>hroom</td>
+          <td>h<sub>room</sub></td>
           <td colspan="2"></td>
         </tr>
         <tr>
           <td>Heat transfer coefficient</td>
-          <td>Wh/(m³K)</td?
+          <td>Wh/(m<sup>3</sup>K)</td?
           <td></td>
           <td></td>
           <td>1/h</td>
           <td></td>
           <td>1/h</td>
           <td></td>
-          <td>m^3</td>
+          <td>m<sup>3</sup></td>
           <td></td>
           <td>m</td>
           <td></td>
           <td>W/K</td>
         </tr>
         <tr>
-          <td>by ventilation Hve</td>
+          <td>by ventilation H<sub>ve</sub></td>
           <td><input type="text" id="c_p_air" name="c_p_air" /></td>
           <td>x(</td>
           <td><input id="n_air_use" name="n_air_use" type="text" /></td>
@@ -278,11 +278,11 @@
       </tr>
       <tr>
         <td></td>
-        <td>Ji</td>
+        <td>J<sub>i</sub></td>
         <td></td>
-        <td>Je</td>
+        <td>J<sub>e</sub></td>
         <td></td>
-        <td>dhs</td>
+        <td>d<sub>hs</sub></td>
         <td colspan="4"></td>
       </tr>
       <tr>
@@ -314,17 +314,17 @@
       <tr>
         <td></td>
         <td></td>
-        <td>Htr</td>
+        <td>H<sub>tr</sub></td>
         <td></td>
-        <td>Hve</td>
+        <td>H<sub>ve</sub></td>
         <td></td>
-        <td>Fred<br/>(htr=..W/(m²K))</td>
+        <td>F<sub>red</sub><br/>(h<sub>tr</sub>=..W/(m<sup>2</sup>K))</td>
         <td></td>
         <td>x 0,024<br />kKh/a</td>
         <td colspan="2"></td>
       </tr>
       <tr>
-        <td>Total heat transfer Qht</td>
+        <td>Total heat transfer Q<sub>ht</sub></td>
         <td>(</td>
         <td><input type="text" name="h_tr" id="h_tr" /></td>
         <td>+</td>
@@ -356,15 +356,15 @@
         <td>Window<br />Orientation</td>
         <td>external shading F<sub>sh</sub></td>
         <td></td>
-        <td>frame area fraction Ff</td>
+        <td>frame area fraction F<sub>f</sub></td>
         <td></td>
-        <td>non-perpendicular Fw</td>
+        <td>non-perpendicular F<sub>w</sub<</td>
         <td></td>
-        <td>g_gl,n</td>
+        <td>g<sub>gl,n</sub></td>
         <td></td>
-        <td>A_window,i m^2</td>
+        <td>A<sub>window,i</sub> m<sup>2</sup></td>
         <td></td>
-        <td>kWh/(m^2a)</td>
+        <td>kWh/(m<sup>2</sup>a)</td>
         <td></td>
         <td>kWh/a</td>
       </tr>
@@ -477,11 +477,11 @@
         <td></td>
         <td>kh/d</td>
         <td></td>
-        <td>W/m²</td>
+        <td>W/m<sup>2</sup></td>
         <td></td>
         <td>d/a</td>
         <td></td>
-        <td>m^2</td>
+        <td>m<sup>2</sup></td>
         <td></td>
         <td>kWh/a</td>
       </tr>
@@ -503,10 +503,10 @@
   <tr><td colspan="11">
     <table>
       <tr>
-        <td>internal heat capacity per m^2 A_c,ref</td>
-        <td>c_m</td>
+        <td>internal heat capacity per m<sup>2</sup> A<sub>c,ref</sub></td>
+        <td>c<sub>m</sub></td>
         <td><input id="c_m" name="c_m" type="text" /></td>
-        <td>Wh/(m^2K)</td>
+        <td>Wh/(m<sup>2</sup>K)</td>
         <td>heat balance ratio for the heating mode</td>
         <td></td>
         <td>=</td>
@@ -519,16 +519,16 @@
         <td><input type="text" id="t_const_building" name="t_const_building" /></td>
         <td>h</td>
         <td></td>
-        <td>gamma_h,gn = ------</td>
+        <td>gamma<sub>h,gn</sub> = ------</td>
         <td colspan="2"></td>
       </tr>
       <tr>
         <td>parameter</td>
-        <td> a_h = a_h,0 + - tau</td>
+        <td> a<sub>h</sub> = a<sub>h,0</sub> + - tau</td>
         <td>=</td>
         <td><input type="text" id="parameter" name="parameter" /></td>
         <td>gain utilisation factor for heating</td>
-        <td>1-gamma^aH<br />1-gamma^aH+1</td>
+        <td>1-gamma<sup>aH</sup><br />1-gamma<sup>aH+1</sup></td>
         <td>=</td>
         <td><input type="text" id="gain_utilisation" name="gain_utilisation" /></td>
       </tr>
@@ -543,7 +543,7 @@
       </tr>
       <tr>
         <td>Energy need for heating Q_H,nd</td>
-        <td>Q_ht - mu_h,gn x (Q_sol &lt;blob&gt;)</td>
+        <td>Q<sub>ht</sub> - mu<sub>h,gn</sub> x (Q<sub>sol</sub> &lt;blob&gt;)</td>
         <td>=</td>
         <td><input type="text" id="g_h_nd" name="g_h_nd" /></td>
       </tr>
