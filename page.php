@@ -100,6 +100,8 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 				<div id="graph_0" class="graph" ></div>
 				<div id="graph_1" class="graph" ></div>
 				<div id="graph_2" class="graph" ></div>
+				<div id="graph_3" class="graph" ></div>
+				<div id="graph_4" class="graph" ></div>
 			</div>
 		</div>
 
