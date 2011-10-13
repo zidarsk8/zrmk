@@ -7,13 +7,12 @@ function drawGraph(){
 	);
 	
 	$('#graph_0').jqBarGraph({
-	   data: arrayOfDataMulti,
-	   colors: ['#242424','#437346','#97D95C'],
-		width: 260, // default width of your graph
-		height: 400, //default height of your graph
+	     data: arrayOfDataMulti,
+	     colors: ['#242424','#437346','#97D95C'],
+		 width: 260, // default width of your graph
+		 height: 400, //default height of your graph
 	}); 
 	
-	console.log('draw graph');
 }
 
 drawGraph();

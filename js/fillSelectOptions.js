@@ -7,7 +7,7 @@ $(document).ready(function(){
 		$.each(data[tableName+'_view'],function(index) {
 	    	options.append($("<option />").val(index).text(this[codeName]));
 		});
-		
+
 		$("#show_"+tableName+"_data_button").click(function() {
 			$("#"+tableName+"_data_table").toggle();
 		});

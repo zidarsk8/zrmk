@@ -166,7 +166,11 @@ function calcSData(){
 							  (1 - Math.pow( sData[cur]['heat_balance'],sData[cur]['parameter']*1+1 ) ));
 	//g_h_nd = total_heat_transfer-gain_utilisation*(result_solar+q_int)	
 	addS('g_h_nd', sData[cur]['total_heat_transfer']*1 - sData[cur]['gain_utilisation']*1 * (sData[cur]['result_solar']*1 + sData[cur]['q_int']*1) );
+	
+	
+	console.log(sData);
 }
+
 
 function fillDataSet(){
 	$('input').val("");
