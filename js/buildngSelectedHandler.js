@@ -9,6 +9,11 @@ $(document).ready(function(){
 		
 		$("#button_toggle_bsc").trigger("click");
 		
+		$("#toggle_btc").show();
+		$("#button_toggle_btc").html("Skrij");
+		
+		sData[curDataSet]["Code_Building"] = buildingID;
+		
 		$.each(data.Tab_Building_view, function(index){
 			if (this.Code_Building == buildingID){
 				building = this;
@@ -21,7 +26,10 @@ $(document).ready(function(){
 			$("option:selected",'#'+this.id).removeAttr('selected');
 			$("option","#"+this.id).each(function(){
 				if (this.value == building['Code_'+field]) {
-					$(this).attr('selected', 'selected');				
+					$(this).attr('selected', 'selected');
+					//sData[curDataSet]['Code_'+field] = building['Code_'+field];
+					
+					addS('Code_'+field, building['Code_'+field]);
 				}
 			});
 		});
