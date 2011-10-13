@@ -98,6 +98,9 @@ function addS(key,val){
 		sData[cur][key]=val;
 	}
 }
+function getS(key){
+	return sData[cur][key];
+}
 
 
 function calcSData(){
@@ -168,8 +171,8 @@ function calcSData(){
 	addS('g_h_nd', sData[cur]['total_heat_transfer']*1 - sData[cur]['gain_utilisation']*1 * (sData[cur]['result_solar']*1 + sData[cur]['q_int']*1) );
 	
 	//=AD236*$Z$244*$V$244/$AD$211
-	addS('q_ve', Math.round(100*sData[cur]['w_k']*sData[cur]['k_k_h_a']*sData[cur]['F_red_temp']/sData[cur]['A_C_Ref'])/100);
-
+	addS('q_ve', Math.round(100*sData[cur]['w_k']*sData[cur]['k_k_h_a']*sData[cur]['F_red_temp']/sData[cur]['A_C_Ref'])/100 || 0);
+	console.log(sData[cur]['q_ve'])
 	console.log(sData);
 	drawGraph();
 }

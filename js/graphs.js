@@ -1,7 +1,7 @@
 function drawGraph(){
 	
 	heat_losses = new Array(
-		   	 [[sData[cur]['q_ve'],44,26,32,32],'heat losses']
+		   	 [[44,26,32,32,getS('q_ve') || 0],'heat losses']
 	);	
 	$('#graph_0').empty();
 	$('#graph_0').jqBarGraph({
