@@ -89,31 +89,29 @@ function checkDuplicateIds(){
 	  	var ids = $('[id=\''+this.id+'\']');
 	  	if(ids.length>1 && ids[0]==this){
 	  		console.warn('Multiple IDs #'+this.id);
-	  		return;
 	  	}
 	});
-	console.log('No multiple IDs');
 }
 	
 function addS(key,val){
 	if (typeof val != 'undefined' && val !=""){
-		sData[curDataSet][key]=val;
+		sData[cur][key]=val;
 	}
 }
 
 
 function calcSData(){
-	var fields = new Array('Roof_1','Roof_2','Wall_1','Wall_2','Wall_3','Floor_1','Floor_2','Window_1','Window_2','Door_1');
 	var sumA = 0;
 	var sumAll = 0
+	var fields = new Array('Roof_1','Roof_2','Wall_1','Wall_2','Wall_3','Floor_1','Floor_2','Window_1','Window_2','Door_1');
 	for (var i in fields){
-		addS('U_Refurbished_'+fields[i],(1.0/((1.0/(sData[curDataSet]['U_'+fields[i]]*1)))) );
+		addS('U_Refurbished_'+fields[i],(1.0/((1.0/(sData[cur]['U_'+fields[i]]*1)))) );
 		
-		if (isNumber(sData[curDataSet]['A_'+fields[i]])){
-			sumA += (sData[curDataSet]['A_'+fields[i]]*1);
+		if (isNumber(sData[cur]['A_'+fields[i]])){
+			sumA += (sData[cur]['A_'+fields[i]]*1);
 		}
 		
-		var rowResult = (sData[curDataSet]['b_Transmission_'+fields[i]]*1)*(sData[curDataSet]['A_'+fields[i]]*1)*(sData[curDataSet]['U_Refurbished_'+fields[i]]*1);
+		var rowResult = (sData[cur]['b_Transmission_'+fields[i]]*1)*(sData[cur]['A_'+fields[i]]*1)*(sData[cur]['U_Refurbished_'+fields[i]]*1);
 		if (isNumber(rowResult)){
 			addS('Result_'+fields[i], rowResult);
 			sumAll += rowResult;
@@ -121,25 +119,63 @@ function calcSData(){
 		
 		addS('sum_a_env',sumA);
 		
-		var sumRes_h = sumA*sData[curDataSet]['delta_U_ThermalBridging'];
+		var sumRes_h = sumA*sData[cur]['delta_U_ThermalBridging'];
 		addS('Result_h_tr_tb', sumRes_h);
 		
-		console.log(sumAll);
 		addS('h_tr', sumRes_h+sumAll);
+		
+		
 	}
+	addS('w_k', sData[cur]['c_p_air']*1*(sData[cur]['n_air_use']*1+sData[cur]['n_air_infiltration']*1)*sData[cur]['A_C_Ref']*sData[cur]['h_room']);
+	
+	addS('k_d_a', (sData[cur]['theta_i']*1-sData[cur]['Theta_e']*1)*sData[cur]['HeatingDays']);
 	
 	
+	var gl1 = isNumber(sData[cur]['g_gl_n_Window_1']) ? 1*sData[cur]['g_gl_n_Window_1'] : 0;
+	var a1 = isNumber(sData[cur]['A_Window_1']) ? 1*sData[cur]['A_Window_1'] : 0;
+	var gl2 = isNumber(sData[cur]['g_gl_n_Window_1']) ? 1*sData[cur]['g_gl_n_Window_1'] : 0;
+	var a2 = isNumber(sData[cur]['A_Window_2']) ? 1*sData[cur]['A_Window_2'] : 0;
+
+	addS('g_gl_n', ((gl1*a1)+(gl2*a2))/(a1+a2));
 	
+	var solarSum = 0;
+	var fields = new Array('Horizontal','East','South','West','North');
+	for (var i in fields){
+		var solar = sData[cur]['F_sh_vert']*1 * (1-sData[cur]['F_f']*1) * sData[cur]['F_w'] * sData[cur]['g_gl_n'] * sData[cur]['A_Window_'+fields[i]] * sData[cur]['I_Sol_'+fields[i]];
+		addS('result_solar_'+fields[i], solar );
+		if (isNumber(solar)){
+			solarSum += solar*1;
+		}
+	}
+	addS('result_solar', solarSum);
+	
+	addS('k_k_h_a', 0.024* sData[cur]['k_d_a']);
+	
+	addS('total_heat_transfer', (sData[cur]['h_tr']*1 + sData[cur]['w_k']*1) * sData[cur]['F_red_temp'] * sData[cur]['k_k_h_a'] );
+
+	addS('q_int', 0.024 * sData[cur]['phi_int'] * sData[cur]['HeatingDays'] * sData[cur]['A_C_Ref'] );
+
+	addS('t_const_building', sData[cur]['c_m'] * sData[cur]['A_C_Ref'] / (sData[cur]['h_tr']*1 + sData[cur]['w_k']*1) );
+
+	addS('parameter', 0.8 + sData[cur]['t_const_building']*1 / 30 );
+
+	addS('heat_balance',  ( sData[cur]['q_int']*1 + sData[cur]['result_solar']*1 ) / sData[cur]['total_heat_transfer']*1 );
+
+	//=(1-AD262^N265)/(1-AD262^(N265+1))
+	addS('gain_utilisation',  (1 - Math.pow( sData[cur]['heat_balance'],sData[cur]['parameter'] ) ) / 
+							  (1 - Math.pow( sData[cur]['heat_balance'],sData[cur]['parameter']*1+1 ) ));
+	//g_h_nd = total_heat_transfer-gain_utilisation*(result_solar+q_int)	
+	addS('g_h_nd', sData[cur]['total_heat_transfer']*1 - sData[cur]['gain_utilisation']*1 * (sData[cur]['result_solar']*1 + sData[cur]['q_int']*1) );
 }
 
 function fillDataSet(){
-	
+	$('input').val("");
 	calcSData();
-	for (var i in sData[curDataSet]){
-		if (isNumber(sData[curDataSet][i])){
-			sData[curDataSet][i] = roundTo(sData[curDataSet][i],3);
+	for (var i in sData[cur]){
+		if (isNumber(sData[cur][i])){
+			sData[cur][i] = roundTo(sData[cur][i],3);
 		}
-		$("[id$="+i+"]").val(sData[curDataSet][i]);
+		$("[id="+i+"]").val(sData[cur][i]);
 	}
 }
 

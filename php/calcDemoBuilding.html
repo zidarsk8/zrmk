@@ -11,7 +11,7 @@
 <td>Building</td>
 <td><input type="text" width="200px" id="Code_Building" name="Code_Building" type="text" /></td>
 <td>Reference area</td>
-<td>A<sub>C,ref</sub><input type="text" id="A_C_Ref_2"/>m<sup>2</sup></td>
+<td>A<sub>C,ref</sub><input type="text" id="A_C_Ref"/>m<sup>2</sup></td>
 </tr>
 
 <tr>
@@ -270,7 +270,7 @@
           <td>+</td>
           <td><input class="is" id="n_air_infiltration" name="n_air_infiltration" type="text" /></td>
           <td>)x</td>
-          <td><input class="is" type="text" id="a_c_ref_2" name="a_c_ref_2" /></td>
+          <td><input class="is" type="text" id="A_C_Ref" name="A_C_Ref" /></td>
           <td>x</td>
           <td><input class="is" id="h_room" name="h_room" type="text" /></td>
           <td>=</td>
@@ -340,9 +340,9 @@
       <tr>
         <td class="small"><h2>Total heat transfer Q<sub>ht</sub></h2></td>
         <td>(</td>
-        <td><input class="is" type="text" name="h_tr_2" id="h_tr_2" /></td>
+        <td><input class="is" type="text" name="h_tr" id="h_tr" /></td>
         <td>+</td>
-        <td><input class="is" type="text" name="h_ve" id="h_ve" /></td>
+        <td><input class="is" type="text" name="w_k" id="w_k" /></td>
         <td>)x</td>
         <td><input class="is" id="F_red_temp" name="F_red_temp" type="text" /></td>
         <td>x</td>
@@ -384,85 +384,85 @@
       
       <tr class="tr_is">
         <td>1. Horizontal</td>
-        <td><input id="F_sh_vert_Horizontal" name="F_sh_vert" type="text" /></td>
+        <td><input id="F_sh_hor" name="F_sh_vert" type="text" /></td>
         <td>x (1-</td>
-        <td><input id="F_f_Horizontal" name="F_f" type="text" /></td>
+        <td><input id="F_f" name="F_f" type="text" /></td>
         <td>)x</td>
-        <td><input id="F_w_Horizontal" name="F_w" type="text" /></td>
+        <td><input id="F_w" name="F_w" type="text" /></td>
         <td>x</td>
-        <td><input id="g_gl_n_Horizontal" name="g_gl_n" type="text" /></td>
+        <td><input id="g_gl_n" name="g_gl_n" type="text" /></td>
         <td>x</td>
         <td><input id="A_Window_Horizontal" name="A_Window_Horizontal" type="text" /></td>
         <td>x</td>
-        <td><input id="I_Sol_Horizontal" name="I_Sol_Hor" type="text" /></td>
+        <td><input id="I_Sol_Horizontal" name="I_Sol_Horizontal" type="text" /></td>
         <td>=</td>
         <td><input type="text" id="result_solar_Horizontal" /></td>
       </tr>
       
       <tr class="tr_is">
         <td>2. East</td>
-        <td><input id="F_sh_vert_East" name="F_sh_vert" type="text" /></td>
+        <td><input id="F_sh_vert" name="F_sh_vert" type="text" /></td>
         <td>x (1-</td>
-        <td><input id="F_f_East" name="F_f" type="text" /></td>
+        <td><input id="F_f" name="F_f" type="text" /></td>
         <td>)x</td>
-        <td><input id="F_w_East" name="F_w" type="text" /></td>
+        <td><input id="F_w" name="F_w" type="text" /></td>
         <td>x</td>
-        <td><input id="g_gl_n_East" name="g_gl_n" type="text" /></td>
+        <td><input id="g_gl_n" name="g_gl_n" type="text" /></td>
         <td>x</td>
         <td><input id="A_Window_East" name="A_Window_East" type="text" /></td>
         <td>x</td>
-        <td><input id="I_Sol_East" name="I_Sol_East" type="text" /></td>
+        <td><input id="I_Sol_East" name="I_Sol" type="text" /></td>
         <td>=</td>
         <td><input type="text" id="result_solar_East" /></td>
       </tr>
       
       <tr class="tr_is">
         <td>3. South</td>
-        <td><input id="F_sh_vert_South" name="F_sh_vert" type="text" /></td>
+        <td><input id="F_sh_vert" name="F_sh_vert" type="text" /></td>
         <td>x (1-</td>
-        <td><input id="F_f_South" name="F_f" type="text" /></td>
+        <td><input id="F_f" name="F_f" type="text" /></td>
         <td>)x</td>
-        <td><input id="F_w_South" name="F_w" type="text" /></td>
+        <td><input id="F_w" name="F_w" type="text" /></td>
         <td>x</td>
-        <td><input id="g_gl_n_South" name="g_gl_n" type="text" /></td>
+        <td><input id="g_gl_n" name="g_gl_n" type="text" /></td>
         <td>x</td>
         <td><input id="A_Window_South" name="A_Window_South" type="text" /></td>
         <td>x</td>
-        <td><input id="I_Sol_South" name="I_Sol_South" type="text" /></td>
+        <td><input id="I_Sol_South" name="I_Sol" type="text" /></td>
         <td>=</td>
         <td><input type="text" id="result_solar_South" /></td>
       </tr>
       
       <tr class="tr_is">
         <td>4. West</td>
-        <td><input id="F_sh_vert_West" name="F_sh_vert" type="text" /></td>
+        <td><input id="F_sh_vert" name="F_sh_vert" type="text" /></td>
         <td>x (1-</td>
-        <td><input id="F_f_West" name="F_f" type="text" /></td>
+        <td><input id="F_f" name="F_f" type="text" /></td>
         <td>)x</td>
-        <td><input id="F_w_West" name="F_w" type="text" /></td>
+        <td><input id="F_w" name="F_w" type="text" /></td>
         <td>x</td>
-        <td><input id="g_gl_n_West" name="g_gl_n" type="text" /></td>
+        <td><input id="g_gl_n" name="g_gl_n" type="text" /></td>
         <td>x</td>
         <td><input id="A_Window_West" name="A_Window_West" type="text" /></td>
         <td>x</td>
-        <td><input id="I_Sol_West" name="I_Sol_West" type="text" /></td>
+        <td><input id="I_Sol_West" name="I_Sol" type="text" /></td>
         <td>=</td>
         <td><input type="text" id="result_solar_West" /></td>
       </tr>
       
       <tr class="tr_is">
         <td>5. North</td>
-        <td><input id="F_sh_vert_North" name="F_sh_vert" type="text" /></td>
+        <td><input id="F_sh_vert" name="F_sh_vert" type="text" /></td>
         <td>x (1-</td>
-        <td><input id="F_f_North" name="F_f" type="text" /></td>
+        <td><input id="F_f" name="F_f" type="text" /></td>
         <td>)x</td>
-        <td><input id="F_w_North" name="F_w" type="text" /></td>
+        <td><input id="F_w" name="F_w" type="text" /></td>
         <td>x</td>
-        <td><input id="g_gl_n_North" name="g_gl_n" type="text" /></td>
+        <td><input id="g_gl_n" name="g_gl_n" type="text" /></td>
         <td>x</td>
         <td><input id="A_Window_North" name="A_Window_North" type="text" /></td>
         <td>x</td>
-        <td><input id="I_Sol_North" name="I_Sol_North" type="text" /></td>
+        <td><input id="I_Sol_North" name="I_Sol" type="text" /></td>
         <td>=</td>
         <td><input type="text" id="result_solar_North" /></td>
       </tr>
@@ -501,9 +501,9 @@
         <td>x</td>
         <td><input id="phi_int" name="phi_int" type="text" /></td>
         <td>x</td>
-        <td><input id="HeatingDays_2" name="HeatingDays_2" type="text" /></td>
+        <td><input id="HeatingDays" name="HeatingDays" type="text" /></td>
         <td>x</td>
-        <td><input type"text" id="a_c_ref_3" name="a_c_ref_3" /></td>
+        <td><input type"text" id="A_C_Ref" name="A_C_Ref" /></td>
         <td>=</td>
         <td><input type="text" id="q_int" name="q_int" /></td>
       </tr>

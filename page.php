@@ -33,10 +33,35 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 		var sData = new Array(); //selected data used for calculations
 		for (var i=0; i < numberOfSets ; i++) {
 			sData[i] = new Object();
-			sData[i]['h_tr_tb'] = 1; //const
+			
+			//const
+			
+			sData[i]['h_tr_tb'] = 1;
+			sData[i]['c_p_air'] = 0.34;
+						
+			sData[i]['Code_ClimateRegion'] = 'SI.N';
+			sData[i]['Name_ClimateRegion'] = 'national / whole country';
+			sData[i]['HeatingDays'] = 206;
+			sData[i]['Theta_e'] = 4.3;
+			sData[i]['I_Sol_Horizontal'] = 375;
+			sData[i]['I_Sol_East'] = 241;
+			sData[i]['I_Sol_South'] = 292;
+			sData[i]['I_Sol_West'] = 218;
+			sData[i]['I_Sol_North'] = 98;
+			sData[i]['theta_i'] = 20.0;
+			sData[i]['F_red_temp'] = 1.00;
+
+			sData[i]['n_air_use'] = 0.50;
+			sData[i]['h_room'] = 2.80;
+			sData[i]['phi_int'] = 4.00;
+			sData[i]['F_sh_hor'] = 1.00;
+			sData[i]['F_sh_vert'] = 1.00;
+			sData[i]['F_f'] = 0.80;
+			sData[i]['F_w'] = 0.90;
+			sData[i]['c_m'] = 156.25;
+			 
 		};
-		var curDataSet = 0;
-		//console.log(<?=json_encode($arrTables['Tab_Building_Constr'][3]);?>)
+		var cur = 0;
 	</script>
 	<script type="application/javascript" language="JavaScript" src="js/jquery-1.6.4.js"></script>
 	<script type="application/javascript" language="JavaScript" src="js/jquery-ui-1.8.16.custom.min.js"></script>

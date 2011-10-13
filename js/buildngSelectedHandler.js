@@ -12,7 +12,7 @@ $(document).ready(function(){
 		$("#toggle_btc").show();
 		$("#button_toggle_btc").html("Skrij");
 		
-		sData[curDataSet]["Code_Building"] = buildingID;
+		sData[cur]["Code_Building"] = buildingID;
 		
 		$.each(data.Tab_Building_view, function(index){
 			if (this.Code_Building == buildingID){
@@ -31,7 +31,7 @@ $(document).ready(function(){
 			$("option","#"+this.id).each(function(){
 				if (this.value == building['Code_'+field]) {
 					$(this).attr('selected', 'selected');
-					//sData[curDataSet]['Code_'+field] = building['Code_'+field];
+					//sData[cur]['Code_'+field] = building['Code_'+field];
 					
 					addS('Code_'+field, building['Code_'+field]);
 				}
