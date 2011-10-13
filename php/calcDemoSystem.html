@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>
+
+</title>
+<style TYPE="text/css">
+       <!--
+       
+       h1 { color: #666699;}
+       
+       .wrap { width: 900px; margin:20;}
+       
+       .header { background-color: #666699; color:white; padding: 10px; height:20px; font-size: 24px; }
+       
+       .header img{ padding: 10px; }
+       
+       .sp {padding-left: 100px;}
+       
+       .fl { float:left; }
+       
+       .cb { clear: both; }
+       
+       .small { font-size: 8px; }
+       
+       .full { width:100%; }
+
+       -->
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<div class="header">
+<img class="fl" src="tabula.png" /><div class="fl">Energy Balance Calculation</div><div class="sp fl">System Performance</div>
+</div>
+<div class="fl">Standard Reference Calculation - based on: EN ISO 15316 / level B (tabled values)</div>
+<div class="cb"></div>
+
+<table style="width:100%;">
+<tr><td></td><td class="small">code</td><td></td><td class="small">A_C_ref</td></tr>
+<tr><td>Building</td><td><input style="width:100%;" type="text" width="200px" id="Code_BuildingVariant" /></td><td>conditioned floor area</td><td><input type="text" id="A_C_Ref" style="width:100%;"/></td><td class="small">m<sup>2</sup></tr>
+<tr><td>System</td><td colspan="4"><input type="text" style="width:100%;" id="Code_SystemType" /></td></tr>
+</table>
+<hr />
+<h1>Domestic Hot Water System</h1>
+<table class="full">
+<tr><td></td><td class="small">code</td></tr>
+<tr><td>System</td><td><input syle="width:350px;" type="text" id="Code_SysW" /></td></tr>
+</table>
+<br />
+<table>
+<tr><td>energy need hot water</td><td></td></tr>
+<tr><td>+  losses distrib.</td><td><input type="text" id="Code_SysW_D" /> </td></tr>
+<tr><td>+  losses storage</td><td><input type="text" id="Code_SysW_S" /></td></tr>
+
+</table>
+
+</div>
+
+<table>
+<tr>
+<td></td><td></td><td></td>
+</tr>
+<tr>
+<td> </td>
+</tr>
+</table>
+</body>
+</html>
