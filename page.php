@@ -24,6 +24,7 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 	
 	<link rel="stylesheet" href="css/main.css" type="text/css" />
 	<link rel="stylesheet" href="css/toggle.css" type="text/css" />
+	<link rel="stylesheet" href="css/calcDemoSystem.css" type="text/css" />
 	<script type="application/javascript" language="JavaScript">
 		var numberOfSets = 3; //could be higher
 		var data = <?=json_encode($arrTables);?>;
@@ -69,6 +70,13 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 			<button class="toggleButton" id="button_toggle_cdbc" />Skrij</button>
 			<div id="toggle_cdbc">
 				<?php include 'php/calcDemoBuilding.php';?>
+			</div>
+		</div>
+		
+		<div class="toggleContainer" id="Calc_Demo_System_container">
+			<button class="toggleButton" id="button_toggle_cdsc" />Skrij</button>
+			<div id="toggle_cdsc">
+				<?php include 'php/calcDemoSystem.php';?>
 			</div>
 		</div>
 		
