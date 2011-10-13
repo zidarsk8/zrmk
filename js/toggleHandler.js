@@ -10,8 +10,6 @@ $(document).ready(function(){
 				$(button).html("Skrij")
 			}
 		});
-		console.log(sData);
-		calcSData();
 	});
 	
 });

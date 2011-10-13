@@ -38,10 +38,7 @@ $(document).ready(function(){
 			});
 		});
 		
-		for (var i in sData[curDataSet]){
-			//console.log(i,sData[curDataSet][i]);
-			$("[id$="+i+"]").val((sData[curDataSet][i]*1).toString());
-		}
+		fillDataSet();
 		
 		location.href = "#building_selection_container";
 	});

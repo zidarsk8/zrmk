@@ -16,15 +16,26 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 	}
 }
 
-$a = array('<foo>',"'bar'",'"baz"','&blong&', "Betonska plošča, betonski estrih, lesni pod");
+$arrTables['Tab_Building_Constr_view'][3]['Description_Construction_National'] = 
+	mb_convert_encoding($arrTables['Tab_Building_Constr_view'][3]['Description_Construction_National'] ,"UTF-8");
 
-echo mb_detect_encoding($arrTables['Tab_Building_Constr'][3]);
+/*
+system('locale -a');
+setlocale (LC_COLLATE, 'si_SI');
+
+system('locale -a');
+
+print "de_DE: " . strcoll ($a, $b) . "\n"; // prints -2
+ 
+echo mb_detect_encoding($arrTables['Tab_Building_Constr'][3]['Description_Construction_National'] );
+echo ord($arrTables['Tab_Building_Constr'][3]['Description_Construction_National'][12]);
 
 $arrTables['Tab_Building_Constr'][3]['Description_Construction_National'] = 
 	mb_convert_encoding($arrTables['Tab_Building_Constr'][3]['Description_Construction_National'] ,"UTF-8");
 
 echo "<pre>";print_r($arrTables['Tab_Building_Constr'][3]);echo "</pre>";
-echo mb_detect_encoding($arrTables['Tab_Building_Constr'][3]);
+echo mb_detect_encoding($arrTables['Tab_Building_Constr'][3]['Description_Construction_National'] );
+/***/
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +53,7 @@ echo mb_detect_encoding($arrTables['Tab_Building_Constr'][3]);
 			sData[i] = new Object();
 		};
 		var curDataSet = 0;
-		console.log(<?=json_encode($arrTables['Tab_Building_Constr'][3]);?>)
+		//console.log(<?=json_encode($arrTables['Tab_Building_Constr'][3]);?>)
 	</script>
 	<script type="application/javascript" language="JavaScript" src="js/jquery-1.6.4.js"></script>
 	<script type="application/javascript" language="JavaScript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
@@ -79,7 +90,7 @@ echo mb_detect_encoding($arrTables['Tab_Building_Constr'][3]);
 		<div class="toggleContainer" id="Calc_Demo_Building_container">
 			<button class="toggleButton" id="button_toggle_cdbc" />Skrij</button>
 			<div id="toggle_cdbc">
-				<?php include 'php/calcDemoBuilding.php';?>
+				<?php include 'php/calcDemoBuilding.html';?>
 			</div>
 		</div>
 		
