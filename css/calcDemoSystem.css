@@ -20,3 +20,13 @@
        .tr {text-align: right;}
        
        .is { width:50px; }
+       
+       .bottomBorderDark {
+       	border-bottom: 1px solid #000305;
+       }
+       .bottomBorderDark2 {
+       	border-bottom: 2px solid #000305;
+       }
+       .bottomBorderLight {
+       	border-bottom: 1px solid #555555;
+       }

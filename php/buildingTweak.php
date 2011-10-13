@@ -1,17 +1,16 @@
 <table width="100%">
 	<tr>
-		<td >
+		<td>
+			<div class="buildingTweakGroup">
 			Streha:<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Roof_1"></select>
 			<input type="text" size="5" />m<sup>2</sup>
 			<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Roof_2"></select>
 			<input type="text" size="5" />m<sup>2</sup>
-		</td>
-		<td rowspan="5" class="centerText" width="300px" style="vertical-align: top"><div id="SelectedBuildingHolder"></div></td>
-	</tr>
-	<tr>
-		<td>
+			
+			</div><div class="buildingTweakGroup">
+			
 			Stene:<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Wall_1"></select>
 			<input type="text" size="5" />m<sup>2</sup>
@@ -21,34 +20,34 @@
 			<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Wall_3"></select>
 			<input type="text" size="5" />m<sup>2</sup>
-		</td>
-	</tr>
-	<tr>
-		<td >
+			
+			</div><div class="buildingTweakGroup">
+			
 			Okna:<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Window_1"></select>
 			<input type="text" size="5" />m<sup>2</sup>
 			<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Window_2"></select>
 			<input type="text" size="5" />m<sup>2</sup>
-		</td>
-	</tr>
-	<tr>
-		<td >
+			
+			</div><div class="buildingTweakGroup">
+			
 			Vrata:<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Door_1"></select>
 			<input type="text" size="5" />m<sup>2</sup>
-		</td>
-	</tr>
-	<tr>
-		<td >
+			
+			</div><div class="buildingTweakGroup">
+			
 			Tla:<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Floor_1"></select>
 			<input type="text" size="5" />m<sup>2</sup>
 			<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Floor_2"></select>
 			<input type="text" size="5" />m<sup>2</sup>
+			
+			</div>
 		</td>
+		<td class="centerText" width="300px" style="vertical-align: top"><div id="SelectedBuildingHolder"></div></td>
 	</tr>
 </table>
 

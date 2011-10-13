@@ -17,9 +17,13 @@ $(document).ready(function(){
 		$.each(data.Tab_Building_view, function(index){
 			if (this.Code_Building == buildingID){
 				building = this;
+				for (var i in building){
+					addS(i,building[i]);
+				}
 				return false;
 			}
 		});
+		
 		
 		$("[id^=select_Tab_Building_Constr_]").each(function(){
 			var field = (this.id.substring('select_Tab_Building_Constr_'.length));

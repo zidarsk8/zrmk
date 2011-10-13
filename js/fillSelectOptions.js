@@ -67,7 +67,8 @@ $(document).ready(function(){
 	fillBuildingDropDown('Tab_Building_Constr','Window',2);	
 	fillBuildingDropDown('Tab_Building_Constr','Wall',1);	
 	fillBuildingDropDown('Tab_Building_Constr','Wall',2);	
-	fillBuildingDropDown('Tab_Building_Constr','Wall',3);	
+	fillBuildingDropDown('Tab_Building_Constr','Wall',3);
+	fillBuildingDropDown('Tab_Building_Constr','Door',1);	
 	
-
+	
 });

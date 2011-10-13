@@ -25,6 +25,7 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 	<link rel="stylesheet" href="css/main.css" type="text/css" />
 	<link rel="stylesheet" href="css/toggle.css" type="text/css" />
 	<link rel="stylesheet" href="css/calcDemoSystem.css" type="text/css" />
+	<link rel="stylesheet" href="css/buldingTweak.css" type="text/css" />
 	<script type="application/javascript" language="JavaScript">
 		var numberOfSets = 3; //could be higher
 		var data = <?=json_encode($arrTables);?>;

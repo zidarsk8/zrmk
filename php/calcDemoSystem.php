@@ -19,14 +19,15 @@
 </table>
 <br />
 <table>
-<tr><td colspan="2">energy need hot water</td><td class="tr">q<sub>nd,w</sub></td><td><input type="text" id="q_w_nd" /></td><td colspan="2">thereof recoverable for space heating:</td></tr>
-<tr><td>+  losses distrib.</td><td><input type="text" id="Code_SysW_D" /></td><td class="tr">q<sub>d,w</sub></td><td><input type="text" id="q_d_w" /></td><td class="tr">q<sub>d,w,h</sub></td><td><input type="text" id="q_d_w_h" /></td></tr>
-<tr><td>+  losses storage</td><td><input type="text" id="Code_SysW_S" /></td><td class="tr">q<sub>s,w</sub></td><td><input type="text" id="q_s_w" /></td><td class="tr">q<sub>s,w,h</sub></td><td><input type="text" id="q_s_w_h" /></td></tr>
+<tr><td colspan="2">energy need hot water</td><td class="tr">q<sub>nd,w</sub></td><td><input type="text" id="q_w_nd" size="6" /></td><td colspan="2" style="text-align: center">thereof recoverable for space heating:</td></tr>
+<tr><td>+  losses distrib.</td><td><input type="text" id="Code_SysW_D" /></td><td class="tr">q<sub>d,w</sub></td><td><input type="text" id="q_d_w" size="6" /></td><td class="tr">q<sub>d,w,h</sub></td><td><input type="text" id="q_d_w_h" /></td></tr>
+<tr><td class="bottomBorderDark">+  losses storage</td><td class="bottomBorderDark"><input type="text" id="Code_SysW_S" /></td><td class="tr bottomBorderDark">q<sub>s,w</sub></td><td class="bottomBorderDark"><input type="text" id="q_s_w" size="6"/></td><td class="tr">q<sub>s,w,h</sub></td><td><input type="text" id="q_s_w_h" /></td></tr>
 
-<tr><td colspan="3" class="tr">q<sub>g,w,out</sub> = q<sub>nd,w</sub> + q<sub>d,w</sub> + q<sub>s,w</sub></td><td><input type="text" id="qg_w_out" /></td><td class="tr">q<sub>w,h</sub> = q<sub>d,w,h</sub> + q<sub>s,w,h</sub></td><td><input type="text" id="qw_h" /></td></tr>
+<tr><td colspan="3" class="tr">q<sub>g,w,out</sub> = q<sub>nd,w</sub> + q<sub>d,w</sub> + q<sub>s,w</sub></td><td width="100px"><input type="text" id="qg_w_out" size="6" /></td><td  width="170px" class="tr">q<sub>w,h</sub> = q<sub>d,w,h</sub> + q<sub>s,w,h</sub></td><td><input type="text" id="qw_h" /></td></tr>
 <tr><td colspan="3"></td><td>kWh/(m<sup>2</sup>a)</td><td></td><td>kWh/(m<sup>2</sup>a)</td></tr>
 </table>
-
+<br>
+<br>
 <table>
 <tr>
 <td></td>
@@ -53,8 +54,8 @@
 
 <tr>
 <td>1</td>
-<td><input type="text" id="Code_SysW_EC_1" /></td>
-<td><input type="text" id="Code_SysW_G_1" /></td>
+<td><input size="10" type="text" id="Code_SysW_EC_1" /></td>
+<td><input size="13" type="text" id="Code_SysW_G_1" /></td>
 <td><input class="is" type="text" id="nd_w_i" /></td>
 <td></td>
 <td><input class="is" type="text" id="e_g_w_Heat_1" /> =</td>
@@ -65,8 +66,8 @@
 
 <tr>
 <td>2</td>
-<td><input type="text" id="Code_SysW_EC_2" /></td>
-<td><input type="text" id="Code_SysW_G_2" /></td>
+<td><input size="10" type="text" id="Code_SysW_EC_2" /></td>
+<td><input size="13" type="text" id="Code_SysW_G_2" /></td>
 <td><input class="is" type="text" id="Fraction_SysW_G_2" /></td>
 <td>x <input class="is" type="text" id="qg_w_out_2" /> x</td>
 <td><input class="is" type="text" id="e_g_w_Heat_2" /> =</td>
@@ -77,8 +78,8 @@
 
 <tr>
 <td>3</td>
-<td><input type="text" id="Code_SysW_EC_3" /></td>
-<td><input type="text" id="Code_SysW_G_3" /></td>
+<td><input size="10" type="text" id="Code_SysW_EC_3" /></td>
+<td><input size="13" type="text" id="Code_SysW_G_3" /></td>
 <td><input class="is" type="text" id="Fraction_SysW_G_3" /></td>
 <td></td>
 <td><input class="is" type="text" id="e_g_w_Heat_3" /> =</td>
@@ -97,9 +98,9 @@
 
 <tr>
 <td>aux</td>
-<td><input type="text" id="el_1" value="el" /></td>
+<td><input size="10" type="text" id="el_1" value="el" /></td>
 <td colspan="3"><input type="text" id="Code_SysW_Aux" /></td>
-<td><input type="text" id="q_del_w_aux" /></td>
+<td><input size="13" type="text" id="q_del_w_aux" /></td>
 </tr>
 
 <tr>

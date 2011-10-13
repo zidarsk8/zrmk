@@ -11,6 +11,7 @@ $(document).ready(function(){
 			}
 		});
 		console.log(sData);
+		calcSData();
 	});
 	
 });
