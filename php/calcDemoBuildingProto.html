@@ -1,5 +1,18 @@
 
-<table width="800" class="calc_table">
+<style>
+  td {
+     border: 1px solid black;
+  }
+  table {
+     border-spacing: 0px;
+     width: 1024px;
+  }
+  input {
+     width: 100%;
+  }
+</style>
+
+<table class="calc_table">
   <caption>Energy Balance Calculation</caption>
 
   <tr>
@@ -78,7 +91,7 @@
   </tr>
 
   <tr>
-    <td colspan="9">Heat transfer by transmission H_tr</td>
+    <td colspan="9"><h1>Heat transfer by transmission H_tr</h1></td>
     <td>sum</td>
     <td><input type="text" id="h_tr" name="h_tr" /></td>
   </tr>
@@ -107,7 +120,7 @@
           <td colspan="2"></td>
         </tr>
         <tr>
-          <td>Heat transfer coefficient</td>
+          <td class="section_title"><h1>Heat transfer coefficient<br />by ventilation H<sub>ve</sub></h1></td>
           <td>Wh/(m<sup>3</sup>K)</td?
           <td></td>
           <td></td>
@@ -122,7 +135,7 @@
           <td>W/K</td>
         </tr>
         <tr>
-          <td>by ventilation H<sub>ve</sub></td>
+          <td></td>
           <td><input type="text" id="c_p_air" name="c_p_air" /></td>
           <td>x(</td>
           <td><%- fields[63] %></td>
@@ -198,7 +211,7 @@
         <td colspan="2"></td>
       </tr>
       <tr>
-        <td>Total heat transfer Q<sub>ht</sub></td>
+        <td class="section_title"><h1>Total heat transfer Q<sub>ht</sub></h1></td>
         <td>(</td>
         <td><input type="text" name="h_tr" id="h_tr" /></td>
         <td>+</td>
@@ -261,7 +274,7 @@
       </tr>
       <% } %>
       <tr>
-        <td colspan="12">Solar heat load during heating season Qsol</td>
+        <td colspan="12" class="section_title"><h1>Solar heat load during heating season Q<sub>sol</sub></h1></td>
         <td>sum</td>
         <td><input type="text" id="result_solar" name="result_solar" /></td>
       </tr>
@@ -269,7 +282,7 @@
   </td></tr>
 
   <tr><td colspan="11">
-    <table>
+    <table width="800">
       <tr>
         <td colspan="3"></td>
         <td>internal heat sources</td>
@@ -292,7 +305,7 @@
         <td>kWh/a</td>
       </tr>
       <tr>
-        <td>Internal heat sources Q_int</td>
+        <td><h1 class="section_title">Internal heat sources Q<sub>int</sub></h1></td>
         <td>0.024</td>
         <td>x</td>
         <td><%- fields[56] %></td>
@@ -348,7 +361,7 @@
         <td>kWh/a</td>
       </tr>
       <tr>
-        <td>Energy need for heating Q_H,nd</td>
+        <td><h1 class="section_title">Energy need for heating Q<sub>H,nd</sub></h1></td>
         <td>Q<sub>ht</sub> - mu<sub>h,gn</sub> x (Q<sub>sol</sub> &lt;blob&gt;)</td>
         <td>=</td>
         <td><input type="text" id="g_h_nd" name="g_h_nd" /></td>
