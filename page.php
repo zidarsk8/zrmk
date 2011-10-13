@@ -1,41 +1,23 @@
 <?php
-mysql_connect("localhost", "uju", "ujusansa") or die(mysql_error());
+mysql_connect("localhost", "uju2", "uju") or die(mysql_error());
 mysql_select_db("uju2") or die(mysql_error());
+mysql_set_charset('utf8');
+header( 'Content-Type: text/html;charset=utf-8' );
 
 
 //This is what I call Enterprisy code
-$tablesQuery = mysql_query("SHOW TABLES") or die(mysql_error());  
+$tablesQuery = mysql_query("SHOW TABLES") or die(mysql_error());
 $arrTables = array();
 while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 	$tableName = $tablesRow['Tables_in_uju2'];
-	$arrTables[$tableName] = array(); 
+	$arrTables[$tableName] = array();
 
-	$result = mysql_query("SELECT * FROM $tableName ") or die(mysql_error());  
+	$result = mysql_query("SELECT * FROM $tableName ") or die(mysql_error());
 	while ($row = mysql_fetch_assoc($result)){
 		$arrTables[$tableName][]= $row;
 	}
 }
 
-$arrTables['Tab_Building_Constr_view'][3]['Description_Construction_National'] = 
-	mb_convert_encoding($arrTables['Tab_Building_Constr_view'][3]['Description_Construction_National'] ,"UTF-8");
-
-/*
-system('locale -a');
-setlocale (LC_COLLATE, 'si_SI');
-
-system('locale -a');
-
-print "de_DE: " . strcoll ($a, $b) . "\n"; // prints -2
- 
-echo mb_detect_encoding($arrTables['Tab_Building_Constr'][3]['Description_Construction_National'] );
-echo ord($arrTables['Tab_Building_Constr'][3]['Description_Construction_National'][12]);
-
-$arrTables['Tab_Building_Constr'][3]['Description_Construction_National'] = 
-	mb_convert_encoding($arrTables['Tab_Building_Constr'][3]['Description_Construction_National'] ,"UTF-8");
-
-echo "<pre>";print_r($arrTables['Tab_Building_Constr'][3]);echo "</pre>";
-echo mb_detect_encoding($arrTables['Tab_Building_Constr'][3]['Description_Construction_National'] );
-/***/
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -66,55 +48,55 @@ echo mb_detect_encoding($arrTables['Tab_Building_Constr'][3]['Description_Constr
 </head>
 
 <body>
-	
+
 	<header id="banner" class="body">
 		<img src="images/zrmk_logo_png_140.png" />
 	</header>
-	
+
 	<section class="body">
-		
+
 		<div class="toggleContainer" id="building_selection_container">
 			<button class="toggleButton" id="button_toggle_bsc">Skrij</button>
 			<div id="toggle_bsc">
 				<?php include 'php/buildingTableSelect.php';?>
 			</div>
 		</div>
-		
+
 		<div class="toggleContainer" id="building_tweak_container">
 			<button class="toggleButton" id="button_toggle_btc" />Skrij</button>
 			<div id="toggle_btc">
 				<?php include 'php/buildingTweak.php';?>
 			</div>
 		</div>
-		
-		
+
+
 		<div class="toggleContainer" id="Calc_Demo_Building_container">
 			<button class="toggleButton" id="button_toggle_cdbc" />Skrij</button>
 			<div id="toggle_cdbc">
 				<?php include 'php/calcDemoBuilding.html';?>
 			</div>
 		</div>
-		
+
 		<div class="toggleContainer" id="Calc_Demo_System_container">
 			<button class="toggleButton" id="button_toggle_cdsc" />Skrij</button>
 			<div id="toggle_cdsc">
 				<?php include 'php/calcDemoSystem.php';?>
 			</div>
 		</div>
-		
-		
+
+
 		<div id="Tab_Building_Holder" class="holder">
 			<p><h3>Tab_Building</h3></p>
-			<select id="select_Tab_Building"></select> 
+			<select id="select_Tab_Building"></select>
 			<input type="button" value="show Data" id="show_Tab_Building_data_button" />
 			<br>
 			<div id="Tab_Building_data_table"></div>
 		</div>
-		
-		
+
+
 	</section>
-	
-	
+
+
 	<footer id="contentinfo" class="body">
 	</footer>
 
