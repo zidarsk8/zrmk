@@ -70,7 +70,6 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 	<script type="application/javascript" language="JavaScript" src="js/toggleHandler.js"></script>
 	<script type="application/javascript" language="JavaScript" src="js/fillSelectOptions.js"></script>
 	<script type="application/javascript" language="JavaScript" src="js/buildngSelectedHandler.js"></script>
-	<script type="application/javascript" language="JavaScript" src="js/graphs.js"></script>
 </head>
 
 <body>
@@ -134,5 +133,6 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 	<footer id="contentinfo" class="body">
 	</footer>
 
+	<script type="application/javascript" language="JavaScript" src="js/graphs.js"></script>
 </body>
 </html>
