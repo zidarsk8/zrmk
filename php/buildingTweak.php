@@ -3,51 +3,51 @@
 		<td >
 			Streha:<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Roof_1"></select>
-			<input type="text"  />m<sup>2</sup>
+			<input type="text" size="5" />m<sup>2</sup>
 			<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Roof_2"></select>
-			<input type="text"  />m<sup>2</sup>
+			<input type="text" size="5" />m<sup>2</sup>
 		</td>
-		<td rowspan="5" class="centerText"  id="SelectedBuildingHolder"></td>
+		<td rowspan="5" class="centerText" width="300px" style="vertical-align: top"><div id="SelectedBuildingHolder"></div></td>
 	</tr>
 	<tr>
 		<td>
 			Stene:<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Wall_1"></select>
-			<input type="text"  />m<sup>2</sup>
+			<input type="text" size="5" />m<sup>2</sup>
 			<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Wall_2"></select>
-			<input type="text"  />m<sup>2</sup>
+			<input type="text" size="5" />m<sup>2</sup>
 			<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Wall_3"></select>
-			<input type="text"  />m<sup>2</sup>
+			<input type="text" size="5" />m<sup>2</sup>
 		</td>
 	</tr>
 	<tr>
 		<td >
 			Okna:<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Window_1"></select>
-			<input type="text"  />m<sup>2</sup>
+			<input type="text" size="5" />m<sup>2</sup>
 			<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Window_2"></select>
-			<input type="text"  />m<sup>2</sup>
+			<input type="text" size="5" />m<sup>2</sup>
 		</td>
 	</tr>
 	<tr>
 		<td >
 			Vrata:<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Door_1"></select>
-			<input type="text"  />m<sup>2</sup>
+			<input type="text" size="5" />m<sup>2</sup>
 		</td>
 	</tr>
 	<tr>
 		<td >
 			Tla:<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Floor_1"></select>
-			<input type="text"  />m<sup>2</sup>
+			<input type="text" size="5" />m<sup>2</sup>
 			<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Floor_2"></select>
-			<input type="text"  />m<sup>2</sup>
+			<input type="text" size="5" />m<sup>2</sup>
 		</td>
 	</tr>
 </table>

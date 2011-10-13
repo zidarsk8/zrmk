@@ -1,19 +1,7 @@
-<html>
-<head>
-<title>
-
-</title>
-<style TYPE="text/css">
-       <!--
-       
-       -->
-</style>
-</head>
-<body>
 
 <div class="wrap">
 <div class="header">
-<img class="fl" src="tabula.png" /><div class="fl">Energy Balance Calculation</div><div class="sp fl">System Performance</div>
+<img class="fl" src="images/tabula.png" /><div class="fl">Energy Balance Calculation</div><div class="sp fl">System Performance</div>
 </div>
 <div class="fl">Standard Reference Calculation - based on: EN ISO 15316 / level B (tabled values)</div>
 <div class="cb"></div>
@@ -288,11 +276,7 @@
 <br />
 
 <div class="header">
-<img class="fl" src="tabula.png" /><div class="fl">Energy Balance Calculation</div><div class="sp fl">Energy Carriers</div>
+<img class="fl" src="images/tabula.png" /><div class="fl">Energy Balance Calculation</div><div class="sp fl">Energy Carriers</div>
 </div>
 <div class="fl">Standard Reference Calculation - based on: EN ISO 15316 / level B (tabled values)</div>
 <div class="cb"></div>
-
-
-</body>
-</html>
