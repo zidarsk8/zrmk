@@ -35,9 +35,9 @@ $(document).ready(function(){
 		var optionId = "#select_"+table+"_"+field+"_"+num;
 		var options = $(optionId);
 		options.append($("<option />").text(" "));
-		$.each(data[table+'_view'],function(index) {
-			if (this['Code_ElementType'] == field ||
-				(field == 'Roof') && this['Code_ElementType'] == 'Ceiling'){
+
+		$.each(data['Tab_Building_Constr_view'],function(index) {
+			if (this['Code_ElementType'] == field || (field == 'Roof' && this['Code_ElementType'] == 'Ceiling' )){
 				this['Description_Construction_National'] = typeof this['Description_Construction_National'] == 'string' ? this['Description_Construction_National'] : "strop_"+index;
 				options.append($("<option />").val(this['Code_Construction']).text(this['Description_Construction_National']));
 			}

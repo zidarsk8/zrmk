@@ -24,7 +24,7 @@ $(document).ready(function(){
 			}
 		});
 		
-		
+		//se selected options for roof walls dors ...
 		$("[id^=select_Tab_Building_Constr_]").each(function(){
 			var field = (this.id.substring('select_Tab_Building_Constr_'.length));
 			$("option:selected",'#'+this.id).removeAttr('selected');
@@ -37,6 +37,12 @@ $(document).ready(function(){
 				}
 			});
 		});
+		
+		for (var i in sData[curDataSet]){
+			//console.log(i,sData[curDataSet][i]);
+			$("[id$="+i+"]").val((sData[curDataSet][i]*1).toString());
+		}
+		
 		location.href = "#building_selection_container";
 	});
 	

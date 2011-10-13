@@ -139,7 +139,7 @@ function addS(key,val){
 
 
 function calcSData(){
-	addS('U_Refurbished_Roof_1',1.0/((1.0/sData[curDataSet][U_Roof_1])));
+	//addS('U_Refurbished_Roof_1',1.0/((1.0/sData[curDataSet][U_Roof_1])));
 	
 }
 

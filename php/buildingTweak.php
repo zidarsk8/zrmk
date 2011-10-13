@@ -4,46 +4,46 @@
 			<div class="buildingTweakGroup">
 			Streha:<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Roof_1"></select>
-			<input type="text" size="5" />m<sup>2</sup>
+			<input type="text" size="5"  id="input_A_Roof_1" />m<sup>2</sup>
 			<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Roof_2"></select>
-			<input type="text" size="5" />m<sup>2</sup>
+			<input type="text" size="5"  id="input_A_Roof_2" />m<sup>2</sup>
 			
 			</div><div class="buildingTweakGroup">
 			
 			Stene:<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Wall_1"></select>
-			<input type="text" size="5" />m<sup>2</sup>
+			<input type="text" size="5"  id="input_A_Wall_1" />m<sup>2</sup>
 			<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Wall_2"></select>
-			<input type="text" size="5" />m<sup>2</sup>
+			<input type="text" size="5"  id="input_A_Wall_2" />m<sup>2</sup>
 			<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Wall_3"></select>
-			<input type="text" size="5" />m<sup>2</sup>
+			<input type="text" size="5"  id="input_A_Wall_3" />m<sup>2</sup>
 			
 			</div><div class="buildingTweakGroup">
 			
 			Okna:<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Window_1"></select>
-			<input type="text" size="5" />m<sup>2</sup>
+			<input type="text" size="5"  id="input_A_Window_1" />m<sup>2</sup>
 			<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Window_2"></select>
-			<input type="text" size="5" />m<sup>2</sup>
+			<input type="text" size="5" id="input_A_Window_2" />m<sup>2</sup>
 			
 			</div><div class="buildingTweakGroup">
 			
 			Vrata:<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Door_1"></select>
-			<input type="text" size="5" />m<sup>2</sup>
+			<input type="text" size="5"  id="input_A_Door_1" />m<sup>2</sup>
 			
 			</div><div class="buildingTweakGroup">
 			
 			Tla:<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Floor_1"></select>
-			<input type="text" size="5" />m<sup>2</sup>
+			<input type="text" size="5"  id="input_A_Floor_1" />m<sup>2</sup>
 			<br>
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Floor_2"></select>
-			<input type="text" size="5" />m<sup>2</sup>
+			<input type="text" size="5"  id="input_A_Floor_2" />m<sup>2</sup>
 			
 			</div>
 		</td>

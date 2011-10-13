@@ -16,12 +16,20 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 	}
 }
 
+$a = array('<foo>',"'bar'",'"baz"','&blong&', "Betonska plošča, betonski estrih, lesni pod");
+
+echo mb_detect_encoding($arrTables['Tab_Building_Constr'][3]);
+
+$arrTables['Tab_Building_Constr'][3]['Description_Construction_National'] = 
+	mb_convert_encoding($arrTables['Tab_Building_Constr'][3]['Description_Construction_National'] ,"UTF-8");
+
+echo "<pre>";print_r($arrTables['Tab_Building_Constr'][3]);echo "</pre>";
+echo mb_detect_encoding($arrTables['Tab_Building_Constr'][3]);
 ?><!DOCTYPE html>
 <html>
 <head>
 	<title>ZRMK</title>
-	<meta charset="utf-8" />
-	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<link rel="stylesheet" href="css/main.css" type="text/css" />
 	<link rel="stylesheet" href="css/toggle.css" type="text/css" />
 	<link rel="stylesheet" href="css/calcDemoSystem.css" type="text/css" />
@@ -34,6 +42,7 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 			sData[i] = new Object();
 		};
 		var curDataSet = 0;
+		console.log(<?=json_encode($arrTables['Tab_Building_Constr'][3]);?>)
 	</script>
 	<script type="application/javascript" language="JavaScript" src="js/jquery-1.6.4.js"></script>
 	<script type="application/javascript" language="JavaScript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
