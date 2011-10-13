@@ -19,7 +19,7 @@ body {
 }
 
 #banner {
-	padding: 2.5em 0 55px 0;
+	padding: 2.5em 0 25px 0;
 }
 
 
@@ -115,5 +115,13 @@ tbody td {
 	width: 260px;
 }
 
-
+.graph{
+	float: left;
+	text-align: center;
+	margin: 10px;
+	border: 1px solid #cdf;
+	padding: 15px;
+	border-spacing: 10px;
+	border-radius: 7px;
+}
 

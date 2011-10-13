@@ -75,7 +75,7 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 <body>
 
 	<header id="banner" class="body">
-		<img src="images/zrmk_logo_png_140.png" alt="Gradbeni institut ZRMK d.o.o." />
+		<img src="images/zrmk_logo_png_80.png" alt="Gradbeni institut ZRMK d.o.o."  />
 	</header>
 
 	<section class="body">
@@ -94,6 +94,15 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 			</div>
 		</div>
 
+		<div class="toggleContainer" id="Graph_container">
+			<button class="toggleButton" id="button_toggle_g" />Skrij</button>
+			<div id="toggle_g">
+				<div id="graph_0" class="graph" ></div>
+				<div id="graph_1" class="graph" ></div>
+				<div id="graph_2" class="graph" ></div>
+			</div>
+		</div>
+	<script type="application/javascript" language="JavaScript" src="js/graphs.js"></script>
 
 		<div class="toggleContainer" id="Calc_Demo_Building_container">
 			<button class="toggleButton" id="button_toggle_cdbc" />Skrij</button>

@@ -1,18 +1,18 @@
 $(document).ready(function(){
 
 	$(".toggleButton").click(function(){
+		console.log(sData);
 		toggleStuff(this);
 	});
-	
-	toggleStuff($('button_toggle_cdsc'),false);
-	
+	toggleStuff($('#button_toggle_cdbc')[0] ,false);
+	toggleStuff($('#button_toggle_cdsc')[0] ,false);
+	toggleStuff($('#button_toggle_btc')[0] ,false);
 });
 
 
 	function toggleStuff(button, toggle){
-		console.log('toggle', button, toggle);
+		var id = button.id.substring(7);
 		if (typeof toggle == 'undefined'){
-			var id = button.id.substring(7);
 			$("#"+id).toggle(0,function(tog){
 				if ($(button).html() == "Skrij"){
 					$(button).html("Odpri")

@@ -7,11 +7,9 @@ $(document).ready(function(){
 		var building;
 		$('#SelectedBuildingHolder').html('<img id="SelectedBuilding" src="'+this.firstChild.src+'" width="'+(this.firstChild.width*2)+'" height="'+(this.firstChild.height*2)+'" />')
 		
-		$("#button_toggle_bsc").trigger("click");
-		
-		$("#toggle_btc").show();
-		$("#button_toggle_btc").html("Skrij");
-		
+		toggleStuff($("#button_toggle_bsc")[0] ,false);
+		toggleStuff($('#button_toggle_btc')[0] ,true);
+				
 		sData[cur]["Code_Building"] = buildingID;
 		
 		$.each(data.Tab_Building_view, function(index){
@@ -44,16 +42,4 @@ $(document).ready(function(){
 	});
 	
 	
-	function checkDuplicateIds(){
-		// Warning Duplicate IDs
-		$('[id]').each(function(){
-		  var ids = $('[id=\''+this.id+'\']');
-		  if(ids.length>1 && ids[0]==this){
-		  	console.warn('Multiple IDs #'+this.id);
-		  	return;
-		  }
-		});
-		console.log('No multiple IDs');
-	}
-	checkDuplicateIds();
 });
