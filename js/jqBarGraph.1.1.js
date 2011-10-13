@@ -88,8 +88,8 @@
 		
 	doGraph = function(el){
 		
-		arr = opts[el.id];
-		data = arr.data;
+		var arr = opts[el.id];
+		var data = arr.data;
 		
 		//check if array is bad or empty
 		if(data == undefined) {
