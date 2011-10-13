@@ -4,7 +4,9 @@ function isNumber(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
-
+function roundTo(num, dec) {
+	return  Math.round(num*Math.pow(10,dec))/Math.pow(10,dec);
+}
 
 function CreateKeyValueTableView(objArray, theme, enableHeader) {
     // set optional theme parameter
@@ -102,48 +104,41 @@ function addS(key,val){
 
 function calcSData(){
 	var fields = new Array('Roof_1','Roof_2','Wall_1','Wall_2','Wall_3','Floor_1','Floor_2','Window_1','Window_2','Door_1');
-	
+	var sumA = 0;
+	var sumAll = 0
 	for (var i in fields){
 		addS('U_Refurbished_'+fields[i],(1.0/((1.0/(sData[curDataSet]['U_'+fields[i]]*1)))) );
 		
-		var rowResult = (sData[curDataSet]['b_Transmission_'+fields[i]]*1)+(sData[curDataSet]['A_'+fields[i]]*1)+(sData[curDataSet]['U_Refurbished_'+fields[i]]*1);
+		if (isNumber(sData[curDataSet]['A_'+fields[i]])){
+			sumA += (sData[curDataSet]['A_'+fields[i]]*1);
+		}
+		
+		var rowResult = (sData[curDataSet]['b_Transmission_'+fields[i]]*1)*(sData[curDataSet]['A_'+fields[i]]*1)*(sData[curDataSet]['U_Refurbished_'+fields[i]]*1);
 		if (isNumber(rowResult)){
 			addS('Result_'+fields[i], rowResult);
+			sumAll += rowResult;
 		}
+		
+		addS('sum_a_env',sumA);
+		
+		var sumRes_h = sumA*sData[curDataSet]['delta_U_ThermalBridging'];
+		addS('Result_h_tr_tb', sumRes_h);
+		
+		console.log(sumAll);
+		addS('h_tr', sumRes_h+sumAll);
 	}
-
-	/*
-	addS('U_Refurbished_Roof_1',(1.0/((1.0/(sData[curDataSet]['U_Roof_1']*1)))) );
-	addS('U_Refurbished_Roof_2',(1.0/((1.0/(sData[curDataSet]['U_Roof_2']*1)))) );
-	addS('U_Refurbished_Wall_1',(1.0/((1.0/(sData[curDataSet]['U_Wall_1']*1)))) );
-	addS('U_Refurbished_Wall_2',(1.0/((1.0/(sData[curDataSet]['U_Wall_2']*1)))) );
-	addS('U_Refurbished_Wall_3',(1.0/((1.0/(sData[curDataSet]['U_Wall_3']*1)))) );
-	addS('U_Refurbished_Floor_1',(1.0/((1.0/(sData[curDataSet]['U_Floor_1']*1)))) );
-	addS('U_Refurbished_Floor_2',(1.0/((1.0/(sData[curDataSet]['U_Floor_2']*1)))) );
-	addS('U_Refurbished_Window_1',(1.0/((1.0/(sData[curDataSet]['U_Window_1']*1)))) );
-	addS('U_Refurbished_Window_2',(1.0/((1.0/(sData[curDataSet]['U_Window_2']*1)))) );
-	addS('U_Refurbished_Door_1',(1.0/((1.0/(sData[curDataSet]['U_Door_1']*1)))) );
 	
-
-	addS('Result_Roof_1',(sData[curDataSet]['b_Transmission_Roof_1']*1)+(sData[curDataSet]['A_Roof_1']*1)+(sData[curDataSet]['U_Refurbished_Roof_1']*1) );
-	addS('Result_Roof_2',(sData[curDataSet]['b_Transmission_Roof_2']*1)+(sData[curDataSet]['A_Roof_2']*1)+(sData[curDataSet]['U_Refurbished_Roof_2']*1) );
-	addS('Result_Wall_1',(sData[curDataSet]['b_Transmission_Wall_1']*1)+(sData[curDataSet]['A_Wall_1']*1)+(sData[curDataSet]['U_Refurbished_Wall_1']*1) );
-	addS('Result_Wall_2',(sData[curDataSet]['b_Transmission_Wall_2']*1)+(sData[curDataSet]['A_Wall_2']*1)+(sData[curDataSet]['U_Refurbished_Wall_2']*1) );
-	addS('Result_Wall_3',(sData[curDataSet]['b_Transmission_Wall_3']*1)+(sData[curDataSet]['A_Wall_3']*1)+(sData[curDataSet]['U_Refurbished_Wall_3']*1) );
-	addS('Result_Floor_1',(sData[curDataSet]['b_Transmission_Roof_1']*1)+(sData[curDataSet]['A_Roof_1']*1)+(sData[curDataSet]['U_Refurbished_Floor_1']*1) );
-	addS('Result_Floor_2',(sData[curDataSet]['b_Transmission_Roof_1']*1)+(sData[curDataSet]['A_Roof_1']*1)+(sData[curDataSet]['U_Refurbished_Floor_2']*1) );
-	addS('Result_Window_1',(sData[curDataSet]['b_Transmission_Roof_1']*1)+(sData[curDataSet]['A_Roof_1']*1)+(sData[curDataSet]['U_Refurbished_Window_1']*1) );
-	addS('Result_Window_2',(sData[curDataSet]['b_Transmission_Roof_1']*1)+(sData[curDataSet]['A_Roof_1']*1)+(sData[curDataSet]['U_Refurbished_Window_2']*1) );
-	addS('Result_Door_1',(sData[curDataSet]['b_Transmission_Roof_1']*1)+(sData[curDataSet]['A_Roof_1']*1)+(sData[curDataSet]['U_Refurbished_Door_1']*1) );
-
-	/***/	
+	
+	
 }
 
 function fillDataSet(){
 	
 	calcSData();
 	for (var i in sData[curDataSet]){
-		console.log(sData[curDataSet][i]);
+		if (isNumber(sData[curDataSet][i])){
+			sData[curDataSet][i] = roundTo(sData[curDataSet][i],3);
+		}
 		$("[id$="+i+"]").val(sData[curDataSet][i]);
 	}
 }

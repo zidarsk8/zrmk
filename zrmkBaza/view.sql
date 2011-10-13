@@ -33,6 +33,7 @@ CONVERT(
 	) USING utf8 
 ) AS Code_Construction, 
 Tab_Building_Constr.*
+
 FROM Tab_Building_Constr
 WHERE 1 ;
 
@@ -643,6 +644,10 @@ IF( b_Transmission_Wall_3 IS NOT NULL, b_Transmission_Wall_3, 0 ) AS b_Transmiss
 
 IF( b_Transmission_Floor_1 IS NOT NULL, b_Transmission_Floor_1, 0 ) AS b_Transmission_Floor_1,
 IF( b_Transmission_Floor_2 IS NOT NULL, b_Transmission_Floor_2, 0 ) AS b_Transmission_Floor_2,
+
+IF(A_Window_1>0, "1", "") AS b_Transmission_Window_1,
+IF(A_Window_2>0, "1", "") AS b_Transmission_Window_2,
+IF(A_Door_1>0, "1", "") AS b_Transmission_Door_1,
 
 IF( delta_U_ThermalBridging IS NOT NULL, delta_U_ThermalBridging, 0 ) AS delta_U_ThermalBridging,
 IF( n_air_infiltration IS NOT NULL, n_air_infiltration, 0 ) AS n_air_infiltration,

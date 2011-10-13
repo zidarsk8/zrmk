@@ -51,6 +51,7 @@ echo mb_detect_encoding($arrTables['Tab_Building_Constr'][3]['Description_Constr
 		var sData = new Array(); //selected data used for calculations
 		for (var i=0; i < numberOfSets ; i++) {
 			sData[i] = new Object();
+			sData[i]['h_tr_tb'] = 1; //const
 		};
 		var curDataSet = 0;
 		//console.log(<?=json_encode($arrTables['Tab_Building_Constr'][3]);?>)
