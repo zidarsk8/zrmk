@@ -5,30 +5,6 @@
 </title>
 <style TYPE="text/css">
        <!--
-       
-       h1,h2 { color: #666699;}
-       
-       
-       
-       .wrap { width: 900px; margin:20;}
-       
-       .header { background-color: #666699; color:white; padding: 10px; height:20px; font-size: 24px; }
-       
-       .header img{ padding: 10px; }
-       
-       .sp {padding-left: 100px;}
-       
-       .fl { float:left; }
-       
-       .cb { clear: both; }
-       
-       .small { font-size: 10px; }
-       
-       .full { width:100%; }
-       
-       .tr {text-align: right;}
-       
-       .is { width:50px; }
 
        -->
 </style>

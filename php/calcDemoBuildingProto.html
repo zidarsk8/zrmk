@@ -1,0 +1,371 @@
+
+<style>
+  td {
+     border: 1px solid black;
+  }
+  table {
+     border-spacing: 0px;
+     width: 1024px;
+  }
+  input {
+     width: 100%;
+  }
+</style>
+
+<table class="calc_table">
+  <caption>Energy Balance Calculation</caption>
+
+  <tr>
+    <td>Bulding</td>
+    <td colspan="7"><%- fields[22] %></td>
+    <td colspan="2">Reference area</td>
+    <td>A<sub>C,ref</sub> <%- fields[86] %> m<sup>2</sup></td>
+  </tr>
+  <tr>
+    <td>Climate</td>
+    <td colspan"7"><%- fields[25] %></td>
+    <td>(conditioned floor area)</td>
+  </tr>
+
+    <tr>
+      <td>code construction element</td>
+      <td>original U-value</td>
+      <td>measure type</td>
+      <td>applied refurbishment measure</td>
+      <td>actual U-value</td>
+      <td></td>
+      <td>area (basis:external dimensions)</td>
+      <td></td>
+      <td>adjustment factor soil</td>
+      <td></td>
+      <td></td>
+    </tr>
+  <tr>
+    <td></td>
+    <td>U<sub>original,i</sub><br />W/(m<sup>2</sup>K)</td>
+    <td></td>
+    <td></td>
+    <td>U<sub>actual,i</sub><br />W/(m<sup>2</sup>K)</td>
+    <td></td>
+    <td>A<sub>env,i</sub><br />m<sup>2</sup></td>
+    <td></td>
+    <td>b<sub>tr,i</sub></td>
+    <td></td>
+    <td>H<sub>tr,i</sub><br />W/K</td>
+  </tr>
+
+  <% for (var k in meaty) { %>
+  <tr>
+    <td><%- k %></td>
+    <td><%- fields[meaty[k][0]] %></td>
+    <td><%- fields[meaty[k][1]] %></td>
+    <td><%- fields[meaty[k][2]] %></td>
+    <td><%- fields[meaty[k][3]] %></td>
+    <td>x</td>
+    <td><%- fields[meaty[k][4]] %></td>
+    <td>x</td>
+    <td><%- (!isNaN(meaty[k][5]*1)) ? fields[meaty[k][5]] : meaty[k][5] %></td>
+    <td>=</td>
+    <td><input type="text" name="<%= meaty[k][6] %>" id="<%= meaty[k][6] %>" /></td>
+  </tr>
+  <% } %>
+
+  <tr>
+    <td colspan="4"></td>
+    <td>delta U<sub>tb</sub></td>
+    <td></td>
+    <td>Sum A<sub>envelope,i</sub></td>
+    <td colspan="3"></td>
+    <td>H<sub>tr,tb</sub></td>
+  </tr>
+
+  <tr>
+    <td colspan="4">thermal bridging: surcharge on the U-values</td>
+    <td><%- fields[59] %></td>
+    <td>x</td>
+    <td><input type="text" id="sum_a_env" name="sum_a_env" /></td>
+    <td>x</td>
+    <td><input type="text" id="h_tr_tb" name="h_tr_tb" /></td>
+    <td>=</td>
+    <td><input type="text" id="h_tr_tb" name="h_tr_tb" /></td>
+  </tr>
+
+  <tr>
+    <td colspan="9"><h1>Heat transfer by transmission H_tr</h1></td>
+    <td>sum</td>
+    <td><input type="text" id="h_tr" name="h_tr" /></td>
+  </tr>
+
+  <tr>
+    <td colspan="11">
+      <table>
+        <tr>
+          <td></td>
+          <td>volume-specific heat capacity air</td>
+          <td></td>
+          <td colspan="3">air change rate</td>
+          <td colspan="3"></td>
+          <td>room height (standard value)</td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>c<sub>p,air</sub></td>
+          <td>by use<br />n<sub>air,use</sub></td>
+          <td>by infiltration<br />n<sub>air,infiltration</sub></td>
+          <td></td>
+          <td>A<sub>C,ref</sub></td>
+          <td></td>
+          <td>h<sub>room</sub></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="section_title"><h1>Heat transfer coefficient<br />by ventilation H<sub>ve</sub></h1></td>
+          <td>Wh/(m<sup>3</sup>K)</td?
+          <td></td>
+          <td></td>
+          <td>1/h</td>
+          <td></td>
+          <td>1/h</td>
+          <td></td>
+          <td>m<sup>3</sup></td>
+          <td></td>
+          <td>m</td>
+          <td></td>
+          <td>W/K</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="text" id="c_p_air" name="c_p_air" /></td>
+          <td>x(</td>
+          <td><%- fields[63] %></td>
+          <td>+</td>
+          <td><%- fields[62] %></td>
+          <td>)x</td>
+          <td><input type="text" id="a_c_ref" name="a_c_ref" /></td>
+          <td>x</td>
+          <td><%- fields[64] %></td>
+          <td>=</td>
+          <td><input type="text" id="w_k" name="w_k" /></div>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <tr><td colspan="11">
+    <table>
+      <tr>
+        <td colspan="2"></td>
+        <td>internal temp.</td>
+        <td></td>
+        <td>external temp.</td>
+        <td></td>
+        <td>heating days</td>
+        <td colspan="4"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>J<sub>i</sub></td>
+        <td></td>
+        <td>J<sub>e</sub></td>
+        <td></td>
+        <td>d<sub>hs</sub></td>
+        <td colspan="4"></td>
+      </tr>
+      <tr>
+        <td colspan="2"></td>
+        <td>°C</td>
+        <td></td>
+        <td>°C</td>
+        <td>d/a</td>
+        <td></td>
+        <td>Kd/a</td>
+      </tr>
+      <tr>
+        <td>accumulated differences between internal and external temperature</td>
+        <td>(</td>
+        <td><%- fields[60] %></td>
+        <td>-</td>
+        <td><%- fields[28] %></td>
+        <td>)x</td>
+        <td><%- fields[27]  %></td>
+        <td>=</td>
+        <td><input type="text" name="k_d_a" id="k_d_a" /></td>
+        <td colspan="2"></td>
+      </tr>
+      <tr>
+        <td colspan="6"></td>
+        <td>temperature reduction factor</td>
+        <td colspan="4"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>H<sub>tr</sub></td>
+        <td></td>
+        <td>H<sub>ve</sub></td>
+        <td></td>
+        <td>F<sub>red</sub><br/>(h<sub>tr</sub>=..W/(m<sup>2</sup>K))</td>
+        <td></td>
+        <td>x 0,024<br />kKh/a</td>
+        <td colspan="2"></td>
+      </tr>
+      <tr>
+        <td class="section_title"><h1>Total heat transfer Q<sub>ht</sub></h1></td>
+        <td>(</td>
+        <td><input type="text" name="h_tr" id="h_tr" /></td>
+        <td>+</td>
+        <td><input type="text" name="h_ve" id="h_ve" /></td>
+        <td>)x</td>
+        <td><%- fields[61] %></td>
+        <td>x</td>
+        <td><input type="text" name="k_k_h_a" id="k_k_h_a" /></td>
+        <td>=</td>
+        <td><input type="text" name="total_heat_transfer" id="total_heat_transfer" /></td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <tr><td colspan="11">
+    <table>
+      <tr>
+        <td></td>
+        <td colspan="5">reduction factors</td>
+        <td></td>
+        <td>solar energy transmittance</td>
+        <td></td>
+        <td>window area</td>
+        <td></td>
+        <td>solar global radiation</td>
+        <td colspan="2"></td>
+      </tr>
+      <tr>
+        <td>Window<br />Orientation</td>
+        <td>external shading F<sub>sh</sub></td>
+        <td></td>
+        <td>frame area fraction F<sub>f</sub></td>
+        <td></td>
+        <td>non-perpendicular F<sub>w</sub<</td>
+        <td></td>
+        <td>g<sub>gl,n</sub></td>
+        <td></td>
+        <td>A<sub>window,i</sub> m<sup>2</sup></td>
+        <td></td>
+        <td>kWh/(m<sup>2</sup>a)</td>
+        <td></td>
+        <td>kWh/a</td>
+      </tr>
+      <% for (var i=0; i<solar.length; i++) { %>
+      <tr>
+        <td><%= (i+1)+". "+solar[i] %></td>
+        <td><%- fields[67] %></td>
+        <td>x (1-</td>
+        <td><%- fields[68] %></td>
+        <td>)x</td>
+        <td><%- fields[69] %></td>
+        <td>x</td>
+        <td><%- fields[57] %></td>
+        <td>x</td>
+        <td><%- fields[122+i] %></td>
+        <td>x</td>
+        <td><%- fields[29+i] %></td>
+        <td>=</td>
+        <td><input type="text" id="result_solar_<%= i %>" /></td>
+      </tr>
+      <% } %>
+      <tr>
+        <td colspan="12" class="section_title"><h1>Solar heat load during heating season Q<sub>sol</sub></h1></td>
+        <td>sum</td>
+        <td><input type="text" id="result_solar" name="result_solar" /></td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <tr><td colspan="11">
+    <table width="800">
+      <tr>
+        <td colspan="3"></td>
+        <td>internal heat sources</td>
+        <td></td>
+        <td>heating days</td>
+        <td></td>
+        <td>A_c,ref</td>
+        <td colspan="2"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>kh/d</td>
+        <td></td>
+        <td>W/m<sup>2</sup></td>
+        <td></td>
+        <td>d/a</td>
+        <td></td>
+        <td>m<sup>2</sup></td>
+        <td></td>
+        <td>kWh/a</td>
+      </tr>
+      <tr>
+        <td><h1 class="section_title">Internal heat sources Q<sub>int</sub></h1></td>
+        <td>0.024</td>
+        <td>x</td>
+        <td><%- fields[56] %></td>
+        <td>x</td>
+        <td><%- fields[27] %></td>
+        <td>x</td>
+        <td><input type"text" id="a_c_ref" name="a_c_ref" /></td>
+        <td>=</td>
+        <td><input type="text" id="q_int" name="q_int" /></td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <tr><td colspan="11">
+    <table>
+      <tr>
+        <td>internal heat capacity per m<sup>2</sup> A<sub>c,ref</sub></td>
+        <td>c<sub>m</sub></td>
+        <td><%- fields[70] %></td>
+        <td>Wh/(m<sup>2</sup>K)</td>
+        <td>heat balance ratio for the heating mode</td>
+        <td></td>
+        <td>=</td>
+        <td><input type="text" name="heat_balance" id="heat_balance" /></td>
+      </tr>
+      <tr>
+        <td>time constant of the building</td>
+        <td>tau = -----</td>
+        <td>=</td>
+        <td><input type="text" id="t_const_building" name="t_const_building" /></td>
+        <td>h</td>
+        <td></td>
+        <td>gamma<sub>h,gn</sub> = ------</td>
+        <td colspan="2"></td>
+      </tr>
+      <tr>
+        <td>parameter</td>
+        <td> a<sub>h</sub> = a<sub>h,0</sub> + - tau</td>
+        <td>=</td>
+        <td><input type="text" id="parameter" name="parameter" /></td>
+        <td>gain utilisation factor for heating</td>
+        <td>1-gamma<sup>aH</sup><br />1-gamma<sup>aH+1</sup></td>
+        <td>=</td>
+        <td><input type="text" id="gain_utilisation" name="gain_utilisation" /></td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <tr><td colspan="11">
+    <table>
+      <tr>
+        <td colspan="3"></td>
+        <td>kWh/a</td>
+      </tr>
+      <tr>
+        <td><h1 class="section_title">Energy need for heating Q<sub>H,nd</sub></h1></td>
+        <td>Q<sub>ht</sub> - mu<sub>h,gn</sub> x (Q<sub>sol</sub> &lt;blob&gt;)</td>
+        <td>=</td>
+        <td><input type="text" id="g_h_nd" name="g_h_nd" /></td>
+      </tr>
+    </table>
+  </td></tr>
+</table>
