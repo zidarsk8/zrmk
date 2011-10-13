@@ -75,7 +75,7 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 <body>
 
 	<header id="banner" class="body">
-		<img src="images/zrmk_logo_png_140.png" />
+		<img src="images/zrmk_logo_png_140.png" alt="Gradbeni institut ZRMK d.o.o." />
 	</header>
 
 	<section class="body">
