@@ -1,9 +1,9 @@
 function drawGraph(){
 	
 	heat_losses = new Array(
-		   	 [[14,44,26,32,32],'heat losses']
+		   	 [[sData[cur]['q_ve'],44,26,32,32],'heat losses']
 	);	
-
+	$('#graph_0').empty();
 	$('#graph_0').jqBarGraph({
 	  	 data: heat_losses,
 	  	 colors: ['#00ff00','#993300','#00ccff', '#ff0000', '#000080'] ,
@@ -14,7 +14,7 @@ function drawGraph(){
 	heat_gains = new Array(
 		   	 [[14,44,26],'heat gains']
 	);	
-
+	$('#graph_1').empty();
 	$('#graph_1').jqBarGraph({
 	  	 data: heat_gains,
 	  	 colors: ['#ff9900','#008000','#ffff00'] ,
@@ -26,7 +26,7 @@ function drawGraph(){
 	energy_need = new Array(
 		   	 [[14,44],'heat gains']
 	);	
-
+	$('#graph_2').empty();
 	$('#graph_2').jqBarGraph({
 	  	 data: energy_need,
 	  	 colors: ['#ffcd9c','#ff9900'] ,
@@ -37,7 +37,7 @@ function drawGraph(){
 	energy_carriers = new Array(
 		   	 [[14,44,26],'energy carriers']
 	);	
-
+	$('#graph_3').empty();
 	$('#graph_3').jqBarGraph({
 	  	 data: energy_carriers,
 	  	 colors: ['#840909','#cce6ff','#078407', '#ffff06', '#151515', '#fefbf5'] ,
@@ -48,7 +48,7 @@ function drawGraph(){
 	primary_energy = new Array(
 		   	 [[14,44],'primary energy']
 	);	
-
+	$('#graph_4').empty();
 	$('#graph_4').jqBarGraph({
 	  	 data: primary_energy,
 	  	 colors: ['#eaeaea','#808080'] ,

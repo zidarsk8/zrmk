@@ -77,7 +77,7 @@ function CreateDetailView(objArray, theme, enableHeader) {
             row++;
         }
     }
-    str += '</tbody>'
+    str += '</tbody>';
     str += '</table>';
     return str;
 }
@@ -102,7 +102,7 @@ function addS(key,val){
 
 function calcSData(){
 	var sumA = 0;
-	var sumAll = 0
+	var sumAll = 0;
 	var fields = new Array('Roof_1','Roof_2','Wall_1','Wall_2','Wall_3','Floor_1','Floor_2','Window_1','Window_2','Door_1');
 	for (var i in fields){
 		addS('U_Refurbished_'+fields[i],(1.0/((1.0/(sData[cur]['U_'+fields[i]]*1)))) );
@@ -167,8 +167,11 @@ function calcSData(){
 	//g_h_nd = total_heat_transfer-gain_utilisation*(result_solar+q_int)	
 	addS('g_h_nd', sData[cur]['total_heat_transfer']*1 - sData[cur]['gain_utilisation']*1 * (sData[cur]['result_solar']*1 + sData[cur]['q_int']*1) );
 	
-	
+	//=AD236*$Z$244*$V$244/$AD$211
+	addS('q_ve', Math.round(100*sData[cur]['w_k']*sData[cur]['k_k_h_a']*sData[cur]['F_red_temp']/sData[cur]['A_C_Ref'])/100);
+
 	console.log(sData);
+	drawGraph();
 }
 
 
