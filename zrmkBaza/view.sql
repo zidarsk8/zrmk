@@ -667,7 +667,6 @@ FROM Tab_Building_subview1 ;
 
 
 /*
-
 LOAD DATA INFILE 'Tab_Const_AtticCond.csv' INTO TABLE Tab_Const_AtticCond FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"';
 LOAD DATA INFILE 'Tab_Const_ConstrBorder.csv' INTO TABLE Tab_Const_ConstrBorder FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"';
 LOAD DATA INFILE 'Tab_Const_Infiltration.csv' INTO TABLE Tab_Const_Infiltration FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"';
@@ -720,4 +719,5 @@ LOAD DATA INFILE 'Tab_CalcAdapt.csv' INTO TABLE Tab_CalcAdapt FIELDS TERMINATED 
 LOAD DATA INFILE 'Tab_Type_Building.csv' INTO TABLE Tab_Type_Building FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"';
 
 
-*/
+/****/
+

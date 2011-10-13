@@ -168,6 +168,18 @@ function calcSData(){
 	addS('g_h_nd', sData[cur]['total_heat_transfer']*1 - sData[cur]['gain_utilisation']*1 * (sData[cur]['result_solar']*1 + sData[cur]['q_int']*1) );
 	
 	
+	addS('Code_BuildingVariant', sData[cur]['Code_Building']);
+	
+	addS('Code_SystemType', sData[cur]['Tab_System_H']['Code_SysH']+'.'+sData[cur]['Tab_System_W']['Code_SysW']+'.'+sData[cur]['Tab_System_Vent']['Code_SysVent']+'.<gen>');
+	
+	
+	for(var i in data['Tab_System_WD']){
+		console.log(data['Tab_System_WD_view'][i]['Code_SysW'],sData[cur]['Code_SysW_D']);
+		if (data['Tab_System_WD_view'][i]['Code_SysW'] == sData[cur]['Code_SysW_D']){
+			addS('q_d_w', data['Tab_System_WD_view'][i]['q_d_w']);
+		}
+	}
+		
 	console.log(sData);
 }
 

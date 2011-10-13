@@ -1,32 +1,35 @@
 $(document).ready(function(){
 
 
-	function fillDropDown(tableName, codeName){
+	function fillDropDown(tableName, codeVal, codeName){
 		$('#'+tableName+'_data_table').hide();
 		var options = $("#select_"+tableName);
 		$.each(data[tableName+'_view'],function(index) {
-	    	options.append($("<option />").val(index).text(this[codeName]));
+	    	options.append($("<option />").attr('id',this[codeVal]).val(index).text(this[codeName]));
 		});
 
 		$("#show_"+tableName+"_data_button").click(function() {
+			
 			$("#"+tableName+"_data_table").toggle();
 		});
 		
 	    options.change(function () {
 	        $("#select_"+tableName+" option:selected").each(function () {
 				var tmp = data[tableName+"_view"][this.value];        	
+				addS(tableName,tmp);
 				$("#"+tableName+"_data_table").html(CreateKeyValueTableView(tmp));	
 				for (var i in tmp){
 					$("#"+i).html(tmp[i]);
+					addS(i,tmp[i]);
 				}
 			});
 	    }).trigger('change');
 	}
 	
-	fillDropDown('Tab_Building','Code_Building');
-	fillDropDown('Tab_System_H','Code_SysH');
-	fillDropDown('Tab_System_W','Code_SysW');
-	fillDropDown('Tab_System_Vent','Code_SysVent');
+	fillDropDown('Tab_Building','Code_Building','Code_Building');
+	fillDropDown('Tab_System_H','Code_SysH','Description_National_SysH');
+	fillDropDown('Tab_System_W','Code_SysW','Description_National_SysW');
+	fillDropDown('Tab_System_Vent','Code_SysVent','Description_National_SysVent');
 		
 	
 	

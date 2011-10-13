@@ -4,9 +4,7 @@ $(document).ready(function(){
 		console.log(sData);
 		toggleStuff(this);
 	});
-	toggleStuff($('#button_toggle_cdbc')[0] ,false);
-	toggleStuff($('#button_toggle_cdsc')[0] ,false);
-	toggleStuff($('#button_toggle_btc')[0] ,false);
+	//toggleStuff($('#button_toggle_bsc')[0] ,false);
 });
 
 

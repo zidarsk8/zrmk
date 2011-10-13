@@ -59,6 +59,8 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 			sData[i]['F_f'] = 0.80;
 			sData[i]['F_w'] = 0.90;
 			sData[i]['c_m'] = 156.25;
+			sData[i]['q_w_nd'] = 12.00000;
+			sData[i]['c_m'] = 156.25000;
 			 
 		};
 		var cur = 0;

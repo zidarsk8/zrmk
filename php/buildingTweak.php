@@ -54,22 +54,22 @@
 
 		<div id="Tab_System_H_Holder" class="holder">
 			<p><h3>Tab_System_H</h3></p>
-			<select id="select_Tab_System_H"></select> 
-			<input type="button" value="show Data" id="show_Tab_System_H_data_button" />
+			<select class="selectBuilding" id="select_Tab_System_H"></select> 
+			<button class="toggleButton" id="show_Tab_System_H_data_button" />Dodatno</button>
 			<br>
 			<div id="Tab_System_H_data_table"></div>
 		</div>
 		<div id="Tab_System_W_Holder" class="holder">
 			<p><h3>Tab_System_W</h3></p>
-			<select id="select_Tab_System_W"></select> 
-			<input type="button" value="show Data" id="show_Tab_System_W_data_button" />
+			<select class="selectBuilding" id="select_Tab_System_W"></select> 
+			<button class="toggleButton" id="show_Tab_System_W_data_button" />Dodatno</button>
 			<br>
 			<div id="Tab_System_W_data_table"></div>
 		</div>
 		<div id="Tab_System_Vent_Holder" class="holder">
 			<p><h3>Tab_System_Vent</h3></p>
-			<select id="select_Tab_System_Vent"></select> 
-			<input type="button" value="show Data" id="show_Tab_System_Vent_data_button" />
+			<select class="selectBuilding" id="select_Tab_System_Vent"></select> 
+			<button class="toggleButton" id="show_Tab_System_Vent_data_button" />Dodatno</button>
 			<br>
 			<div id="Tab_System_Vent_data_table"></div>
 		</div>
