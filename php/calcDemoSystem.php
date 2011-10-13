@@ -1,3 +1,4 @@
+       
 
 <div class="wrap">
 <div class="header">
@@ -109,7 +110,6 @@
 </tr>
 </table>
 
-</div>
 
 <h1>Heating System</h1>
 <table>
