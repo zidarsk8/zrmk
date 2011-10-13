@@ -27,7 +27,7 @@
 <h1>Domestic Hot Water System</h1>
 <table class="full">
 <tr><td></td><td class="small">code</td></tr>
-<tr><td>System</td><td><input syle="width:350px;" type="text" id="Code_SysW" /></td></tr>
+<tr><td>System</td><td><input style="width:350px;" type="text" id="Code_SysW" /></td></tr>
 </table>
 <br />
 <table>
@@ -80,7 +80,7 @@
 <td><input type="text" id="Code_SysW_EC_2" /></td>
 <td><input type="text" id="Code_SysW_G_2" /></td>
 <td><input class="is" type="text" id="Fraction_SysW_G_2" /></td>
-<td>x <input class="is" type="text" id="qg_w_out" /> x</td>
+<td>x <input class="is" type="text" id="qg_w_out_2" /> x</td>
 <td><input class="is" type="text" id="e_g_w_Heat_2" /> =</td>
 <td><input class="is" type="text" id="qdel_w_i_2" /> :</td>
 <td><input class="is" type="text" id="e_g_w_Electricity_2" /> =</td>
@@ -109,8 +109,8 @@
 
 <tr>
 <td>aux</td>
-<td><input type="text" id="el" value="el" /></td>
-<td colspan="3"><input type="text" id="Code_SysW_S" /></td>
+<td><input type="text" id="el_1" value="el" /></td>
+<td colspan="3"><input type="text" id="Code_SysW_Aux" /></td>
 <td><input type="text" id="q_del_w_aux" /></td>
 </tr>
 
@@ -189,10 +189,10 @@
 <td>energyware for space</td>
 <td>heat generator</td>
 <td></td>
-<td>heat generator output</td>
-<td>expenditure factor</td>
-<td>delivered energy</td>
-<td colspan="2">combined heat and power</td>
+<td>heat generator<br /> output</td>
+<td>expenditure<br /> factor</td>
+<td>delivered<br /> energy</td>
+<td colspan="2">combined heat<br /> and power</td>
 </tr>
 
 <tr>
@@ -203,7 +203,7 @@
 <td class="small">q<sub>g,h,out</sub></td>
 <td class="small">e<sub>g,h,i</sub></td>
 <td class="small">q<sub>del,h,i</sub></td>
-<td class="small">expenditure factor electricity generation<br />e<sub>g,el,h,i</sub></td>
+<td class="small">expenditure factor<br /> electricity generation<br />e<sub>g,el,h,i</sub></td>
 <td class="small">electricity production <br />q<sub>prod,el,h,i</sub></td>
 </tr>
 
@@ -253,7 +253,7 @@
 
 <tr>
 <td>aux</td>
-<td><input type="text" id="el" value="el" /></td>
+<td><input type="text" id="el_2" value="el" /></td>
 <td colspan="3"><input type="text" id="Code_SysH_Aux" /></td>
 <td><input type="text" id="q_del_h_aux" /></td>
 </tr>
@@ -272,7 +272,7 @@
 
 <tr>
 <td>aux</td>
-<td><input type="text" id="el" value="el" /></td>
+<td><input type="text" id="el_3" value="el" /></td>
 <td colspan="3"><input type="text" id="Code_SysVent" /></td>
 <td><input type="text" id="q_del_ve_aux" /></td>
 </tr>
@@ -283,6 +283,15 @@
 </tr>
 
 </table>
+
+<br />
+<br />
+
+<div class="header">
+<img class="fl" src="tabula.png" /><div class="fl">Energy Balance Calculation</div><div class="sp fl">Energy Carriers</div>
+</div>
+<div class="fl">Standard Reference Calculation - based on: EN ISO 15316 / level B (tabled values)</div>
+<div class="cb"></div>
 
 
 </body>
