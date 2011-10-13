@@ -1,243 +1,271 @@
 
 <style>
-  td {
-     border: 1px solid black;
-  }
-  table {
-     border-spacing: 0px;
-     width: 800px;
-  }
-  input {
-     width: 100%;
-  }
+       h1,h2 { color: #666699;}
+       
+       .wrap { width: 900px; margin:20px;}
+       
+       .header { background-color: #666699; color:white; padding: 10px; height:20px; font-size: 24px; }
+       
+       .header img{ padding: 10px; }
+       
+       .sp {padding-left: 100px;}
+       
+       .fl { float:left; }
+       
+       .cb { clear: both; }
+       
+       .small { font-size: 10px; }
+       
+       .full { width:100%; }
+       
+       .tr {text-align: right;}
+       
+       .is { width:80px; }
+       
+       .ac {text-align: center; }
+       
+       .tr_is input { width:80px; }
 </style>
+<div class="wrap">
+<div class="header">
+<img class="fl" src="tabula.png" /><div class="fl">Energy Balance Calculation</div><div class="sp fl">System Performance</div>
+</div>
+<div class="fl">Standard Reference Calculation - based on: EN ISO 15316 / level B (tabled values)</div>
+<div class="cb"></div>
 
-<table class="calc_table">
-  <caption>Energy Balance Calculation</caption>
+<table style="width:100%;">
+<tr>
+<td>Building</td>
+<td><input type="text" width="200px" id="Code_Building" name="Code_Building" type="text" /></td>
+<td>Reference area</td>
+<td>A<sub>C,ref</sub><input type="text" id="A_C_Ref"/>m<sup>2</sup></td>
+</tr>
 
-  <tr>
-    <td>Bulding</td>
-    <td colspan="7"><input id="Code_Building" name="Code_Building" type="text" /></td>
-    <td colspan="2">Reference area</td>
-    <td>A<sub>C,ref</sub> <input id="A_C_Ref" name="A_C_Ref" type="text" /> m<sup>2</sup></td>
-  </tr>
-  <tr>
-    <td>Climate</td>
-    <td colspan"7"><input id="Code_ClimateRegion" name="Code_ClimateRegion" type="text" /></td>
-    <td>(conditioned floor area)</td>
-  </tr>
+<tr>
+<td>Climate</td>
+<td><input type="text" width="200px" id="Code_ClimateRegion" name="Code_ClimateRegion" type="text" /></td>
+<td>(conditioned floor area)</td>
+</tr>
+</table>
+<hr />
+
+
+<table>
+
 
     <tr>
-      <td>code construction element</td>
-      <td>original U-value</td>
-      <td>measure type</td>
-      <td>applied refurbishment measure</td>
-      <td>actual U-value</td>
+      <td class="small">code construction element</td>
+      <td class="small">original U-value</td>
+      <td class="small">measure type</td>
+      <td class="small">applied refurbishment measure</td>
+      <td class="small">actual U-value</td>
       <td></td>
-      <td>area (basis:external dimensions)</td>
+      <td class="small">area <br />(basis: external<br /> dimensions)</td>
       <td></td>
-      <td>adjustment factor soil</td>
+      <td class="small">adjustment <br />factor soil</td>
       <td></td>
       <td></td>
     </tr>
   <tr>
     <td></td>
-    <td>U<sub>original,i</sub><br />W/(m<sup>2</sup>K)</td>
+    <td class="small">U<sub>original,i</sub><br />W/(m<sup>2</sup>K)</td>
     <td></td>
     <td></td>
-    <td>U<sub>actual,i</sub><br />W/(m<sup>2</sup>K)</td>
+    <td class="small">U<sub>actual,i</sub><br />W/(m<sup>2</sup>K)</td>
     <td></td>
-    <td>A<sub>env,i</sub><br />m<sup>2</sup></td>
+    <td class="small">A<sub>env,i</sub><br />m<sup>2</sup></td>
     <td></td>
-    <td>b<sub>tr,i</sub></td>
+    <td class="small">b<sub>tr,i</sub></td>
     <td></td>
-    <td>H<sub>tr,i</sub><br />W/K</td>
+    <td class="small">H<sub>tr,i</sub><br />W/K</td>
   </tr>
 
   
   <tr>
     <td>Roof 1</td>
-    <td><input id="U_Roof_1" name="U_Roof_1" type="text" /></td>
-    <td><input id="Code_MeasureType_Roof_1" name="Code_MeasureType_Roof_1" type="text" /></td>
+    <td><input class="is" id="U_Roof_1" name="U_Roof_1" type="text" /></td>
+    <td><input class="is" id="Code_MeasureType_Roof_1" name="Code_MeasureType_Roof_1" type="text" /></td>
     <td><input id="Code_Measure_Roof_1" name="Code_Measure_Roof_1" type="text" /></td>
-    <td><input id="U_Refurbished_Roof_1" name="U_Refurbished_Roof_1" type="text" /></td>
+    <td><input class="is" id="U_Refurbished_Roof_1" name="U_Refurbished_Roof_1" type="text" /></td>
     <td>x</td>
-    <td><input id="A_Roof_1" name="A_Roof_1" type="text" /></td>
+    <td><input class="is" id="A_Roof_1" name="A_Roof_1" type="text" /></td>
     <td>x</td>
-    <td><input id="b_Transmission_Roof_1" name="b_Transmission_Roof_1" type="text" /></td>
+    <td><input class="is" id="b_Transmission_Roof_1" name="b_Transmission_Roof_1" type="text" /></td>
     <td>=</td>
-    <td><input type="text" name="Result_Roof_1" id="Result_Roof_1" /></td>
+    <td><input class="is" type="text" name="Result_Roof_1" id="Result_Roof_1" /></td>
   </tr>
   
   <tr>
     <td>Roof 2</td>
-    <td><input id="U_Roof_2" name="U_Roof_2" type="text" /></td>
-    <td><input id="Code_MeasureType_Roof_2" name="Code_MeasureType_Roof_2" type="text" /></td>
+    <td><input class="is" id="U_Roof_2" name="U_Roof_2" type="text" /></td>
+    <td><input class="is" id="Code_MeasureType_Roof_2" name="Code_MeasureType_Roof_2" type="text" /></td>
     <td><input id="Code_Measure_Roof_2" name="Code_Measure_Roof_2" type="text" /></td>
-    <td><input id="U_Refurbished_Roof_2" name="U_Refurbished_Roof_2" type="text" /></td>
+    <td><input class="is" id="U_Refurbished_Roof_2" name="U_Refurbished_Roof_2" type="text" /></td>
     <td>x</td>
-    <td><input id="A_Roof_2" name="A_Roof_2" type="text" /></td>
+    <td><input class="is" id="A_Roof_2" name="A_Roof_2" type="text" /></td>
     <td>x</td>
-    <td><input id="b_Transmission_Roof_2" name="b_Transmission_Roof_2" type="text" /></td>
+    <td><input class="is" id="b_Transmission_Roof_2" name="b_Transmission_Roof_2" type="text" /></td>
     <td>=</td>
-    <td><input type="text" name="Result_Roof_2" id="Result_Roof_2" /></td>
+    <td><input class="is" type="text" name="Result_Roof_2" id="Result_Roof_2" /></td>
   </tr>
   
   <tr>
     <td>Wall 1</td>
-    <td><input id="U_Wall_1" name="U_Wall_1" type="text" /></td>
-    <td><input id="Code_MeasureType_Wall_1" name="Code_MeasureType_Wall_1" type="text" /></td>
+    <td><input class="is" id="U_Wall_1" name="U_Wall_1" type="text" /></td>
+    <td><input class="is" id="Code_MeasureType_Wall_1" name="Code_MeasureType_Wall_1" type="text" /></td>
     <td><input id="Code_Measure_Wall_1" name="Code_Measure_Wall_1" type="text" /></td>
-    <td><input id="U_Refurbished_Wall_1" name="U_Refurbished_Wall_1" type="text" /></td>
+    <td><input class="is" id="U_Refurbished_Wall_1" name="U_Refurbished_Wall_1" type="text" /></td>
     <td>x</td>
-    <td><input id="A_Wall_1" name="A_Wall_1" type="text" /></td>
+    <td><input class="is" id="A_Wall_1" name="A_Wall_1" type="text" /></td>
     <td>x</td>
-    <td><input id="b_Transmission_Wall_1" name="b_Transmission_Wall_1" type="text" /></td>
+    <td><input class="is" id="b_Transmission_Wall_1" name="b_Transmission_Wall_1" type="text" /></td>
     <td>=</td>
-    <td><input type="text" name="Result_Wall_1" id="Result_Wall_1" /></td>
+    <td><input class="is" type="text" name="Result_Wall_1" id="Result_Wall_1" /></td>
   </tr>
   
   <tr>
     <td>Wall 2</td>
-    <td><input id="U_Wall_2" name="U_Wall_2" type="text" /></td>
-    <td><input id="Code_MeasureType_Wall_2" name="Code_MeasureType_Wall_2" type="text" /></td>
+    <td><input class="is" id="U_Wall_2" name="U_Wall_2" type="text" /></td>
+    <td><input class="is" id="Code_MeasureType_Wall_2" name="Code_MeasureType_Wall_2" type="text" /></td>
     <td><input id="Code_Measure_Wall_2" name="Code_Measure_Wall_2" type="text" /></td>
-    <td><input id="U_Refurbished_Wall_2" name="U_Refurbished_Wall_2" type="text" /></td>
+    <td><input class="is" id="U_Refurbished_Wall_2" name="U_Refurbished_Wall_2" type="text" /></td>
     <td>x</td>
-    <td><input id="A_Wall_2" name="A_Wall_2" type="text" /></td>
+    <td><input class="is" id="A_Wall_2" name="A_Wall_2" type="text" /></td>
     <td>x</td>
-    <td><input id="b_Transmission_Wall_2" name="b_Transmission_Wall_2" type="text" /></td>
+    <td><input class="is" id="b_Transmission_Wall_2" name="b_Transmission_Wall_2" type="text" /></td>
     <td>=</td>
-    <td><input type="text" name="Result_Wall_2" id="Result_Wall_2" /></td>
+    <td><input class="is" type="text" name="Result_Wall_2" id="Result_Wall_2" /></td>
   </tr>
   
   <tr>
     <td>Wall 3</td>
-    <td><input id="U_Wall_3" name="U_Wall_3" type="text" /></td>
-    <td><input id="Code_MeasureType_Wall_3" name="Code_MeasureType_Wall_3" type="text" /></td>
+    <td><input class="is" id="U_Wall_3" name="U_Wall_3" type="text" /></td>
+    <td><input class="is" id="Code_MeasureType_Wall_3" name="Code_MeasureType_Wall_3" type="text" /></td>
     <td><input id="Code_Measure_Wall_3" name="Code_Measure_Wall_3" type="text" /></td>
-    <td><input id="U_Refurbished_Wall_3" name="U_Refurbished_Wall_3" type="text" /></td>
+    <td><input class="is" id="U_Refurbished_Wall_3" name="U_Refurbished_Wall_3" type="text" /></td>
     <td>x</td>
-    <td><input id="A_Wall_3" name="A_Wall_3" type="text" /></td>
+    <td><input class="is" id="A_Wall_3" name="A_Wall_3" type="text" /></td>
     <td>x</td>
-    <td><input id="b_Transmission_Wall_3" name="b_Transmission_Wall_3" type="text" /></td>
+    <td><input class="is" id="b_Transmission_Wall_3" name="b_Transmission_Wall_3" type="text" /></td>
     <td>=</td>
-    <td><input type="text" name="Result_Wall_3" id="Result_Wall_3" /></td>
+    <td><input type="text" class="is" name="Result_Wall_3" id="Result_Wall_3" /></td>
   </tr>
   
   <tr>
     <td>Floor 1</td>
-    <td><input id="U_Floor_1" name="U_Floor_1" type="text" /></td>
-    <td><input id="Code_MeasureType_Floor_1" name="Code_MeasureType_Floor_1" type="text" /></td>
+    <td><input class="is" id="U_Floor_1" name="U_Floor_1" type="text" /></td>
+    <td><input class="is" id="Code_MeasureType_Floor_1" name="Code_MeasureType_Floor_1" type="text" /></td>
     <td><input id="Code_Measure_Floor_1" name="Code_Measure_Floor_1" type="text" /></td>
-    <td><input id="U_Refurbished_Floor_1" name="U_Refurbished_Floor_1" type="text" /></td>
+    <td><input class="is" id="U_Refurbished_Floor_1" name="U_Refurbished_Floor_1" type="text" /></td>
     <td>x</td>
-    <td><input id="A_Floor_1" name="A_Floor_1" type="text" /></td>
+    <td><input class="is" id="A_Floor_1" name="A_Floor_1" type="text" /></td>
     <td>x</td>
-    <td><input id="b_Transmission_Floor_1" name="b_Transmission_Floor_1" type="text" /></td>
+    <td><input class="is" id="b_Transmission_Floor_1" name="b_Transmission_Floor_1" type="text" /></td>
     <td>=</td>
-    <td><input type="text" name="Result_Floor_1" id="Result_Floor_1" /></td>
+    <td><input class="is" type="text" name="Result_Floor_1" id="Result_Floor_1" /></td>
   </tr>
   
   <tr>
     <td>Floor 2</td>
-    <td><input id="U_Floor_2" name="U_Floor_2" type="text" /></td>
-    <td><input id="Code_MeasureType_Floor_2" name="Code_MeasureType_Floor_2" type="text" /></td>
+    <td><input class="is" id="U_Floor_2" name="U_Floor_2" type="text" /></td>
+    <td><input class="is" id="Code_MeasureType_Floor_2" name="Code_MeasureType_Floor_2" type="text" /></td>
     <td><input id="Code_Measure_Floor_2" name="Code_Measure_Floor_2" type="text" /></td>
-    <td><input id="U_Refurbished_Floor_2" name="U_Refurbished_Floor_2" type="text" /></td>
+    <td><input class="is" id="U_Refurbished_Floor_2" name="U_Refurbished_Floor_2" type="text" /></td>
     <td>x</td>
-    <td><input id="A_Floor_2" name="A_Floor_2" type="text" /></td>
+    <td><input class="is" id="A_Floor_2" name="A_Floor_2" type="text" /></td>
     <td>x</td>
-    <td><input id="b_Transmission_Floor_2" name="b_Transmission_Floor_2" type="text" /></td>
+    <td><input class="is" id="b_Transmission_Floor_2" name="b_Transmission_Floor_2" type="text" /></td>
     <td>=</td>
-    <td><input type="text" name="Result_Floor_2" id="Result_Floor_2" /></td>
+    <td><input class="is" type="text" name="Result_Floor_2" id="Result_Floor_2" /></td>
   </tr>
   
   <tr>
     <td>Window 1</td>
-    <td><input id="U_Window_1" name="U_Window_1" type="text" /></td>
-    <td><input id="Code_MeasureType_Window_1" name="Code_MeasureType_Window_1" type="text" /></td>
+    <td><input class="is" id="U_Window_1" name="U_Window_1" type="text" /></td>
+    <td><input class="is" id="Code_MeasureType_Window_1" name="Code_MeasureType_Window_1" type="text" /></td>
     <td><input id="Code_Measure_Window_1" name="Code_Measure_Window_1" type="text" /></td>
-    <td><input id="U_Refurbished_Window_1" name="U_Refurbished_Window_1" type="text" /></td>
+    <td><input class="is" id="U_Refurbished_Window_1" name="U_Refurbished_Window_1" type="text" /></td>
     <td>x</td>
-    <td><input id="A_Window_1" name="A_Window_1" type="text" /></td>
+    <td><input class="is" id="A_Window_1" name="A_Window_1" type="text" /></td>
     <td>x</td>
-    <td><input type="text" id="b_Transmission_Window_1" /></td>
+    <td><input class="is" type="text" id="b_Transmission_Window_1" /></td>
     <td>=</td>
-    <td><input type="text" name="Result_Window_1" id="Result_Window_1" /></td>
+    <td><input class="is" type="text" name="Result_Window_1" id="Result_Window_1" /></td>
   </tr>
   
   <tr>
     <td>Window 2</td>
-    <td><input id="U_Window_2" name="U_Window_2" type="text" /></td>
-    <td><input id="Code_MeasureType_Window_2" name="Code_MeasureType_Window_2" type="text" /></td>
+    <td><input class="is" id="U_Window_2" name="U_Window_2" type="text" /></td>
+    <td><input class="is" id="Code_MeasureType_Window_2" name="Code_MeasureType_Window_2" type="text" /></td>
     <td><input id="Code_Measure_Window_2" name="Code_Measure_Window_2" type="text" /></td>
-    <td><input id="U_Refurbished_Window_2" name="U_Refurbished_Window_2" type="text" /></td>
+    <td><input class="is" id="U_Refurbished_Window_2" name="U_Refurbished_Window_2" type="text" /></td>
     <td>x</td>
-    <td><input id="A_Window_2" name="A_Window_2" type="text" /></td>
+    <td><input class="is" id="A_Window_2" name="A_Window_2" type="text" /></td>
     <td>x</td>
-    <td><input type="text" id="b_Transmission_Window_2" /></td>
+    <td><input class="is" type="text" id="b_Transmission_Window_2" /></td>
     <td>=</td>
-    <td><input type="text" name="Result_Window_2" id="Result_Window_2" /></td>
+    <td><input class="is" type="text" name="Result_Window_2" id="Result_Window_2" /></td>
   </tr>
   
   <tr>
     <td>Door 1</td>
-    <td><input id="U_Door_1" name="U_Door_1" type="text" /></td>
-    <td><input id="Code_MeasureType_Door_1" name="Code_MeasureType_Door_1" type="text" /></td>
+    <td><input class="is" id="U_Door_1" name="U_Door_1" type="text" /></td>
+    <td><input class="is" id="Code_MeasureType_Door_1" name="Code_MeasureType_Door_1" type="text" /></td>
     <td><input id="Code_Measure_Door_1" name="Code_Measure_Door_1" type="text" /></td>
-    <td><input id="U_Refurbished_Door_1" name="U_Refurbished_Door_1" type="text" /></td>
+    <td><input class="is" id="U_Refurbished_Door_1" name="U_Refurbished_Door_1" type="text" /></td>
     <td>x</td>
-    <td><input id="A_Door_1" name="A_Door_1" type="text" /></td>
+    <td><input class="is" id="A_Door_1" name="A_Door_1" type="text" /></td>
     <td>x</td>
-    <td><input type="text" id="b_Transmission_Door_1" /></td>
+    <td><input class="is" type="text" id="b_Transmission_Door_1" /></td>
     <td>=</td>
-    <td><input type="text" name="Result_Door_1" id="Result_Door_1" /></td>
+    <td><input class="is" type="text" name="Result_Door_1" id="Result_Door_1" /></td>
   </tr>
   
 
   <tr>
     <td colspan="4"></td>
-    <td>delta U<sub>tb</sub></td>
+    <td class="small">delta U<sub>tb</sub></td>
     <td></td>
-    <td>Sum A<sub>envelope,i</sub></td>
+    <td class="small">Sum A<sub>envelope,i</sub></td>
     <td colspan="3"></td>
-    <td>H<sub>tr,tb</sub></td>
+    <td class="small">H<sub>tr,tb</sub></td>
   </tr>
 
   <tr>
     <td colspan="4">thermal bridging: surcharge on the U-values</td>
-    <td><input id="delta_U_ThermalBridging" name="delta_U_ThermalBridging" type="text" /></td>
+    <td><input class="is"  id="delta_U_ThermalBridging" name="delta_U_ThermalBridging" type="text" /></td>
     <td>x</td>
-    <td><input type="text" id="sum_a_env" name="sum_a_env" /></td>
+    <td><input class="is" type="text" id="sum_a_env" name="sum_a_env" /></td>
     <td>x</td>
-    <td><input type="text" id="h_tr_tb" name="h_tr_tb" /></td>
+    <td><input class="is" type="text" id="h_tr_tb" name="h_tr_tb" /></td>
     <td>=</td>
-    <td><input type="text" id="h_tr_tb" name="h_tr_tb" /></td>
+    <td><input class="is" type="text" id="h_tr_tb" name="h_tr_tb" /></td>
   </tr>
-
   <tr>
-    <td colspan="9"><h1>Heat transfer by transmission H_tr</h1></td>
+
+    <td colspan="9">
+<h2>Heat transfer by transmission H_tr</h2>
+</td>
     <td>sum</td>
-    <td><input type="text" id="h_tr" name="h_tr" /></td>
+    <td><input class="is" type="text" id="h_tr" name="h_tr" /></td>
   </tr>
-
-  <tr>
-    <td colspan="11">
-      <table>
-        <tr>
-          <td></td>
-          <td>volume-specific heat capacity air</td>
+</table>
+<table>
+        <tr  class="small ac">
+          <td colspan="2"></td>
+          <td>volume-specific <br/>heat capacity air</td>
           <td></td>
           <td colspan="3">air change rate</td>
           <td colspan="3"></td>
-          <td>room height (standard value)</td>
+          <td>room height <br />(standard value)</td>
           <td colspan="2"></td>
         </tr>
-        <tr>
-          <td></td>
+        <tr class="small ac">
+          <td colspan="2"></td>
           <td>c<sub>p,air</sub></td>
+          <td></td>
           <td>by use<br />n<sub>air,use</sub></td>
+          <td></td>
           <td>by infiltration<br />n<sub>air,infiltration</sub></td>
           <td></td>
           <td>A<sub>C,ref</sub></td>
@@ -245,10 +273,10 @@
           <td>h<sub>room</sub></td>
           <td colspan="2"></td>
         </tr>
-        <tr>
-          <td class="section_title"><h1>Heat transfer coefficient<br />by ventilation H<sub>ve</sub></h1></td>
-          <td>Wh/(m<sup>3</sup>K)</td?
-          <td></td>
+        <tr class="small">
+        <td colspan="2"></td>
+          <td>Wh/(m<sup>3</sup>K)</td>
+
           <td></td>
           <td>1/h</td>
           <td></td>
@@ -260,27 +288,24 @@
           <td></td>
           <td>W/K</td>
         </tr>
-        <tr>
-          <td></td>
-          <td><input type="text" id="c_p_air" name="c_p_air" /></td>
-          <td>x(</td>
-          <td><input id="n_air_use" name="n_air_use" type="text" /></td>
-          <td>+</td>
-          <td><input id="n_air_infiltration" name="n_air_infiltration" type="text" /></td>
-          <td>)x</td>
-          <td><input type="text" id="a_c_ref" name="a_c_ref" /></td>
-          <td>x</td>
-          <td><input id="h_room" name="h_room" type="text" /></td>
-          <td>=</td>
-          <td><input type="text" id="w_k" name="w_k" /></div>
-        </tr>
-      </table>
-    </td>
-  </tr>
 
-  <tr><td colspan="11">
-    <table>
-      <tr>
+        <tr>
+          <td class="small" colspan="2"><h2>Heat transfer coefficient by ventilation H<sub>ve</sub></h2></td>
+          <td><input class="is" type="text" id="c_p_air" name="c_p_air" /></td>
+          <td>x(</td>
+          <td><input class="is" id="n_air_use" name="n_air_use" type="text" /></td>
+          <td>+</td>
+          <td><input class="is" id="n_air_infiltration" name="n_air_infiltration" type="text" /></td>
+          <td>)x</td>
+          <td><input class="is" type="text" id="a_c_ref" name="a_c_ref" /></td>
+          <td>x</td>
+          <td><input class="is" id="h_room" name="h_room" type="text" /></td>
+          <td>=</td>
+          <td><input class="is" type="text" id="w_k" name="w_k" />
+        </tr>
+
+
+      <tr class="small ac">
         <td colspan="2"></td>
         <td>internal temp.</td>
         <td></td>
@@ -289,7 +314,8 @@
         <td>heating days</td>
         <td colspan="4"></td>
       </tr>
-      <tr>
+      <tr class="small ac">
+        <td></td>
         <td></td>
         <td>J<sub>i</sub></td>
         <td></td>
@@ -298,33 +324,35 @@
         <td>d<sub>hs</sub></td>
         <td colspan="4"></td>
       </tr>
-      <tr>
+      <tr class="small tr">
         <td colspan="2"></td>
         <td>°C</td>
         <td></td>
         <td>°C</td>
-        <td>d/a</td>
+        <td colspan="2">d/a</td>
         <td></td>
+
         <td>Kd/a</td>
       </tr>
       <tr>
         <td>accumulated differences between internal and external temperature</td>
         <td>(</td>
-        <td><input id="theta_i" name="theta_i" type="text" /></td>
+        <td><input class="is" id="theta_i" name="theta_i" type="text" /></td>
         <td>-</td>
-        <td><input id="Theta_e" name="Theta_e" type="text" /></td>
+        <td><input class="is" id="Theta_e" name="Theta_e" type="text" /></td>
         <td>)x</td>
-        <td><input id="HeatingDays" name="HeatingDays" type="text" /></td>
+        <td><input class="is" id="HeatingDays" name="HeatingDays" type="text" /></td>
         <td>=</td>
-        <td><input type="text" name="k_d_a" id="k_d_a" /></td>
+        <td><input class="is" type="text" name="k_d_a" id="k_d_a" /></td>
         <td colspan="2"></td>
       </tr>
-      <tr>
+      <tr class="small">
         <td colspan="6"></td>
-        <td>temperature reduction factor</td>
+        <td>temperature <br />reduction <br />factor</td>
         <td colspan="4"></td>
       </tr>
-      <tr>
+
+      <tr class="ac small">
         <td></td>
         <td></td>
         <td>H<sub>tr</sub></td>
@@ -337,39 +365,38 @@
         <td colspan="2"></td>
       </tr>
       <tr>
-        <td class="section_title"><h1>Total heat transfer Q<sub>ht</sub></h1></td>
+        <td class="small"><h2>Total heat transfer Q<sub>ht</sub></h2></td>
         <td>(</td>
-        <td><input type="text" name="h_tr" id="h_tr" /></td>
+        <td><input class="is" type="text" name="h_tr" id="h_tr" /></td>
         <td>+</td>
-        <td><input type="text" name="h_ve" id="h_ve" /></td>
+        <td><input class="is" type="text" name="h_ve" id="h_ve" /></td>
         <td>)x</td>
-        <td><input id="F_red_temp" name="F_red_temp" type="text" /></td>
+        <td><input class="is" id="F_red_temp" name="F_red_temp" type="text" /></td>
         <td>x</td>
-        <td><input type="text" name="k_k_h_a" id="k_k_h_a" /></td>
+        <td><input class="is" type="text" name="k_k_h_a" id="k_k_h_a" /></td>
         <td>=</td>
-        <td><input type="text" name="total_heat_transfer" id="total_heat_transfer" /></td>
+        <td><input class="is" type="text" name="total_heat_transfer" id="total_heat_transfer" /></td>
       </tr>
-    </table>
-  </td></tr>
 
-  <tr><td colspan="11">
-    <table>
-      <tr>
+</table>
+<table>
+
+      <tr class="ac small">
         <td></td>
         <td colspan="5">reduction factors</td>
         <td></td>
-        <td>solar energy transmittance</td>
+        <td>solar energy <br />transmittance</td>
         <td></td>
         <td>window area</td>
         <td></td>
-        <td>solar global radiation</td>
+        <td>solar global <br />radiation</td>
         <td colspan="2"></td>
       </tr>
-      <tr>
+      <tr class="ac small">
         <td>Window<br />Orientation</td>
         <td>external shading F<sub>sh</sub></td>
         <td></td>
-        <td>frame area fraction F<sub>f</sub></td>
+        <td>frame area <br />fraction F<sub>f</sub></td>
         <td></td>
         <td>non-perpendicular F<sub>w</sub<</td>
         <td></td>
@@ -382,7 +409,7 @@
         <td>kWh/a</td>
       </tr>
       
-      <tr>
+      <tr class="tr_is">
         <td>1. Horizontal</td>
         <td><input id="F_sh_vert" name="F_sh_vert" type="text" /></td>
         <td>x (1-</td>
@@ -399,7 +426,7 @@
         <td><input type="text" id="result_solar_0" /></td>
       </tr>
       
-      <tr>
+      <tr class="tr_is">
         <td>2. East</td>
         <td><input id="F_sh_vert" name="F_sh_vert" type="text" /></td>
         <td>x (1-</td>
@@ -416,7 +443,7 @@
         <td><input type="text" id="result_solar_1" /></td>
       </tr>
       
-      <tr>
+      <tr class="tr_is">
         <td>3. South</td>
         <td><input id="F_sh_vert" name="F_sh_vert" type="text" /></td>
         <td>x (1-</td>
@@ -433,7 +460,7 @@
         <td><input type="text" id="result_solar_2" /></td>
       </tr>
       
-      <tr>
+      <tr class="tr_is">
         <td>4. West</td>
         <td><input id="F_sh_vert" name="F_sh_vert" type="text" /></td>
         <td>x (1-</td>
@@ -450,7 +477,7 @@
         <td><input type="text" id="result_solar_3" /></td>
       </tr>
       
-      <tr>
+      <tr class="tr_is">
         <td>5. North</td>
         <td><input id="F_sh_vert" name="F_sh_vert" type="text" /></td>
         <td>x (1-</td>
@@ -467,17 +494,14 @@
         <td><input type="text" id="result_solar_4" /></td>
       </tr>
       
-      <tr>
-        <td colspan="12" class="section_title"><h1>Solar heat load during heating season Q<sub>sol</sub></h1></td>
+      <tr class="tr_is">
+        <td colspan="12" class="small"><h1>Solar heat load during heating season Q<sub>sol</sub></h1></td>
         <td>sum</td>
         <td><input type="text" id="result_solar" name="result_solar" /></td>
       </tr>
-    </table>
-  </td></tr>
-
-  <tr><td colspan="11">
-    <table width="800">
-      <tr>
+</table>
+<table>
+      <tr class="ac small">
         <td colspan="3"></td>
         <td>internal heat sources</td>
         <td></td>
@@ -486,7 +510,7 @@
         <td>A_c,ref</td>
         <td colspan="2"></td>
       </tr>
-      <tr>
+      <tr class="ac small">
         <td></td>
         <td>kh/d</td>
         <td></td>
@@ -498,11 +522,11 @@
         <td></td>
         <td>kWh/a</td>
       </tr>
-      <tr>
-        <td><h1 class="section_title">Internal heat sources Q<sub>int</sub></h1></td>
+      <tr class="tr_is">
+        <td><h2>Internal heat sources Q<sub>int</sub></h2></td>
         <td>0.024</td>
         <td>x</td>
-        <td></td>
+        <td><input id="phi_int" name="phi_int" type="text" /></td>
         <td>x</td>
         <td><input id="HeatingDays" name="HeatingDays" type="text" /></td>
         <td>x</td>
@@ -511,55 +535,52 @@
         <td><input type="text" id="q_int" name="q_int" /></td>
       </tr>
     </table>
-  </td></tr>
-
-  <tr><td colspan="11">
+<br />
+<br />
     <table>
       <tr>
         <td>internal heat capacity per m<sup>2</sup> A<sub>c,ref</sub></td>
-        <td>c<sub>m</sub></td>
-        <td><input id="c_m" name="c_m" type="text" /></td>
-        <td>Wh/(m<sup>2</sup>K)</td>
+        <td class="small tr">c<sub>m</sub></td>
+        <td></td>
+        <td><input class="is" id="c_m" name="c_m" type="text" /></td>
+        <td class="small">Wh/(m<sup>2</sup>K)</td>
         <td>heat balance ratio for the heating mode</td>
         <td></td>
         <td>=</td>
-        <td><input type="text" name="heat_balance" id="heat_balance" /></td>
+        <td><input class="is" type="text" name="heat_balance" id="heat_balance" /></td>
       </tr>
       <tr>
         <td>time constant of the building</td>
-        <td>tau = -----</td>
+        <td class="small tr">tau = -----</td>
         <td>=</td>
-        <td><input type="text" id="t_const_building" name="t_const_building" /></td>
-        <td>h</td>
+        <td><input class="is" type="text" id="t_const_building" name="t_const_building" /></td>
+        <td class="small">h</td>
         <td></td>
-        <td>gamma<sub>h,gn</sub> = ------</td>
+        <td class="small tr">gamma<sub>h,gn</sub> = ------</td>
         <td colspan="2"></td>
       </tr>
       <tr>
         <td>parameter</td>
-        <td> a<sub>h</sub> = a<sub>h,0</sub> + - tau</td>
+        <td class="small tr"> a<sub>h</sub> = a<sub>h,0</sub> + - tau</td>
         <td>=</td>
-        <td><input type="text" id="parameter" name="parameter" /></td>
+        <td><input class="is" type="text" id="parameter" name="parameter" /></td>
+        <td></td>
         <td>gain utilisation factor for heating</td>
-        <td>1-gamma<sup>aH</sup><br />1-gamma<sup>aH+1</sup></td>
+        <td class="small tr">1-gamma<sup>aH</sup><br />1-gamma<sup>aH+1</sup></td>
         <td>=</td>
-        <td><input type="text" id="gain_utilisation" name="gain_utilisation" /></td>
+        <td><input class="is" type="text" id="gain_utilisation" name="gain_utilisation" /></td>
       </tr>
-    </table>
-  </td></tr>
 
-  <tr><td colspan="11">
-    <table>
       <tr>
-        <td colspan="3"></td>
-        <td>kWh/a</td>
+        <td colspan="8"></td>
+        <td class="small tr">kWh/a</td>
       </tr>
       <tr>
-        <td><h1 class="section_title">Energy need for heating Q<sub>H,nd</sub></h1></td>
-        <td>Q<sub>ht</sub> - mu<sub>h,gn</sub> x (Q<sub>sol</sub> &lt;blob&gt;)</td>
+        <td  colspan="6"><h2>Energy need for heating Q<sub>H,nd</sub></h2></td>
+        <td class="small">Q<sub>ht</sub> - mu<sub>h,gn</sub> x (Q<sub>sol</sub> &lt;blob&gt;)</td>
         <td>=</td>
-        <td><input type="text" id="g_h_nd" name="g_h_nd" /></td>
+        <td><input type="text" class="is" id="g_h_nd" name="g_h_nd" /></td>
       </tr>
     </table>
-  </td></tr>
-</table>
+
+</div>
