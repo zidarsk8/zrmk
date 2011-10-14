@@ -283,6 +283,9 @@ function fillDataSet(){
 		$("[id='"+fields[i]+'_'+getS('Code_'+fields[i])+"']").removeAttr('selected').attr('selected','selected').change();
 	}
 	console.log(cur,sData[cur]);
+	
+	$('#enfh').html(roundTo(getS('total_heat_transfer')*1/getS('A_C_Ref')*1,0));
+	console.log(getS('q_H_nd'),getS('A_C_Ref'));
 	drawGraph();
 }
 

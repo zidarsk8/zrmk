@@ -90,9 +90,9 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 		<br />
 		<nav>
 			<ul>
-		      <li id="k1" class="active"><a href="#" >Konfiguracija 1</a></li>
-		      <li id="k2"><a href="#">Konfiguracija 2</a></li>
-		      <li id="k3"><a href="#">Konfiguracija 3</a></li>
+		      <li id="k1" class="active"><a href="#" >Stavba 1</a></li>
+		      <li id="k2"><a href="#">Stavba 2</a></li>
+		      <li id="k3"><a href="#">Stavba 3</a></li>
 		    </ul>
 		    <div class="saveForm">
 				<input type="text" name="konfigSave" id="configSave" value="Shrani_01" class="canEditGlobal" />
@@ -125,12 +125,8 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 				<div id="neeee"></div>
 			
 		<!-- 3. Add the container -->
-				<div id="chart_1_container_0" style="width: 240px; height: 600px; float:left; margin: 0 auto"></div>
-				<div id="chart_2_container_0" style="width: 240px; height: 600px; float:left; margin: 0 auto"></div>
-				<div id="chart_1_container_1" style="width: 240px; height: 600px; float:left; margin: 0 auto"></div>
-				<div id="chart_2_container_1" style="width: 240px; height: 600px; float:left; margin: 0 auto"></div>
-				<div id="chart_1_container_2" style="width: 240px; height: 600px; float:left; margin: 0 auto"></div>
-				<div id="chart_2_container_2" style="width: 240px; height: 600px; float:left; margin: 0 auto"></div>
+				<div id="chart_1_container_0" style="width: 340px; height: 600px; float:left; margin: 0 auto"></div>
+				<div id="chart_2_container_0" style="width: 340px; height: 600px; float:left; margin: 0 auto"></div>
 		
 
 			</div>

@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	
 	
+	
 	$('#k1').click(function(){
 		if (cur != 0){
 			$(this).addClass('active');
