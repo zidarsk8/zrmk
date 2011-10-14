@@ -49,12 +49,12 @@ $(document).ready(function(){
 		$("#show_"+table+"_data_button").click(function() {
 			$("#"+table+"_data_table").toggle();
 		});
-		
-	    options.change(function () {
-	        $(optionId+" option:selected").each(function () {
+		$(optionId).change(function () {
+			$(optionId+" option:selected").each(function () {
 				var tmp = data[table+"_view"][this.value];        	
 				$("#"+table+"_data_table").html(CreateKeyValueTableView(tmp));	
 				for (var i in tmp){
+					console.log(i,tmp[i]);
 					$("#"+i).html(tmp[i]);
 				}
 			});

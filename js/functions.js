@@ -98,7 +98,7 @@ function checkDuplicateIds(){
 }
 	
 function addS(key,val){
-	if (typeof val != 'undefined' && val !=""){
+	if (typeof val != 'undefined' ){ // && val !=""      lol  0 ==""
 		sData[cur][key]=val;
 	}
 }
@@ -142,8 +142,10 @@ function calcSData(){
 	var a1 = isNumber(sData[cur]['A_Window_1']) ? 1*sData[cur]['A_Window_1'] : 0;
 	var gl2 = isNumber(sData[cur]['g_gl_n_Window_1']) ? 1*sData[cur]['g_gl_n_Window_1'] : 0;
 	var a2 = isNumber(sData[cur]['A_Window_2']) ? 1*sData[cur]['A_Window_2'] : 0;
+	var ggln = ((gl1*a1)+(gl2*a2))/(a1+a2);
 
-	addS('g_gl_n', ((gl1*a1)+(gl2*a2))/(a1+a2));
+	addS('g_gl_n', ggln );
+	console.log(gl1,a1,gl2,a2,ggln,sData[cur]['g_gl_n']);
 	
 	var solarSum = 0;
 	var fields = new Array('Horizontal','East','South','West','North');
@@ -245,6 +247,7 @@ function calcSData(){
 }
 
 function fillDataSet(){
+	//console.log(sData);
 	$('input').val("");
 	$('#SelectedBuildingHolder').html('');
 
@@ -267,6 +270,7 @@ function fillDataSet(){
 	
 	$('#SelectedBuildingHolder').html('<img id="SelectedBuilding" src="'+getS('imageSrc')+'" width="'+getS('imageWidth')+'" height="'+getS('imageHeight')+'" />')
 	
+	
 	$('option').removeAttr('selected');
 	$("[id='"+sData[cur]['Code_SysW']+"']").removeAttr('selected').attr('selected','selected').change();
 	$("[id='"+sData[cur]['Code_SysH']+"']").removeAttr('selected').attr('selected','selected').change();
@@ -274,10 +278,12 @@ function fillDataSet(){
 
 	var fields = new Array('Roof_1','Roof_2','Wall_1','Wall_2','Wall_3','Floor_1','Floor_2','Window_1','Window_2','Door_1');
 	for (var i in fields){
-		console.log(fields[i]+'_'+sData[cur]['Code_'+fields[i]]);
-		$("[id='"+fields[i]+'_'+sData[cur]['Code_'+fields[i]]+"']").removeAttr('selected').attr('selected','selected').change();
+		var name = (""+getS('Name_Picture_Construction')).substring(0,(""+getS('Name_Picture_Construction')).length-3)+'png';
+		$('#image_'+getS('Code_'+fields[i])).attr('src','images/SIpng/'+name);
+		$("[id='"+fields[i]+'_'+getS('Code_'+fields[i])+"']").removeAttr('selected').attr('selected','selected').change();
 	}
-	console.log(sData);
+	console.log(cur,sData[cur]);
+	drawGraph();
 }
 
 

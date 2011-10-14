@@ -18,3 +18,12 @@
   	-webkit-box-shadow:  3px 3px 3px #f0f0f0;
   	box-shadow:  3px 3px 3px #f0f0f0;
 }
+
+.saveButton{
+	border: none;
+	background-color: #eeeeee;
+
+  	-moz-box-shadow:     0px 0px 3px #f0f0f0;
+  	-webkit-box-shadow:  0px 0px 3px #f0f0f0;
+  	box-shadow:          0px 0px 3px #f0f0f0;
+}

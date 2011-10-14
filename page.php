@@ -14,6 +14,9 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 
 	$result = mysql_query("SELECT * FROM $tableName ") or die(mysql_error());
 	while ($row = mysql_fetch_assoc($result)){
+		foreach ($row as $key => $value) {
+			$row[$key] = str_ireplace(array('Ä','Å¾','Å¡'),array('č','ž','š'), $value);
+		}
 		$arrTables[$tableName][]= $row;
 	}
 }
@@ -74,12 +77,15 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 	<script type="application/javascript" language="JavaScript" src="js/buildngSelectedHandler.js"></script>
 	<script type="application/javascript" language="JavaScript" src="js/konfiguracija.js"></script>
 	<script type="application/javascript" language="JavaScript" src="js/editValues.js"></script>
+	<script type="application/javascript" language="JavaScript" src="js/highcharts.js"></script>
+	<script type="application/javascript" language="JavaScript" src="js/graphs.js"></script>
+	
 </head>
 
 <body>
 
 	<header id="banner" class="body">
-		<img src="images/zrmk_logo_png_80.png" alt="Gradbeni institut ZRMK d.o.o."  />
+		<a href=""><img src="images/zrmk_logo_png_80.png" alt="Gradbeni institut ZRMK d.o.o."  /></a>
 		<br />
 		<br />
 		<nav>
@@ -90,8 +96,8 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 		    </ul>
 		    <div class="saveForm">
 				<input type="text" name="konfigSave" id="configSave" value="Shrani_01" class="canEditGlobal" />
-				<button class="toggleButton" id="save">Shrani</button>
-				<button class="toggleButton" id="open">Odpri</button>
+				<button class="saveButton" id="save">Shrani</button>
+				<button class="saveButton" id="open">Odpri</button>
 			</div>
     	</nav>
 
@@ -116,9 +122,17 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 		<div class="toggleContainer" id="Graph_container">
 			<button class="toggleButton" id="button_toggle_g" />Skrij</button>
 			<div id="toggle_g">
-			<div id="neeee"></div>
-				<div id="graph_0"></div>
-				<div id="graph_1"></div>
+				<div id="neeee"></div>
+			
+		<!-- 3. Add the container -->
+				<div id="chart_1_container_0" style="width: 240px; height: 600px; float:left; margin: 0 auto"></div>
+				<div id="chart_2_container_0" style="width: 240px; height: 600px; float:left; margin: 0 auto"></div>
+				<div id="chart_1_container_1" style="width: 240px; height: 600px; float:left; margin: 0 auto"></div>
+				<div id="chart_2_container_1" style="width: 240px; height: 600px; float:left; margin: 0 auto"></div>
+				<div id="chart_1_container_2" style="width: 240px; height: 600px; float:left; margin: 0 auto"></div>
+				<div id="chart_2_container_2" style="width: 240px; height: 600px; float:left; margin: 0 auto"></div>
+		
+
 			</div>
 		</div>
 
@@ -152,6 +166,5 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 	<footer id="contentinfo" class="body">
 	</footer>
 
-	<script type="application/javascript" language="JavaScript" src="js/graphs.js"></script>
 </body>
 </html>

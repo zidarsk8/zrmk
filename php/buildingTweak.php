@@ -3,6 +3,7 @@
 		<td>
 			<div class="buildingTweakGroup">
 			Streha:<br>
+			<img src="" id="image_Tab_Building_Constr_Roof_1" />
 			<select class="selectBuilding" id="select_Tab_Building_Constr_Roof_1"></select>
 			<input type="text" size="5"  id="A_Roof_1" class="canEdit" />m<sup>2</sup>
 			<br>

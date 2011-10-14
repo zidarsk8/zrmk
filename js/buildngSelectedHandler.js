@@ -53,6 +53,16 @@ $(document).ready(function(){
 			});
 		});
 		
+		$('option').removeAttr('selected');
+		$("[id='"+sData[cur]['Code_SysW']+"']").removeAttr('selected').attr('selected','selected').change();
+		$("[id='"+sData[cur]['Code_SysH']+"']").removeAttr('selected').attr('selected','selected').change();
+		$("[id='"+sData[cur]['Code_SysVent']+"']").removeAttr('selected').attr('selected','selected').change();
+	
+		var fields = new Array('Roof_1','Roof_2','Wall_1','Wall_2','Wall_3','Floor_1','Floor_2','Window_1','Window_2','Door_1');
+		for (var i in fields){
+			$("[id='"+fields[i]+'_'+sData[cur]['Code_'+fields[i]]+"']").removeAttr('selected').attr('selected','selected').change();
+		}
+		
 		fillDataSet();
 		
 		location.href = "#building_selection_container";
