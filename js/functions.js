@@ -212,10 +212,17 @@ function calcSData(){
 
 	
 	//=(1+AB$177/(AB$179-AB$177))*(AB173+AB174+AB175)
-	addS('q_T_Sum_Floor', round(1+getS('q_T_ThermalBridging')/(getS('q_tr')-getS('q_T_ThermalBridging'))*(getS('q_T_Floor_2')+getS('q_T_Floor_1'))) || 0)
+	addS('q_T_Sum_Floor', round(1+getS('q_T_ThermalBridging')/(getS('q_tr')-getS('q_T_ThermalBridging'))*(getS('q_T_Floor_2')+getS('q_T_Floor_1'))) || 0);
+	
+	addS('q_sol', round(getS('result_solar')/getS('A_C_Ref')));
+	addS('eta_h_gn', getS('g_h_nd'));
+	
+	addS('q_int_g', getS('q_int')/getS('A_C_Ref'));
+	
+	addS('q_H_nd', getS('g_h_nd')/getS('A_C_Ref'));
 	
 	
-	console.log(getS('q_T_Sum_Floor'))
+	console.log(getS('q_H_nd'), getS('q_sol') +  " " + getS('eta_h_gn'))
 	
 	console.log(sData[cur]);
 	console.log(data);

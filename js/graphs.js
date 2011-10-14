@@ -16,7 +16,7 @@ function drawGraph(){
 	      },
 	      yAxis: {
 	         min: 0,
-	         max: 300,
+
 	         title: {
 	            text: 'Heat transfer during heating season [kWh/m2a]'
 	         },
@@ -72,14 +72,14 @@ function drawGraph(){
 	         data: [getS('q_T_Sum_Floor'), 0]
 		  },{
 			 name: 'usable solar heat load',
-			 data: [0, 2]
+			 data: [0, round(getS('q_sol')*getS('eta_h_gn'))]
 		  },
 		  {
 		     name: 'usable internal heat load',
-		     data: [0, 1]
+		     data: [0, round(getS('q_int_g')*getS('eta_h_gn'))]
 		  },{
 		     name: 'energy need for heating',
-		     data: [0, 3]
+		     data: [0, round(getS('q_H_nd'))]
 		  }]
 	   });
 	
