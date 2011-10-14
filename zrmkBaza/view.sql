@@ -664,9 +664,6 @@ FROM Tab_Building_subview1 ;
 
 
 
-
-
-/*
 LOAD DATA INFILE 'Tab_Const_AtticCond.csv' INTO TABLE Tab_Const_AtticCond FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"';
 LOAD DATA INFILE 'Tab_Const_ConstrBorder.csv' INTO TABLE Tab_Const_ConstrBorder FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"';
 LOAD DATA INFILE 'Tab_Const_Infiltration.csv' INTO TABLE Tab_Const_Infiltration FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"';
@@ -717,6 +714,57 @@ LOAD DATA INFILE 'Tab_System_Vent.csv' INTO TABLE Tab_System_Vent FIELDS TERMINA
 LOAD DATA INFILE 'Tab_System_EC.csv' INTO TABLE Tab_System_EC FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"';
 LOAD DATA INFILE 'Tab_CalcAdapt.csv' INTO TABLE Tab_CalcAdapt FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"';
 LOAD DATA INFILE 'Tab_Type_Building.csv' INTO TABLE Tab_Type_Building FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"';
+
+
+/*
+TRUNCATE `Tab_Building_Constr`;
+TRUNCATE `Tab_Const_Country`;
+TRUNCATE `Tab_System_EC`;
+TRUNCATE `Tab_Const_EnergyCarrier`;
+TRUNCATE `Tab_Const_Utilisation`;
+TRUNCATE `Tab_Const_SysType_HG`;
+TRUNCATE `Tab_Const_SysType_WG`;
+TRUNCATE `Tab_Building`;
+TRUNCATE `Tab_Type_Building`;
+TRUNCATE `Tab_Const_Language`;
+TRUNCATE `Tab_System_WG`;
+TRUNCATE `Tab_System_W`;
+TRUNCATE `Tab_Building_Measure`;
+TRUNCATE `Tab_System_H`;
+TRUNCATE `Tab_System_HG`;
+TRUNCATE `Tab_Const_SysType_HD`;
+TRUNCATE `Tab_Const_SysType_WD`;
+TRUNCATE `Tab_Const_StatusDataset`;
+TRUNCATE `Tab_Const_ElementType`;
+TRUNCATE `Tab_Const_SysType_WS`;
+TRUNCATE `Tab_ConstrYearClass`;
+TRUNCATE `Tab_Const_BuildingSizeClass`;
+TRUNCATE `Tab_Const_SysType_Vent`;
+TRUNCATE `Tab_Const_SysType_WA`;
+TRUNCATE `Tab_Const_AtticCond`;
+TRUNCATE `Tab_Const_CellarCond`;
+TRUNCATE `Tab_Const_ConstrBorder`;
+TRUNCATE `Tab_Const_Infiltration`;
+TRUNCATE `Tab_Const_SysType_HS`;
+TRUNCATE `Tab_Const_ThermalBridging`;
+TRUNCATE `Tab_System_HD`;
+TRUNCATE `Tab_System_WS`;
+TRUNCATE `Tab_BoundaryCond`;
+TRUNCATE `Tab_Const_AttNeighb`;
+TRUNCATE `Tab_Const_DataType_Building`;
+TRUNCATE `Tab_Const_MeasureType`;
+TRUNCATE `Tab_Const_RoofType`;
+TRUNCATE `Tab_Const_SysType_Size`;
+TRUNCATE `Tab_Const_BoundaryCondType`;
+TRUNCATE `Tab_Const_SysType_HA`;
+TRUNCATE `Tab_Const_Type_CalcAdapt`;
+TRUNCATE `Tab_System_HA`;
+TRUNCATE `Tab_System_HS`;
+TRUNCATE `Tab_System_Vent`;
+TRUNCATE `Tab_System_WA`;
+TRUNCATE `Tab_System_WD`;
+TRUNCATE `Tab_AdditionalPar`;
+TRUNCATE `Tab_CalcAdapt`;
 
 
 /****/

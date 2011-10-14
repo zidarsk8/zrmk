@@ -79,6 +79,18 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 
 	<header id="banner" class="body">
 		<img src="images/zrmk_logo_png_80.png" alt="Gradbeni institut ZRMK d.o.o."  />
+		<br />
+		<br />
+		    <nav><ul>
+
+      <li class="active"><a href="#" id="k1">Konfiguracija 1</a></li>
+
+      <li><a href="#" id="k2">Konfiguracija 2</a></li>
+
+      <li><a href="#" id="k3">Konfiguracija 3</a></li>
+
+    </ul></nav>
+
 	</header>
 
 	<section class="body">
