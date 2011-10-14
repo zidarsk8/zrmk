@@ -99,7 +99,7 @@ function addS(key,val){
 	}
 }
 function getS(key){
-	return sData[cur][key];
+	return sData[cur][key] || 0;
 }
 
 
@@ -171,12 +171,59 @@ function calcSData(){
 	addS('g_h_nd', sData[cur]['total_heat_transfer']*1 - sData[cur]['gain_utilisation']*1 * (sData[cur]['result_solar']*1 + sData[cur]['q_int']*1) );
 	
 	//=AD236*$Z$244*$V$244/$AD$211
-	addS('q_ve', Math.round(100*sData[cur]['w_k']*sData[cur]['k_k_h_a']*sData[cur]['F_red_temp']/sData[cur]['A_C_Ref'])/100 || 0);
-	console.log(sData[cur]['q_ve'])
-	console.log(sData);
+	addS('q_ve', round(sData[cur]['w_k']*sData[cur]['k_k_h_a']*sData[cur]['F_red_temp']/sData[cur]['A_C_Ref']) || 0);
+	
+	//=AD231*$Z$244*$V$244/$AD$211
+	addS('q_tr', getS('h_tr')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
+	
+	//=AD229*$Z$244*$V$244/$AD$211
+	addS('q_T_ThermalBridging', getS('Result_h_tr_tb')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
+	
+	//=AD218*$Z$244*$V$244/$AD$211
+	addS('q_T_Roof_1', getS('Result_Roof_1')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
+
+	//=AD219*$Z$244*$V$244/$AD$211
+	addS('q_T_Roof_2', getS('Result_Roof_2')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
+	
+	//=(1+AB$177/(AB$179-AB$177))*(AB166+AB167)
+	addS('q_T_Sum_Roof', round(1+getS('q_T_ThermalBridging')/(getS('q_tr')-getS('q_T_ThermalBridging'))*(getS('q_T_Roof_1')+getS('q_T_Roof_2'))) || 0);
+	
+	
+	//=AD220*$Z$244*$V$244/$AD$211
+	addS('q_T_Wall_1', getS('Result_Wall_1')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
+	addS('q_T_Wall_2', getS('Result_Wall_2')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
+	addS('q_T_Wall_3', getS('Result_Wall_3')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
+	
+	//=(1+AB$177/(AB$179-AB$177))*(AB168+AB169+AB170)
+	addS('q_T_Sum_Wall', round(1+getS('q_T_ThermalBridging')/(getS('q_tr')-getS('q_T_ThermalBridging'))*(getS('q_T_Wall_1')+getS('q_T_Wall_2')+getS('q_T_Wall_3'))) || 0)
+	
+	
+	//=AD220*$Z$244*$V$244/$AD$211
+	addS('q_T_Window_1', getS('Result_Window_1')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
+	addS('q_T_Window_2', getS('Result_Window_2')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
+	addS('q_T_Door_1', getS('Result_Door_1')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
+	
+	//=(1+AB$177/(AB$179-AB$177))*(AB173+AB174+AB175)
+	addS('q_T_Sum_Window', round(1+getS('q_T_ThermalBridging')/(getS('q_tr')-getS('q_T_ThermalBridging'))*(getS('q_T_Window_1')+getS('q_T_Window_2')+getS('q_T_Door_1'))) || 0)
+	
+
+	addS('q_T_Floor_1', getS('Result_Floor_1')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
+	addS('q_T_Floor_2', getS('Result_Floor_2')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
+
+	
+	//=(1+AB$177/(AB$179-AB$177))*(AB173+AB174+AB175)
+	addS('q_T_Sum_Floor', round(1+getS('q_T_ThermalBridging')/(getS('q_tr')-getS('q_T_ThermalBridging'))*(getS('q_T_Floor_2')+getS('q_T_Floor_1'))) || 0)
+	
+	
+	console.log(getS('q_T_Sum_Floor'))
+	
+	console.log(sData[cur]);
+	console.log(data);
 	drawGraph();
 }
-
+function round(val){
+	return Math.round(val*10)/10;
+}
 
 function fillDataSet(){
 	$('input').val("");
