@@ -8,6 +8,10 @@ function roundTo(num, dec) {
 	return  Math.round(num*Math.pow(10,dec))/Math.pow(10,dec);
 }
 
+function round(val){
+	return Math.round(val*10)/10;
+}
+
 function CreateKeyValueTableView(objArray, theme, enableHeader) {
     // set optional theme parameter
     if (theme === undefined) {
@@ -188,23 +192,26 @@ function calcSData(){
 	//=(1+AB$177/(AB$179-AB$177))*(AB166+AB167)
 	addS('q_T_Sum_Roof', round(1+getS('q_T_ThermalBridging')/(getS('q_tr')-getS('q_T_ThermalBridging'))*(getS('q_T_Roof_1')+getS('q_T_Roof_2'))) || 0);
 	
-	addS('Code_BuildingVariant', sData[cur]['Code_Building']);
-	
-	addS('Code_SystemType', sData[cur]['Tab_System_H']['Code_SysH']+'.'+sData[cur]['Tab_System_W']['Code_SysW']+'.'+sData[cur]['Tab_System_Vent']['Code_SysVent']+'.<gen>');
-	
-	
-	for(var i in data['Tab_System_WD']){
-		console.log(data['Tab_System_WD_view'][i]['Code_SysW'],sData[cur]['Code_SysW_D']);
-		if (data['Tab_System_WD_view'][i]['Code_SysW'] == sData[cur]['Code_SysW_D']){
-			addS('q_d_w', data['Tab_System_WD_view'][i]['q_d_w']);
-		}
-	}
-		
 	
 	//=AD220*$Z$244*$V$244/$AD$211
 	addS('q_T_Wall_1', getS('Result_Wall_1')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
 	addS('q_T_Wall_2', getS('Result_Wall_2')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
 	addS('q_T_Wall_3', getS('Result_Wall_3')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
+	addS('Code_BuildingVariant', sData[cur]['Code_Building']);
+	
+	
+	if (typeof sData[cur]['Tab_System_H'] != 'undefined' && typeof sData[cur]['Tab_System_W'] != 'undefined' && typeof sData[cur]['Tab_System_Vent'] != 'undefined'){
+		addS('Code_SystemType', sData[cur]['Tab_System_H']['Code_SysH']+'.'+sData[cur]['Tab_System_W']['Code_SysW']+'.'+sData[cur]['Tab_System_Vent']['Code_SysVent']+'.<gen>');
+	}
+	
+	//TODO: fix this
+	for(var i in data['Tab_System_WD']){
+		//console.log(data['Tab_System_WD_view'][i]['Code_SysW'],sData[cur]['Code_SysW_D']);
+		if (data['Tab_System_WD_view'][i]['Code_SysW'] == sData[cur]['Code_SysW_D']){
+			addS('q_d_w', data['Tab_System_WD_view'][i]['q_d_w']);
+		}
+	}
+		
 	
 	//=(1+AB$177/(AB$179-AB$177))*(AB168+AB169+AB170)
 	addS('q_T_Sum_Wall', round(1+getS('q_T_ThermalBridging')/(getS('q_tr')-getS('q_T_ThermalBridging'))*(getS('q_T_Wall_1')+getS('q_T_Wall_2')+getS('q_T_Wall_3'))) || 0)
@@ -227,25 +234,42 @@ function calcSData(){
 	addS('q_T_Sum_Floor', round(1+getS('q_T_ThermalBridging')/(getS('q_tr')-getS('q_T_ThermalBridging'))*(getS('q_T_Floor_2')+getS('q_T_Floor_1'))) || 0)
 	
 	
-	console.log(getS('q_T_Sum_Floor'))
-	
-	console.log(sData[cur]);
-	console.log(data);
-	drawGraph();
-}
-function round(val){
-	return Math.round(val*10)/10;
 }
 
 function fillDataSet(){
 	$('input').val("");
+	$('#SelectedBuildingHolder').html('');
+
+	if ( typeof sData[cur]['Code_Building'] == 'undefined' || sData[cur]['Code_Building'] == ""){
+		
+		toggleStuff($('#button_toggle_bsc')[0] ,true);
+		toggleStuff($('#button_toggle_btc')[0] ,false);
+		return;
+	}
+	
 	calcSData();
 	for (var i in sData[cur]){
 		if (isNumber(sData[cur][i])){
-			sData[cur][i] = roundTo(sData[cur][i],3);
+			sData[cur][i] = roundTo(sData[cur][i],2);
 		}
-		$("[id="+i+"]").val(sData[cur][i]);
+		if (!isNaN(sData[cur][i])){
+			$("[id="+i+"]").val(sData[cur][i]);
+		}
 	}
+	
+	$('#SelectedBuildingHolder').html('<img id="SelectedBuilding" src="'+getS('imageSrc')+'" width="'+getS('imageWidth')+'" height="'+getS('imageHeight')+'" />')
+	
+	$('option').removeAttr('selected');
+	$("[id='"+sData[cur]['Code_SysW']+"']").removeAttr('selected').attr('selected','selected').change();
+	$("[id='"+sData[cur]['Code_SysH']+"']").removeAttr('selected').attr('selected','selected').change();
+	$("[id='"+sData[cur]['Code_SysVent']+"']").removeAttr('selected').attr('selected','selected').change();
+
+	var fields = new Array('Roof_1','Roof_2','Wall_1','Wall_2','Wall_3','Floor_1','Floor_2','Window_1','Window_2','Door_1');
+	for (var i in fields){
+		console.log(fields[i]+'_'+sData[cur]['Code_'+fields[i]]);
+		$("[id='"+fields[i]+'_'+sData[cur]['Code_'+fields[i]]+"']").removeAttr('selected').attr('selected','selected').change();
+	}
+	console.log(sData);
 }
 
 

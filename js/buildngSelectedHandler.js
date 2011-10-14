@@ -5,8 +5,12 @@ $(document).ready(function(){
 	$(".buildings_table_element").click(function(){
 		var buildingID = this.firstChild.id;
 		var building;
-		$('#SelectedBuildingHolder').html('<img id="SelectedBuilding" src="'+this.firstChild.src+'" width="'+(this.firstChild.width*2)+'" height="'+(this.firstChild.height*2)+'" />')
-		
+		addS('imageSrc',this.firstChild.src);
+		addS('imageWidth',this.firstChild.width*2);
+		addS('imageHeight',this.firstChild.height*2);
+
+		$('#SelectedBuildingHolder').html('<img id="SelectedBuilding" src="'+getS('imageSrc')+'" width="'+getS('imageWidth')+'" height="'+getS('imageHeight')+'" />')
+
 		toggleStuff($("#button_toggle_bsc")[0] ,false);
 		toggleStuff($('#button_toggle_btc')[0] ,true);
 		
@@ -48,10 +52,6 @@ $(document).ready(function(){
 				}
 			});
 		});
-		
-		$("[id='"+sData[cur]['Code_SysW']+"']").removeAttr('selected').attr('selected','selected').change();
-		$("[id='"+sData[cur]['Code_SysH']+"']").removeAttr('selected').attr('selected','selected').change();
-		$("[id='"+sData[cur]['Code_SysVent']+"']").removeAttr('selected').attr('selected','selected').change();
 		
 		fillDataSet();
 		

@@ -42,7 +42,7 @@ $(document).ready(function(){
 		$.each(data['Tab_Building_Constr_view'],function(index) {
 			if (this['Code_ElementType'] == field || (field == 'Roof' && this['Code_ElementType'] == 'Ceiling' )){
 				this['Description_Construction_National'] = typeof this['Description_Construction_National'] == 'string' ? this['Description_Construction_National'] : "strop_"+index;
-				options.append($("<option />").val(this['Code_Construction']).text(this['Description_Construction_National']));
+				options.append($("<option />").attr('id',field+'_'+num+'_'+this['Code_Construction']).val(this['Code_Construction']).text(this['Description_Construction_National']));
 			}
 		});
 		

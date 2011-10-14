@@ -124,7 +124,10 @@ tbody td {
 	border-radius: 7px;
 }
 
-
+.saveForm{
+	float: right;
+	margin: 3px 10px;
+}
 
 
 
@@ -141,7 +144,7 @@ tbody td {
 
 
 #banner nav {
-  background: #000305;
+  background: #aaa;
   font-size: 1.143em;
   height: 40px;
   line-height: 30px;
@@ -176,7 +179,7 @@ tbody td {
 
 #banner nav a:hover,#banner nav a:active,#banner nav .active a:link,#banner nav .active a:visited
   {
-  background: #C74451;
+  background: #999;
   color: #fff;
   text-shadow: none !important;
 }

@@ -173,7 +173,22 @@ function calcSData(){
 	//=AD236*$Z$244*$V$244/$AD$211
 	addS('q_ve', round(sData[cur]['w_k']*sData[cur]['k_k_h_a']*sData[cur]['F_red_temp']/sData[cur]['A_C_Ref']) || 0);
 	
-<<<<<<< .merge_file_UoTFH6
+	//=AD231*$Z$244*$V$244/$AD$211
+	addS('q_tr', getS('h_tr')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
+	
+	//=AD229*$Z$244*$V$244/$AD$211
+	addS('q_T_ThermalBridging', getS('Result_h_tr_tb')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
+	
+	//=AD218*$Z$244*$V$244/$AD$211
+	addS('q_T_Roof_1', getS('Result_Roof_1')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
+
+	//=AD219*$Z$244*$V$244/$AD$211
+	addS('q_T_Roof_2', getS('Result_Roof_2')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
+	
+	//=(1+AB$177/(AB$179-AB$177))*(AB166+AB167)
+	addS('q_T_Sum_Roof', round(1+getS('q_T_ThermalBridging')/(getS('q_tr')-getS('q_T_ThermalBridging'))*(getS('q_T_Roof_1')+getS('q_T_Roof_2'))) || 0);
+	
+<<<<<<< HEAD
 	addS('Code_BuildingVariant', sData[cur]['Code_Building']);
 	
 	addS('Code_SystemType', sData[cur]['Tab_System_H']['Code_SysH']+'.'+sData[cur]['Tab_System_W']['Code_SysW']+'.'+sData[cur]['Tab_System_Vent']['Code_SysVent']+'.<gen>');
@@ -186,25 +201,8 @@ function calcSData(){
 		}
 	}
 		
-	console.log(sData);
-}
 =======
-	//=AD231*$Z$244*$V$244/$AD$211
-	addS('q_tr', getS('h_tr')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
-	
-	//=AD229*$Z$244*$V$244/$AD$211
-	addS('q_T_ThermalBridging', getS('Result_h_tr_tb')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
-	
-	//=AD218*$Z$244*$V$244/$AD$211
-	addS('q_T_Roof_1', getS('Result_Roof_1')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
->>>>>>> .merge_file_UH74h2
-
-	//=AD219*$Z$244*$V$244/$AD$211
-	addS('q_T_Roof_2', getS('Result_Roof_2')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));
-	
-	//=(1+AB$177/(AB$179-AB$177))*(AB166+AB167)
-	addS('q_T_Sum_Roof', round(1+getS('q_T_ThermalBridging')/(getS('q_tr')-getS('q_T_ThermalBridging'))*(getS('q_T_Roof_1')+getS('q_T_Roof_2'))) || 0);
-	
+>>>>>>> 00d7588cee56d4854584cb57e4088c7f7ddbf584
 	
 	//=AD220*$Z$244*$V$244/$AD$211
 	addS('q_T_Wall_1', getS('Result_Wall_1')*getS('k_k_h_a')*getS('F_red_temp')/getS('A_C_Ref'));

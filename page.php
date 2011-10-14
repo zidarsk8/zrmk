@@ -72,6 +72,8 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 	<script type="application/javascript" language="JavaScript" src="js/toggleHandler.js"></script>
 	<script type="application/javascript" language="JavaScript" src="js/fillSelectOptions.js"></script>
 	<script type="application/javascript" language="JavaScript" src="js/buildngSelectedHandler.js"></script>
+	<script type="application/javascript" language="JavaScript" src="js/konfiguracija.js"></script>
+	<script type="application/javascript" language="JavaScript" src="js/editValues.js"></script>
 </head>
 
 <body>
@@ -80,15 +82,18 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 		<img src="images/zrmk_logo_png_80.png" alt="Gradbeni institut ZRMK d.o.o."  />
 		<br />
 		<br />
-		    <nav><ul>
-
-      <li class="active"><a href="#" id="k1">Konfiguracija 1</a></li>
-
-      <li><a href="#" id="k2">Konfiguracija 2</a></li>
-
-      <li><a href="#" id="k3">Konfiguracija 3</a></li>
-
-    </ul></nav>
+		<nav>
+			<ul>
+		      <li id="k1" class="active"><a href="#" >Konfiguracija 1</a></li>
+		      <li id="k2"><a href="#">Konfiguracija 2</a></li>
+		      <li id="k3"><a href="#">Konfiguracija 3</a></li>
+		    </ul>
+		    <div class="saveForm">
+				<input type="text" name="konfigSave" id="configSave" value="Shrani_01" class="canEditGlobal" />
+				<button class="toggleButton" id="save">Shrani</button>
+				<button class="toggleButton" id="open">Odpri</button>
+			</div>
+    	</nav>
 
 	</header>
 
@@ -133,7 +138,7 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 			</div>
 		</div>
 
-
+		<!--
 		<div id="Tab_Building_Holder" class="holder">
 			<p><h3>Tab_Building</h3></p>
 			<select id="select_Tab_Building"></select>
@@ -141,7 +146,7 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 			<br>
 			<div id="Tab_Building_data_table"></div>
 		</div>
-
+		-->
 
 	</section>
 
