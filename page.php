@@ -67,7 +67,7 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 	</script>
 	<script type="application/javascript" language="JavaScript" src="js/jquery-1.6.4.js"></script>
 	<script type="application/javascript" language="JavaScript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
-	<script type="application/javascript" language="JavaScript" src="js/jqBarGraph.1.1.js"></script>
+	<script type="application/javascript" language="JavaScript" src="js/highcharts.js"></script>
 	<script type="application/javascript" language="JavaScript" src="js/functions.js"></script>
 	<script type="application/javascript" language="JavaScript" src="js/toggleHandler.js"></script>
 	<script type="application/javascript" language="JavaScript" src="js/fillSelectOptions.js"></script>
@@ -116,11 +116,9 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 		<div class="toggleContainer" id="Graph_container">
 			<button class="toggleButton" id="button_toggle_g" />Skrij</button>
 			<div id="toggle_g">
-				<div id="graph_0" class="graph" ></div>
-				<div id="graph_1" class="graph" ></div>
-				<div id="graph_2" class="graph" ></div>
-				<div id="graph_3" class="graph" ></div>
-				<div id="graph_4" class="graph" ></div>
+			<div id="neeee"></div>
+				<div id="graph_0"></div>
+				<div id="graph_1"></div>
 			</div>
 		</div>
 
