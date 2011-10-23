@@ -26,7 +26,7 @@ function drawGraph(){
 						allowDecimals: false,
 						min: 0,
 						title: {
-							text: 'heat transfer'
+							text: 'heat transfer during heating season [kWh/(m2a)]'
 						}
 					},
 			
@@ -85,7 +85,7 @@ function drawGraph(){
 					},
 			
 					title: {
-						text: 'energy need for heating '
+						text: 'Primary energy demand '
 					},
 			
 					xAxis: {
@@ -96,7 +96,7 @@ function drawGraph(){
 						allowDecimals: false,
 						min: 0,
 						title: {
-							text: 'heat transfer'
+							text: 'energy use [kWh/(m2a)]'
 						}
 					},
 			

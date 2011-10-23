@@ -2,7 +2,7 @@ $(document).ready(function(){
 	
 	
 	
-	$('#k1').click(function(){
+	$('#stavba1').click(function(){
 		if (cur != 0){
 			$(this).addClass('active');
 			$('#k2').removeClass('active');
@@ -14,7 +14,7 @@ $(document).ready(function(){
 	});
 
 	
-	$('#k2').click(function(){
+	$('#stavba2').click(function(){
 		if (cur != 1){
 			$('#k1').removeClass('active');
 			$(this).addClass('active');
@@ -26,7 +26,7 @@ $(document).ready(function(){
 	});
 
 	
-	$('#k3').click(function(){
+	$('#stavba3').click(function(){
 		if (cur != 2){
 			$('#k1').removeClass('active');
 			$('#k2').removeClass('active');

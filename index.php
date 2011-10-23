@@ -39,8 +39,10 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 			
 			//const
 			
-			sData[i]['h_tr_tb'] = 1;
+			sData[i]['b_Transmission_constant'] = 1;
+			sData[i]['C_p_air_constant'] = 0.34;
 			sData[i]['c_p_air'] = 0.34;
+			sData[i]['h_tr_tb'] = 1;  //remover this line
 						
 			sData[i]['Code_ClimateRegion'] = 'SI.N';
 			sData[i]['Name_ClimateRegion'] = 'national / whole country';
@@ -75,7 +77,7 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 	<script type="application/javascript" language="JavaScript" src="js/toggleHandler.js"></script>
 	<script type="application/javascript" language="JavaScript" src="js/fillSelectOptions.js"></script>
 	<script type="application/javascript" language="JavaScript" src="js/buildngSelectedHandler.js"></script>
-	<script type="application/javascript" language="JavaScript" src="js/konfiguracija.js"></script>
+	<script type="application/javascript" language="JavaScript" src="js/stavba.js"></script>
 	<script type="application/javascript" language="JavaScript" src="js/editValues.js"></script>
 	<script type="application/javascript" language="JavaScript" src="js/highcharts.js"></script>
 	<script type="application/javascript" language="JavaScript" src="js/graphs.js"></script>
@@ -85,8 +87,15 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 <body>
 
 	<header id="banner" class="body">
-		<a href=""><img src="images/zrmk_logo_png_80.png" alt="Gradbeni institut ZRMK d.o.o."  /></a>
-		<br />
+		<div class="toggleContainer">
+		<div style="float:right; text-align: right;"> 
+			<img src="images/iee_logo_supportedby_55.jpg" /> <br>
+			<img src="images/logo_enforce_55.jpg" /> <br>
+			<img src="images/tabula_logo_mini_55.png"/> 
+		</div>
+		<a href=""><img src="images/zrmk_logo_png_100.png" alt="Gradbeni institut ZRMK d.o.o."  /></a><br>
+		<img src="images/logo_enSOS_70.jpg" /> 
+		</div>
 		<br />
 		<nav>
 			<ul>
@@ -124,13 +133,35 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 			<div id="toggle_g">
 				<div id="neeee"></div>
 			
-		<!-- 3. Add the container -->
-				<div id="chart_1_container_0" style="width: 340px; height: 600px; float:left; margin: 0 auto"></div>
+				<!-- 3. Add the container -->
+				<div id="chart_1_container_0" style="width: 540px; height: 600px; float:left; margin: 0 auto"></div>
 				<div id="chart_2_container_0" style="width: 340px; height: 600px; float:left; margin: 0 auto"></div>
 		
 
 			</div>
 		</div>
+
+		<div class="toggleContainer" id="BuildingPerformance_container">
+			<button class="toggleButton" id="button_toggle_bpc" />Skrij</button>
+			<div id="toggle_bpc">
+				<?php include 'tables/BuildingPerformance.html';?>
+			</div>
+		</div>
+
+		<div class="toggleContainer" id="SystemPerformance_container">
+			<button class="toggleButton" id="button_toggle_spc" />Skrij</button>
+			<div id="toggle_spc">
+				<?php include 'tables/SystemPerformance.html';?>
+			</div>
+		</div>
+
+		<div class="toggleContainer" id="EnergyCarriers_container">
+			<button class="toggleButton" id="button_toggle_ecc" />Skrij</button>
+			<div id="toggle_ecc">
+				<?php include 'tables/EnergyCarriers.html';?>
+			</div>
+		</div>
+
 
 		<div class="toggleContainer" id="Calc_Demo_Building_container">
 			<button class="toggleButton" id="button_toggle_cdbc" />Skrij</button>

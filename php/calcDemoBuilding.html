@@ -1,7 +1,7 @@
 
 <div class="wrap">
 <div class="header">
-<img class="fl" src="images/tabula.png" /><div class="fl">Energy Balance Calculation</div><div class="sp fl">System Performance</div>
+<div class="fl">Energy Balance Calculation</div><div class="sp fl">System Performance</div>
 </div>
 <div class="fl">Standard Reference Calculation - based on: EN ISO 15316 / level B (tabled values)</div>
 <div class="cb"></div>
@@ -270,11 +270,11 @@
           <td>+</td>
           <td><input class="is" id="n_air_infiltration" name="n_air_infiltration" type="text" /></td>
           <td>)x</td>
-          <td><input class="is" type="text" id="A_C_Ref" name="A_C_Ref" /></td>
+          <td><input class="is" type="text" id="A_C_ref" name="A_C_ref" /></td>
           <td>x</td>
           <td><input class="is" id="h_room" name="h_room" type="text" /></td>
           <td>=</td>
-          <td><input class="is" type="text" id="w_k" name="w_k" />
+          <td><input class="is" type="text" id="H_ve" name="H_ve" />
         </tr>
 
 
@@ -316,7 +316,7 @@
         <td>)x</td>
         <td><input class="is" id="HeatingDays" name="HeatingDays" type="text" /></td>
         <td>=</td>
-        <td><input class="is" type="text" name="k_d_a" id="k_d_a" /></td>
+        <td><input class="is" type="text" name="acc_diff" id="acc_diff" /></td>
         <td colspan="2"></td>
       </tr>
       <tr class="small">
@@ -342,13 +342,13 @@
         <td>(</td>
         <td><input class="is" type="text" name="h_tr" id="h_tr" /></td>
         <td>+</td>
-        <td><input class="is" type="text" name="w_k" id="w_k" /></td>
+        <td><input class="is" type="text" name="H_ve" id="H_ve" /></td>
         <td>)x</td>
         <td><input class="is" id="F_red_temp" name="F_red_temp" type="text" /></td>
         <td>x</td>
-        <td><input class="is" type="text" name="k_k_h_a" id="k_k_h_a" /></td>
+        <td><input class="is" type="text" name="acc_diff_x" id="acc_diff_x" /></td>
         <td>=</td>
-        <td><input class="is" type="text" name="total_heat_transfer" id="total_heat_transfer" /></td>
+        <td><input class="is" type="text" name="Q_ht" id="Q_ht" /></td>
       </tr>
 
 </table>
@@ -371,7 +371,7 @@
         <td></td>
         <td>frame area <br />fraction F<sub>f</sub></td>
         <td></td>
-        <td>non-perpendicular F<sub>w</sub<</td>
+        <td>non-perpendicular F<sub>w</sub></td>
         <td></td>
         <td>g<sub>gl,n</sub></td>
         <td></td>
@@ -396,7 +396,7 @@
         <td>x</td>
         <td><input id="I_Sol_Horizontal" name="I_Sol_Horizontal" type="text" /></td>
         <td>=</td>
-        <td><input type="text" id="result_solar_Horizontal" /></td>
+        <td><input type="text" id="Q_sol_Hor" /></td>
       </tr>
       
       <tr class="tr_is">
@@ -413,7 +413,7 @@
         <td>x</td>
         <td><input id="I_Sol_East" name="I_Sol" type="text" /></td>
         <td>=</td>
-        <td><input type="text" id="result_solar_East" /></td>
+        <td><input type="text" id="Q_sol_East" /></td>
       </tr>
       
       <tr class="tr_is">
@@ -430,7 +430,7 @@
         <td>x</td>
         <td><input id="I_Sol_South" name="I_Sol" type="text" /></td>
         <td>=</td>
-        <td><input type="text" id="result_solar_South" /></td>
+        <td><input type="text" id="Q_sol_South" /></td>
       </tr>
       
       <tr class="tr_is">
@@ -447,7 +447,7 @@
         <td>x</td>
         <td><input id="I_Sol_West" name="I_Sol" type="text" /></td>
         <td>=</td>
-        <td><input type="text" id="result_solar_West" /></td>
+        <td><input type="text" id="Q_sol_West" /></td>
       </tr>
       
       <tr class="tr_is">
@@ -464,13 +464,13 @@
         <td>x</td>
         <td><input id="I_Sol_North" name="I_Sol" type="text" /></td>
         <td>=</td>
-        <td><input type="text" id="result_solar_North" /></td>
+        <td><input type="text" id="Q_sol_North" /></td>
       </tr>
       
       <tr class="tr_is">
         <td colspan="12" class="small"><h1>Solar heat load during heating season Q<sub>sol</sub></h1></td>
         <td>sum</td>
-        <td><input type="text" id="result_solar" name="result_solar" /></td>
+        <td><input type="text" id="Q_sol" name="Q_sol" /></td>
       </tr>
 </table>
 <table>
@@ -503,9 +503,9 @@
         <td>x</td>
         <td><input id="HeatingDays" name="HeatingDays" type="text" /></td>
         <td>x</td>
-        <td><input type"text" id="A_C_Ref" name="A_C_Ref" /></td>
+        <td><input type"text" id="A_C_ref" name="A_C_ref" /></td>
         <td>=</td>
-        <td><input type="text" id="q_int" name="q_int" /></td>
+        <td><input type="text" id="Q_int" name="Q_int" /></td>
       </tr>
     </table>
 <br />
@@ -526,7 +526,7 @@
         <td>time constant of the building</td>
         <td class="small tr">tau = -----</td>
         <td>=</td>
-        <td><input class="is" type="text" id="t_const_building" name="t_const_building" /></td>
+        <td><input class="is" type="text" id="Tau" name="Tau" /></td>
         <td class="small">h</td>
         <td></td>
         <td class="small tr">gamma<sub>h,gn</sub> = ------</td>
