@@ -41,6 +41,7 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 			
 			sData[i]['b_Transmission_constant'] = 1;
 			sData[i]['C_p_air_constant'] = 0.34;
+			sData[i]['auxiliary_energy_constant'] = 'el';
 			sData[i]['c_p_air'] = 0.34;
 			sData[i]['h_tr_tb'] = 1;  //remover this line
 						

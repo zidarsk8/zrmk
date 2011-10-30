@@ -294,48 +294,51 @@ function calculateSideValues(){
 
 function fillDataSet(){
 	var cd = sData[cur];
-	//console.log(sData);
+
 	$('input').val("");
 	$('#SelectedBuildingHolder').html('');
+	$('option').removeAttr('selected');
+	
+	$("[id='"+cd['Code_SysW']+"']").removeAttr('selected').attr('selected','selected').change();
+	$("[id='"+cd['Code_SysH']+"']").removeAttr('selected').attr('selected','selected').change();
+	$("[id='"+cd['Code_SysVent']+"']").removeAttr('selected').attr('selected','selected').change();
 
+	var f = new Array('Roof_1','Roof_2','Wall_1','Wall_2','Wall_3','Floor_1','Floor_2','Window_1','Window_2','Door_1');
+	for (var i in f){
+		var name = (""+getS('Name_Picture_Construction')).substring(0,(""+getS('Name_Picture_Construction')).length-3)+'png';
+		$('#image_'+getS('Code_'+f.i)).attr('src','images/SIpng/'+name);
+		$("[id='"+f.i+'_'+getS('Code_'+f.i)+"']").removeAttr('selected').attr('selected','selected').change();
+	}
+	
 	if ( typeof cd['Code_Building'] == 'undefined' || cd['Code_Building'] == ""){
-		
 		toggleStuff($('#button_toggle_bsc')[0] ,true);
 		toggleStuff($('#button_toggle_btc')[0] ,false);
 		return;
 	}
 	
 	calcSData();
+	
+	console.log(cur,cd);
 	for (var i in cd){
 		if (isNumber(cd[i])){
 			cd[i] = roundTo(cd[i],2);
 		}
 		if (!isNaN(cd[i])){
 			$("[id="+i+"]").val(cd[i]);
-			if(cd[i] > 0){
-				$("[id="+i+"]").html(cd[i]);
+			if(cd[i] > 0 && $("[id="+i+"]")[0].nodeName == "span"){
+				Console.log("span");
+				$("[id="+i+"]")[0].nodeName.html(cd[i]);
 			}
 		}
 	}
+
+	$("[id=Code_SysW_D]").val(3333);
+	
 	
 	$('#SelectedBuildingHolder').html('<img id="SelectedBuilding" src="'+getS('imageSrc')+'" width="'+getS('imageWidth')+'" height="'+getS('imageHeight')+'" />')
 	
-	
-	$('option').removeAttr('selected');
-	$("[id='"+cd['Code_SysW']+"']").removeAttr('selected').attr('selected','selected').change();
-	$("[id='"+cd['Code_SysH']+"']").removeAttr('selected').attr('selected','selected').change();
-	$("[id='"+cd['Code_SysVent']+"']").removeAttr('selected').attr('selected','selected').change();
 
-	var fields = new Array('Roof_1','Roof_2','Wall_1','Wall_2','Wall_3','Floor_1','Floor_2','Window_1','Window_2','Door_1');
-	for (var i in fields){
-		var name = (""+getS('Name_Picture_Construction')).substring(0,(""+getS('Name_Picture_Construction')).length-3)+'png';
-		$('#image_'+getS('Code_'+fields[i])).attr('src','images/SIpng/'+name);
-		$("[id='"+fields[i]+'_'+getS('Code_'+fields[i])+"']").removeAttr('selected').attr('selected','selected').change();
-	}
-	console.log(cur,cd);
-	
-	$('#enfh').html(roundTo(getS('Q_ht')*1/getS('A_C_ref')*1,0));
-	console.log(getS('q_H_nd'),getS('A_C_ref'));
+	//$('#enfh').html(roundTo(getS('Q_ht')*1/getS('A_C_ref')*1,0));
 	drawGraph();
 }
 

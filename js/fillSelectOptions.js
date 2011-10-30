@@ -16,12 +16,13 @@ $(document).ready(function(){
 	    options.change(function () {
 	        $("#select_"+tableName+" option:selected").each(function () {
 				var tmp = data[tableName+"_view"][this.value];        	
-				addS(tableName,tmp);
+				//addS(tableName,tmp);
 				$("#"+tableName+"_data_table").html(CreateKeyValueTableView(tmp));	
 				for (var i in tmp){
 					$("#"+i).html(tmp[i]);
 					addS(i,tmp[i]);
 				}
+				fillDataSet();
 			});
 	    }).trigger('change');
 	}
