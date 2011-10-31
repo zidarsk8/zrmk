@@ -22,7 +22,6 @@ $(document).ready(function(){
 					$("#"+i).html(tmp[i]);
 					addS(i,tmp[i]);
 				}
-				fillDataSet();
 			});
 	    }).trigger('change');
 	}

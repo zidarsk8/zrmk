@@ -96,16 +96,12 @@ function checkDuplicateIds(){
 	  	}
 	});
 }
-	
+
 function addS(key,val){
 	if (typeof val != 'undefined' ){ // && val !=""      lol  0 ==""
 		sData[cur][key]=val;
 	}
 }
-function getS(key){
-	return sData[cur][key] || 0;
-}
-
 
 function calcSData(){
 
@@ -190,25 +186,25 @@ function calcSData(){
 	addS('q_ve', round(cd['H_ve']*cd['acc_diff_x']*cd['F_red_temp']/cd['A_C_ref']) || 0);
 	
 	//=AD231*$Z$244*$V$244/$AD$211
-	addS('q_tr', getS('h_tr')*getS('acc_diff_x')*getS('F_red_temp')/getS('A_C_ref'));
+	addS('q_tr', cd['h_tr']*cd['acc_diff_x']*cd['F_red_temp']/cd['A_C_ref']);
 	
 	//=AD229*$Z$244*$V$244/$AD$211
-	addS('q_T_ThermalBridging', getS('Result_h_tr_tb')*getS('acc_diff_x')*getS('F_red_temp')/getS('A_C_ref'));
+	addS('q_T_ThermalBridging', cd['Result_h_tr_tb']*cd['acc_diff_x']*cd['F_red_temp']/cd['A_C_ref']);
 	
 	//=AD218*$Z$244*$V$244/$AD$211
-	addS('q_T_Roof_1', getS('Result_Roof_1')*getS('acc_diff_x')*getS('F_red_temp')/getS('A_C_ref'));
+	addS('q_T_Roof_1', cd['Result_Roof_1']*cd['acc_diff_x']*cd['F_red_temp']/cd['A_C_ref']);
 
 	//=AD219*$Z$244*$V$244/$AD$211
-	addS('q_T_Roof_2', getS('Result_Roof_2')*getS('acc_diff_x')*getS('F_red_temp')/getS('A_C_ref'));
+	addS('q_T_Roof_2', cd['Result_Roof_2']*cd['acc_diff_x']*cd['F_red_temp']/cd['A_C_ref']);
 	
 	//=(1+AB$177/(AB$179-AB$177))*(AB166+AB167)
-	addS('q_T_Sum_Roof', round(1+getS('q_T_ThermalBridging')/(getS('q_tr')-getS('q_T_ThermalBridging'))*(getS('q_T_Roof_1')+getS('q_T_Roof_2'))) || 0);
+	addS('q_T_Sum_Roof', round(1+cd['q_T_ThermalBridging']/(cd['q_tr']-cd['q_T_ThermalBridging'])*(cd['q_T_Roof_1']+cd['q_T_Roof_2'])) || 0);
 	
 	
 	//=AD220*$Z$244*$V$244/$AD$211
-	addS('q_T_Wall_1', getS('Result_Wall_1')*getS('acc_diff_x')*getS('F_red_temp')/getS('A_C_ref'));
-	addS('q_T_Wall_2', getS('Result_Wall_2')*getS('acc_diff_x')*getS('F_red_temp')/getS('A_C_ref'));
-	addS('q_T_Wall_3', getS('Result_Wall_3')*getS('acc_diff_x')*getS('F_red_temp')/getS('A_C_ref'));
+	addS('q_T_Wall_1', cd['Result_Wall_1']*cd['acc_diff_x']*cd['F_red_temp']/cd['A_C_ref']);
+	addS('q_T_Wall_2', cd['Result_Wall_2']*cd['acc_diff_x']*cd['F_red_temp']/cd['A_C_ref']);
+	addS('q_T_Wall_3', cd['Result_Wall_3']*cd['acc_diff_x']*cd['F_red_temp']/cd['A_C_ref']);
 	addS('Code_BuildingVariant', cd['Code_Building']);
 	
 	
@@ -226,31 +222,31 @@ function calcSData(){
 		
 	
 	//=(1+AB$177/(AB$179-AB$177))*(AB168+AB169+AB170)
-	addS('q_T_Sum_Wall', round(1+getS('q_T_ThermalBridging')/(getS('q_tr')-getS('q_T_ThermalBridging'))*(getS('q_T_Wall_1')+getS('q_T_Wall_2')+getS('q_T_Wall_3'))) || 0)
+	addS('q_T_Sum_Wall', round(1+cd['q_T_ThermalBridging']/(cd['q_tr']-cd['q_T_ThermalBridging'])*(cd['q_T_Wall_1']+cd['q_T_Wall_2']+cd['q_T_Wall_3'])) || 0)
 	
 	
 	//=AD220*$Z$244*$V$244/$AD$211
-	addS('q_T_Window_1', getS('Result_Window_1')*getS('acc_diff_x')*getS('F_red_temp')/getS('A_C_ref'));
-	addS('q_T_Window_2', getS('Result_Window_2')*getS('acc_diff_x')*getS('F_red_temp')/getS('A_C_ref'));
-	addS('q_T_Door_1', getS('Result_Door_1')*getS('acc_diff_x')*getS('F_red_temp')/getS('A_C_ref'));
+	addS('q_T_Window_1', cd['Result_Window_1']*cd['acc_diff_x']*cd['F_red_temp']/cd['A_C_ref']);
+	addS('q_T_Window_2', cd['Result_Window_2']*cd['acc_diff_x']*cd['F_red_temp']/cd['A_C_ref']);
+	addS('q_T_Door_1', cd['Result_Door_1']*cd['acc_diff_x']*cd['F_red_temp']/cd['A_C_ref']);
 	
 	//=(1+AB$177/(AB$179-AB$177))*(AB173+AB174+AB175)
-	addS('q_T_Sum_Window', round(1+getS('q_T_ThermalBridging')/(getS('q_tr')-getS('q_T_ThermalBridging'))*(getS('q_T_Window_1')+getS('q_T_Window_2')+getS('q_T_Door_1'))) || 0)
+	addS('q_T_Sum_Window', round(1+cd['q_T_ThermalBridging']/(cd['q_tr']-cd['q_T_ThermalBridging'])*(cd['q_T_Window_1']+cd['q_T_Window_2']+cd['q_T_Door_1'])) || 0)
 	
 
-	addS('q_T_Floor_1', getS('Result_Floor_1')*getS('acc_diff_x')*getS('F_red_temp')/getS('A_C_ref'));
-	addS('q_T_Floor_2', getS('Result_Floor_2')*getS('acc_diff_x')*getS('F_red_temp')/getS('A_C_ref'));
+	addS('q_T_Floor_1', cd['Result_Floor_1']*cd['acc_diff_x']*cd['F_red_temp']/cd['A_C_ref']);
+	addS('q_T_Floor_2', cd['Result_Floor_2']*cd['acc_diff_x']*cd['F_red_temp']/cd['A_C_ref']);
 
 	
 	//=(1+AB$177/(AB$179-AB$177))*(AB173+AB174+AB175)
-	addS('q_T_Sum_Floor', round(1+getS('q_T_ThermalBridging')/(getS('q_tr')-getS('q_T_ThermalBridging'))*(getS('q_T_Floor_2')+getS('q_T_Floor_1'))) || 0);
+	addS('q_T_Sum_Floor', round(1+cd['q_T_ThermalBridging']/(cd['q_tr']-cd['q_T_ThermalBridging'])*(cd['q_T_Floor_2']+cd['q_T_Floor_1'])) || 0);
 	
-	addS('Q_sol', round(getS('result_solar')/getS('A_C_ref')));
-	addS('eta_h_gn', getS('g_h_nd'));
+	addS('Q_sol', round(cd['result_solar']/cd['A_C_ref']));
+	addS('eta_h_gn', cd['g_h_nd']);
 	
-	addS('Q_int_g', getS('Q_int')/getS('A_C_ref'));
+	addS('Q_int_g', cd['Q_int']/cd['A_C_ref']);
 	
-	addS('Q_H_nd', getS('Q_ht')-getS('n_h_gn')*(getS('Q_sol')+getS('Q_int')));
+	addS('Q_H_nd', cd['Q_ht']-cd['n_h_gn']*(cd['Q_sol']+cd['Q_int']));
 	
 	calculateSideValues();
 }
@@ -305,9 +301,9 @@ function fillDataSet(){
 
 	var f = new Array('Roof_1','Roof_2','Wall_1','Wall_2','Wall_3','Floor_1','Floor_2','Window_1','Window_2','Door_1');
 	for (var i in f){
-		var name = (""+getS('Name_Picture_Construction')).substring(0,(""+getS('Name_Picture_Construction')).length-3)+'png';
-		$('#image_'+getS('Code_'+f.i)).attr('src','images/SIpng/'+name);
-		$("[id='"+f.i+'_'+getS('Code_'+f.i)+"']").removeAttr('selected').attr('selected','selected').change();
+		var name = (""+cd['Name_Picture_Construction']).substring(0,(""+cd['Name_Picture_Construction']).length-3)+'png';
+		$('#image_'+cd['Code_'+f.i]).attr('src','images/SIpng/'+name);
+		$("[id='"+f.i+'_'+cd['Code_'+f.i]+"']").removeAttr('selected').attr('selected','selected').change();
 	}
 	
 	if ( typeof cd['Code_Building'] == 'undefined' || cd['Code_Building'] == ""){
@@ -323,22 +319,20 @@ function fillDataSet(){
 		if (isNumber(cd[i])){
 			cd[i] = roundTo(cd[i],2);
 		}
-		if (!isNaN(cd[i])){
+		if (!isNaN(cd[i])){	
+			//console.log(i,cd[i]);
 			$("[id="+i+"]").val(cd[i]);
-			if(cd[i] > 0 && $("[id="+i+"]")[0].nodeName == "span"){
-				Console.log("span");
-				$("[id="+i+"]")[0].nodeName.html(cd[i]);
+			if(cd[i] > 0 ){
+				$("[id="+i+"]").html(cd[i]);
 			}
 		}
 	}
 
-	$("[id=Code_SysW_D]").val(3333);
 	
-	
-	$('#SelectedBuildingHolder').html('<img id="SelectedBuilding" src="'+getS('imageSrc')+'" width="'+getS('imageWidth')+'" height="'+getS('imageHeight')+'" />')
+	$('#SelectedBuildingHolder').html('<img id="SelectedBuilding" src="'+cd['imageSrc']+'" width="'+cd['imageWidth']+'" height="'+cd['imageHeight']+'" />')
 	
 
-	//$('#enfh').html(roundTo(getS('Q_ht')*1/getS('A_C_ref')*1,0));
+	//$('#enfh').html(roundTo(cd['Q_ht']*1/cd['A_C_ref']*1,0));
 	drawGraph();
 }
 
