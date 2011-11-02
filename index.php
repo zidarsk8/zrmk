@@ -49,7 +49,7 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 			sData[i]['Name_ClimateRegion'] = 'national / whole country';
 			sData[i]['HeatingDays'] = 206;
 			sData[i]['Theta_e'] = 4.3;
-			sData[i]['I_Sol_Horizontal'] = 375;
+			sData[i]['I_Sol_Hor'] = 375;
 			sData[i]['I_Sol_East'] = 241;
 			sData[i]['I_Sol_South'] = 292;
 			sData[i]['I_Sol_West'] = 218;
@@ -67,6 +67,7 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 			sData[i]['c_m'] = 156.25;
 			sData[i]['q_w_nd'] = 12.00000;
 			sData[i]['c_m'] = 156.25000;
+			sData[i]['variant'] = 1;
 			 
 		};
 		var cur = 0;
@@ -162,31 +163,6 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 				<?php include 'tables/EnergyCarriers.html';?>
 			</div>
 		</div>
-
-
-		<div class="toggleContainer" id="Calc_Demo_Building_container">
-			<button class="toggleButton" id="button_toggle_cdbc" />Skrij</button>
-			<div id="toggle_cdbc">
-				<?php include 'php/calcDemoBuilding.html';?>
-			</div>
-		</div>
-
-		<div class="toggleContainer" id="Calc_Demo_System_container">
-			<button class="toggleButton" id="button_toggle_cdsc" />Skrij</button>
-			<div id="toggle_cdsc">
-				<?php include 'php/calcDemoSystem.php';?>
-			</div>
-		</div>
-
-		<!--
-		<div id="Tab_Building_Holder" class="holder">
-			<p><h3>Tab_Building</h3></p>
-			<select id="select_Tab_Building"></select>
-			<input type="button" value="show Data" id="show_Tab_Building_data_button" />
-			<br>
-			<div id="Tab_Building_data_table"></div>
-		</div>
-		-->
 
 	</section>
 

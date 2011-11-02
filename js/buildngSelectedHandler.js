@@ -1,7 +1,5 @@
 $(document).ready(function(){
 	
-	
-	
 	$(".buildings_table_element").click(function(){
 		var buildingID = this.firstChild.id;
 		var building;
