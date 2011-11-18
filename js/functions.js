@@ -12,9 +12,26 @@ function roundTo(num, dec) {
 }
 
 function addS(key,val){
-	if (typeof val != 'undefined' ){
+	if (typeof val == 'object' ){
+		console.log("adding object to sData");
+		for (i in val){
+			addS(i,val[i]);
+		}
+	}else if (typeof val != 'undefined' ){
 		sData[cur][key]=val;
 	}
+}
+
+function addArrayToSdata(array, fieldName, fieldValue){
+	for (row in array){
+		if (array[row][fieldName] == fieldValue){
+			for (var i in array[row]){
+				addS(i,array[row][i]);
+			}
+			return array[row];
+		}
+	}
+	return false;
 }
 
 function CreateKeyValueTableView(objArray, theme, enableHeader) {
@@ -113,6 +130,19 @@ function calcSData(){
 	addS('Q_H_nd', 			cd['Q_ht']-cd['n_h_gn']*(cd['Q_sol']+cd['Q_int']));
 
 	calculateSideValues();
+	
+	
+	
+	///////////////////////////////////////////////////
+	///////////////////////////////////////////////////
+	
+	addS('q_w_h_x', cd['eta_h_gn']*cd['q_w_h']);
+	addS('q_ve_h_rec', cd['eta_h_gn']*cd['eta_ve_rec']*cd['q_ht_ve']);
+	addS('q_ve_h_rec', cd['q_d_s'] + cd['q_d_h'] + cd['q_ve_h_rec'] + cd['q_w_h_x'] + cd['q_h_nd']);
+	
+	
+	addS('Fraction_SysW_G1', 1-cd['Fraction_SysW_G2']+cd['Fraction_SysW_G3']);
+	
 }
 
 function calculateSideValues(){

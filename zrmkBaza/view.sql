@@ -352,7 +352,7 @@ CONVERT(
 		Code_BuildingSizeClass_System, '.', 
 		LPAD( Number_Variant_SysWS, 2, '0' ) 
 	) USING utf8 
-) AS Code_SysWS,
+) AS Code_SysW_S,
 Tab_System_WS.*
 FROM Tab_System_WS
 WHERE 1 ;
@@ -368,7 +368,7 @@ CONVERT(
 		Code_BuildingSizeClass_System, '.', 
 		LPAD( Number_Variant_SysWD, 2, '0' ) 
 	) USING utf8 
-) AS Code_SysWD,
+) AS Code_SysW_D,
 Tab_System_WD.*
 FROM Tab_System_WD
 WHERE 1 ;
@@ -384,7 +384,7 @@ CONVERT(
 		Code_BuildingSizeClass_System, '.', 
 		LPAD( Number_Variant_AuxW, 2, '0' ) 
 	) USING utf8 
-) AS Code_AuxW, 
+) AS Code_SysW_Aux, 
 Tab_System_WA.*
 FROM Tab_System_WA
 WHERE 1 ;
@@ -657,6 +657,65 @@ Code_SysW,
 Code_SysVent
 
 FROM Tab_Building_subview1 ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Create or replace view  Tab_System_W_full AS
+SELECT w.* , 
+wd.Code_Country,
+wd.Code_Type_SysWD,
+wd.Code_BuildingSizeClass_System,
+wd.Number_Variant_SysWD,
+wd.Description_SysWD,
+wd.Description_National_SysWD,
+wd.Remark_SysWD,
+wd.year1_SysWD,
+wd.year2_SysWD,
+wd.q_d_w,
+wd.q_d_w_h,
+
+ws.Code_Country,
+ws.Code_Type_SysWS,
+ws.Code_BuildingSizeClass_System,
+ws.Number_Variant_SysWS,
+ws.Description_SysWS,
+ws.Description_National_SysWS,
+ws.Remark_SysWS,
+ws.year1_SysWS,
+ws.year2_SysWS,
+ws.q_s_w,
+ws.q_s_w_h,
+
+wa.Code_Country,
+wa.Code_Type_AuxW,
+wa.Code_BuildingSizeClass_System,
+wa.Number_Variant_AuxW,
+wa.Description_AuxW,
+wa.Description_National_AuxW,
+wa.Remark_AuxW,
+wa.year1_AuxW,
+wa.year2_AuxW,
+wa.q_del_w
+
+FROM Tab_System_W_view w
+LEFT JOIN Tab_System_WD_view wd USING ( Code_SysW_D )
+LEFT JOIN Tab_System_WS_view ws USING ( Code_SysW_S )
+LEFT JOIN Tab_System_WA_view wa USING ( Code_SysW_Aux )
+LIMIT 0 , 300
+
 
 
 

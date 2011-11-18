@@ -17,17 +17,11 @@ $(document).ready(function(){
 		addS('Code_Building',buildingID);
 		addS('Building',buildingID);
 		
-		$.each(data.Tab_Building_view, function(index){
-			if (this.Code_Building == buildingID){
-				building = this;
-				for (var i in building){
-					addS(i,building[i]);
-				}
-				return false;
-			}
-		});
 		
-		//se selected options for roof walls dors ...
+		building = addArrayToSdata(data["Tab_Building_view"],"Code_Building",buildingID);
+		
+		
+		//se selected options for roof, floor, walls, dors and windows
 		$("[id^=select_Tab_Building_Constr_]").each(function(){
 			var field = (this.id.substring('select_Tab_Building_Constr_'.length));
 			$("option:selected",'#'+this.id).removeAttr('selected');
@@ -41,17 +35,6 @@ $(document).ready(function(){
 			});
 		});
 		
-		//se selected options for roof walls dors ...
-		$("[id^=select_Tab_Building_Constr_]").each(function(){
-			var field = (this.id.substring('select_Tab_Building_Constr_'.length));
-			$("option:selected",'#'+this.id).removeAttr('selected');
-			$("option","#"+this.id).each(function(){
-				if (this.value == building['Code_'+field]) {
-					$(this).attr('selected', 'selected');
-					addS('Code_'+field, building['Code_'+field]);
-				}
-			});
-		});
 		
 		$('option').removeAttr('selected');
 		$("[id='"+cd['Code_SysW']+"']").removeAttr('selected').attr('selected','selected').change();
@@ -65,7 +48,7 @@ $(document).ready(function(){
 		
 		fillDataSet();
 		
-		location.href = "#building_selection_container";
+		//location.href = "#building_selection_container";
 	});
 	
 });
