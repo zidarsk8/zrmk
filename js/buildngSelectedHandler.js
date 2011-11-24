@@ -13,13 +13,10 @@ $(document).ready(function(){
 		toggleStuff($("#button_toggle_bsc")[0] ,false);
 		toggleStuff($('#button_toggle_btc')[0] ,true);
 		
-
 		addS('Code_Building',buildingID);
 		addS('Building',buildingID);
 		
-		
 		building = addArrayToSdata(data["Tab_Building_view"],"Code_Building",buildingID);
-		
 		
 		//se selected options for roof, floor, walls, dors and windows
 		$("[id^=select_Tab_Building_Constr_]").each(function(){
@@ -28,13 +25,10 @@ $(document).ready(function(){
 			$("option","#"+this.id).each(function(){
 				if (this.value == building['Code_'+field]) {
 					$(this).attr('selected', 'selected');
-					//cd['Code_'+field] = building['Code_'+field];
-					
 					addS('Code_'+field, building['Code_'+field]);
 				}
 			});
 		});
-		
 		
 		$('option').removeAttr('selected');
 		$("[id='"+cd['Code_SysW']+"']").removeAttr('selected').attr('selected','selected').change();
@@ -50,5 +44,4 @@ $(document).ready(function(){
 		
 		//location.href = "#building_selection_container";
 	});
-	
 });

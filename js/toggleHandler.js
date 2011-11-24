@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 	$(".toggleButton").click(function(){
-		console.log(sData);
+		//console.log(sData);
 		toggleStuff(this);
 	});
 	//toggleStuff($('#button_toggle_cdsc')[0] ,false);

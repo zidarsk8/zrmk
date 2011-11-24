@@ -22,8 +22,18 @@ function addS(key,val){
 	}
 }
 
+function getArrayRow(array, fieldName, fieldValue){
+	for (row in array){
+		if (array[row][fieldName] == fieldValue){
+			return array[row];
+		}
+	}
+	return false;
+}
+
 function addArrayToSdata(array, fieldName, fieldValue){
 	for (row in array){
+		//console.log('array to data ',array,array[row],fieldName);
 		if (array[row][fieldName] == fieldValue){
 			for (var i in array[row]){
 				addS(i,array[row][i]);
@@ -57,7 +67,7 @@ function checkDuplicateIds(){
 	});
 }
 
-function calcSData(){
+function calcSDataSheet1(){
 
 	var cd = sData[cur];
 	var sumA = 0;
@@ -177,6 +187,36 @@ function calculateSideValues(){
 
 }
 
+function calcSDataSheet2(){
+	var cd = sData[cur];
+	
+	addS('q_g_w_out', cd["q_w_nd"]*1+cd["q_d_w"]*1+cd["q_s_w"]*1);
+	addS('q_w_h', cd["q_d_w_h"]*1+cd["q_s_w_h"]*1);
+	
+	for ( var i = 1; i < 4; i++) {
+		var row = getArrayRow(data['Tab_System_WG_view'], 'Code_SysWG', cd['Code_SysW_G'+i]);
+		addS('e_g_w_Heat_'+i,getNumber(row['e_g_w_Heat']));
+		
+		addS('q_del_w_Heat_1',cd['Fraction_SysW_G'+i]*cd['q_g_w_out']*cd['e_g_w_Heat_'+i]);
+
+		addS('e_g_w_Electricity_'+i,getNumber(row['e_g_w_Electricity']));
+		
+		addS('q_prod_w_Electricity_'+i, (cd['e_g_w_Electricity_'+i]>0 ? cd['q_del_w_Heat_1'+i]/cd['e_g_w_Electricity_'+i] : 0));
+	}
+
+	var row = getArrayRow(data['Tab_System_WA_view'], 'Code_SysW_Aux', cd['Code_SysW_Aux']);
+	addS('q_del_w_aux',row['q_del_w']);
+	
+	addS('q_h_nd',cd['AHL_Q_H_nd']);
+	addS('q_ht_ve',cd['AHL_H_ve']); // = cd['q_ve']
+	
+	addS('eta_h_gn',cd['n_h_gn']);
+	
+	console.log('aaaa',cd['eta_h_gn'] , cd['q_w_h']);
+	addS('q_w_h_x',cd['eta_h_gn'] * cd['q_w_h']);
+	addS('q_ve_h_rec',cd['eta_h_gn'] * cd['eta_ve_rec'] * cd['q_ht_ve']);
+	
+}
 function calculateGraphData(){
 	var cd = sData[cur];
 	var thermalBridge =  (1+cd['q_T_ThermalBridging']/(cd['q_tr']-cd['q_T_ThermalBridging']));
@@ -209,10 +249,16 @@ function fillDataSet(){
 	$('input').val("");
 	$('#SelectedBuildingHolder').html('<img id="SelectedBuilding" src="'+cd['imageSrc']+'" width="'+cd['imageWidth']+'" height="'+cd['imageHeight']+'" />')
 
-	calcSData();
+	addArrayToSdata(data['Tab_System_WD_view'],'Code_SysW_D',cd['Code_SysW_D']);
+	addArrayToSdata(data['Tab_System_WS_view'],'Code_SysW_S',cd['Code_SysW_S']);
+	
+	//console.log(data['Tab_System_WD_view']);
+
+	calcSDataSheet1();
+	calcSDataSheet2();
 
 
-	console.log(cur,cd);
+	//console.log(cur,cd);
 
 	$("[id=Building]").val("aaaaaaaa");
 
