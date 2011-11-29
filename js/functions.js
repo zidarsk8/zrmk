@@ -189,12 +189,12 @@ function calculateSideValues(){
 
 function calcSDataSheet2(){
 	var cd = sData[cur];
-	
+	var row = {};
 	addS('q_g_w_out', cd["q_w_nd"]*1+cd["q_d_w"]*1+cd["q_s_w"]*1);
 	addS('q_w_h', cd["q_d_w_h"]*1+cd["q_s_w_h"]*1);
 	
 	for ( var i = 1; i < 4; i++) {
-		var row = getArrayRow(data['Tab_System_WG_view'], 'Code_SysWG', cd['Code_SysW_G'+i]);
+		row = getArrayRow(data['Tab_System_WG_view'], 'Code_SysWG', cd['Code_SysW_G'+i]);
 		addS('e_g_w_Heat_'+i,getNumber(row['e_g_w_Heat']));
 		
 		addS('q_del_w_Heat_1',cd['Fraction_SysW_G'+i]*cd['q_g_w_out']*cd['e_g_w_Heat_'+i]);
@@ -204,7 +204,7 @@ function calcSDataSheet2(){
 		addS('q_prod_w_Electricity_'+i, (cd['e_g_w_Electricity_'+i]>0 ? cd['q_del_w_Heat_1'+i]/cd['e_g_w_Electricity_'+i] : 0));
 	}
 
-	var row = getArrayRow(data['Tab_System_WA_view'], 'Code_SysW_Aux', cd['Code_SysW_Aux']);
+	row = getArrayRow(data['Tab_System_WA_view'], 'Code_SysW_Aux', cd['Code_SysW_Aux']);
 	addS('q_del_w_aux',row['q_del_w']);
 	
 	addS('q_h_nd',cd['AHL_Q_H_nd']);
@@ -215,6 +215,29 @@ function calcSDataSheet2(){
 	console.log('aaaa',cd['eta_h_gn'] , cd['q_w_h']);
 	addS('q_w_h_x',cd['eta_h_gn'] * cd['q_w_h']);
 	addS('q_ve_h_rec',cd['eta_h_gn'] * cd['eta_ve_rec'] * cd['q_ht_ve']);
+
+	row = getArrayRow(data['Tab_System_HD_view'], 'Code_SysHD', cd['Code_SysH_D']);
+	addS('q_d_h',row['q_d_h']);
+
+	row = getArrayRow(data['Tab_System_HS_view'], 'Code_SysHS', cd['Code_SysH_S']);
+	addS('q_s_h',row['q_s_h']);
+	
+	addS('q_g_h_out',cd['q_s_h']*1+cd['q_d_h']*1+cd['q_ve_h_rec']*1+cd['q_w_h_x']*1+cd['q_h_nd']*1);
+	
+	addS('Fraction_SysH_G1',1-1*cd['Fraction_SysH_G2']-1*cd['Fraction_SysH_G3']);
+	
+	for (var i=1; i<4 ; i++){
+		row = getArrayRow(data['Tab_System_HG_view'], 'Code_SysHG', cd['Code_SysH_G'+i]);
+		addS('e_g_h_Electricity_'+i,getNumber(row['e_g_h_Electricity']));
+		addS('e_g_h_Heat_'+i,getNumber(row['e_g_h_Heat']));
+		
+		addS('q_del_h_'+i,getNumber(cd['Fraction_SysH_G'+i]*1*cd['q_g_h_out']*cd['e_g_h_Heat_'+i]));
+		
+		addS('q_prod_el_h_'+i, cd['e_g_h_Electricity_'+i]>0 ? cd['q_del_h_'+i] / 1*cd['e_g_h_Electricity_'+i] : 0);
+	}
+	
+	row = getArrayRow(data['Tab_System_HA_view'], 'Code_AuxH', cd['Code_SysH_Aux']);
+	addS('q_del_h_aux',row['q_del_h_aux']);
 	
 }
 function calculateGraphData(){

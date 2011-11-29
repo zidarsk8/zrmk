@@ -68,6 +68,9 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 			sData[i]['q_w_nd'] = 12.00000;
 			sData[i]['c_m'] = 156.25000;
 			sData[i]['variant'] = 1;
+
+			sData[i]['aux_heating_system'] = 'el';
+			sData[i]['aux_ventilation_system'] = 'el';
 			 
 		};
 		var cur = 0;
