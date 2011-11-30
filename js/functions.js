@@ -1,6 +1,6 @@
 
 function isNumber(n) {
-	return !isNaN(parseFloat(n)) && isFinite(n);
+	return !isNaN(parseFloat(n)) && isFinite(n) && n!='';
 }
 
 function getNumber(n){
@@ -240,6 +240,73 @@ function calcSDataSheet2(){
 	addS('q_del_h_aux',row['q_del_h_aux']);
 	
 }
+
+
+function calcSDataSheet3(){
+	var cd = sData[cur];
+	
+	addS('System', '//todo');
+	
+
+	addS('Code_Specification_SysH_EC_1', cd['Code_EC_Specification_Version']+'.'+cd['Code_SysH_EC1']);
+	addS('Code_Specification_SysH_EC_2', cd['Code_EC_Specification_Version']+'.'+cd['Code_SysH_EC2']);
+	addS('Code_Specification_SysH_EC_3', cd['Code_EC_Specification_Version']+'.'+cd['Code_SysH_EC3']);
+	addS('Code_Specification_SysH_EC_4', cd['Code_Specification_SysH_EC_ElAux']);
+	addS('Code_Specification_SysH_EC_5', cd['Code_Specification_SysH_EC_ElProd']);
+	
+
+	addS('q_del_h_4', 1*cd['q_del_h_aux']+1*cd['q_del_ve_aux']);
+	addS('q_del_h_5', 1*cd['q_prod_el_h_1']+1*cd['q_prod_el_h_2']+1*cd['q_prod_el_h_3']);
+
+	for (var i=1; i<6 ; i++){
+		row = getArrayRow(data['Tab_System_EC_view'], 'Code_EnergyCarrier_Specification', cd['Code_Specification_SysH_EC_'+i]);
+
+		addS('f_p_Total_SysH_EC_'+i, getNumber(row['EC_f_p_Total']));
+		addS('q_p_total_'+i,  getNumber(1*cd['f_p_Total_SysH_EC_'+i]*1*cd['q_del_h_'+i]));
+
+		addS('f_p_NonRen_SysH_EC_'+i, getNumber(row['EC_f_p_NonRen']));
+		addS('q_p_nonren_'+i,  getNumber(1*cd['f_p_NonRen_SysH_EC_'+i]*1*cd['q_del_h_'+i]));
+
+		addS('f_CO2_SysH_EC_'+i, getNumber(row['EC_f_CO2']));
+		addS('m_CO2_'+i,  getNumber(1*cd['f_CO2_SysH_EC_'+i]*1*cd['q_del_h_'+i]/1000));
+		
+		addS('price_SysH_EC_'+i, getNumber(row['EC_price']));
+		addS('c_price_'+i,  getNumber(1*cd['price_SysH_EC_'+i]*1*cd['q_del_h_'+i]/100));
+		
+	}
+	
+
+	addS('Code_Specification_SysW_EC_1', cd['Code_EC_Specification_Version']+'.'+cd['Code_SysW_EC1']);
+	addS('Code_Specification_SysW_EC_2', cd['Code_EC_Specification_Version']+'.'+cd['Code_SysW_EC2']);
+	addS('Code_Specification_SysW_EC_3', cd['Code_EC_Specification_Version']+'.'+cd['Code_SysW_EC3']);
+	addS('Code_Specification_SysW_EC_4', cd['Code_Specification_SysH_EC_ElAux']);
+	addS('Code_Specification_SysW_EC_5', cd['Code_Specification_SysH_EC_ElProd']);
+	
+	addS('q_del_w_Heat_4', 1*cd['q_del_w_aux']);
+	addS('q_del_w_Heat_5', 1*cd['q_prod_w_Electricity_1']+1*cd['q_prod_w_Electricity_2']+1*cd['q_prod_w_Electricity_3']);
+	
+
+	for (var i=1; i<6 ; i++){
+		row = getArrayRow(data['Tab_System_EC_view'], 'Code_EnergyCarrier_Specification', cd['Code_Specification_SysH_EC_'+i]);
+
+		addS('f_p_Total_SysW_EC_'+i, getNumber(row['EC_f_p_Total']));
+		addS('q_p_total_w_'+i,  getNumber(1*cd['f_p_Total_SysW_EC_'+i]*1*cd['q_del_w_Heat_'+i]));
+
+		addS('f_p_NonRen_SysW_EC_'+i, getNumber(row['EC_f_p_NonRen']));
+		addS('q_p_nonren_w_'+i,  getNumber(1*cd['f_p_NonRen_SysW_EC_'+i]*1*cd['q_del_w_Heat_'+i]));
+
+		addS('f_CO2_SysW_EC_'+i, getNumber(row['EC_f_CO2']));
+		addS('m_CO2_w_'+i,  getNumber(1*cd['f_CO2_SysW_EC_'+i]*1*cd['q_del_w_Heat_'+i]/1000));
+		
+		addS('price_SysW_EC_'+i, getNumber(row['EC_price']));
+		addS('c_price_w_'+i,  getNumber(1*cd['price_SysH_EC_'+i]*1*cd['q_del_w_Heat_'+i]/100));
+		
+	}
+	
+}
+
+
+
 function calculateGraphData(){
 	var cd = sData[cur];
 	var thermalBridge =  (1+cd['q_T_ThermalBridging']/(cd['q_tr']-cd['q_T_ThermalBridging']));
@@ -279,6 +346,7 @@ function fillDataSet(){
 
 	calcSDataSheet1();
 	calcSDataSheet2();
+	calcSDataSheet3();
 
 
 	//console.log(cur,cd);

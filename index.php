@@ -71,7 +71,14 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 
 			sData[i]['aux_heating_system'] = 'el';
 			sData[i]['aux_ventilation_system'] = 'el';
-			 
+
+			sData[i]['Code_EC_Specification_Version'] = 'Gen';
+
+			sData[i]['Code_SysH_Aux_const'] = 'Auxiliary energy';
+			sData[i]['Code_SysH_El_prod_exp_const'] = 'Electricity production / export';
+			sData[i]['Code_Specification_SysH_EC_ElAux'] = 'Gen.El';
+			sData[i]['Code_Specification_SysH_EC_ElProd'] = 'Gen.El_Prod';
+			
 		};
 		var cur = 0;
 	</script>
