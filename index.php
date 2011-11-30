@@ -78,6 +78,22 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 			sData[i]['Code_SysH_El_prod_exp_const'] = 'Electricity production / export';
 			sData[i]['Code_Specification_SysH_EC_ElAux'] = 'Gen.El';
 			sData[i]['Code_Specification_SysH_EC_ElProd'] = 'Gen.El_Prod';
+
+			sData[i]['Code_CalcAdapt_M'] = 'SI.C.01';
+			sData[i]['Name_CalcAdapt_M'] = 'EPC';
+			sData[i]['Description_CalcAdapt_M'] = '0';
+			sData[i]['Indicator_CalcAdapt_M_Accuratcy'] = 'B';
+			sData[i]['Indicator_CalcAdapt_M_Accuratcy_text'] = 'Determined by a large number of example buildings.';
+			
+			sData[i]['c000'] = 0;
+			sData[i]['c100'] = 100;
+			sData[i]['c200'] = 200;
+			sData[i]['c300'] = 300;
+			sData[i]['c400'] = 400;
+			sData[i]['c500'] = 500;
+
+			sData[i]['F_CalcAdapt_M'] = 1.0;
+
 			
 		};
 		var cur = 0;

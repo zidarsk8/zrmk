@@ -1,6 +1,6 @@
 
 function isNumber(n) {
-	return !isNaN(parseFloat(n)) && isFinite(n) && n!='';
+	return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
 function getNumber(n){
@@ -212,7 +212,6 @@ function calcSDataSheet2(){
 	
 	addS('eta_h_gn',cd['n_h_gn']);
 	
-	console.log('aaaa',cd['eta_h_gn'] , cd['q_w_h']);
 	addS('q_w_h_x',cd['eta_h_gn'] * cd['q_w_h']);
 	addS('q_ve_h_rec',cd['eta_h_gn'] * cd['eta_ve_rec'] * cd['q_ht_ve']);
 
@@ -257,22 +256,34 @@ function calcSDataSheet3(){
 
 	addS('q_del_h_4', 1*cd['q_del_h_aux']+1*cd['q_del_ve_aux']);
 	addS('q_del_h_5', 1*cd['q_prod_el_h_1']+1*cd['q_prod_el_h_2']+1*cd['q_prod_el_h_3']);
-
+	
+	cd['q_sum_h_del'] = 0;
+	cd['q_sum_p_total_h'] = 0;
+	cd['q_sum_p_nonren_h'] = 0;
+	cd['m_sum_CO2_h'] = 0;
+	cd['c_sum_price_h'] = 0;
 	for (var i=1; i<6 ; i++){
 		row = getArrayRow(data['Tab_System_EC_view'], 'Code_EnergyCarrier_Specification', cd['Code_Specification_SysH_EC_'+i]);
 
+		addS('q_del_h_'+i,getNumber(cd['q_del_h_'+i]));
+		
 		addS('f_p_Total_SysH_EC_'+i, getNumber(row['EC_f_p_Total']));
 		addS('q_p_total_'+i,  getNumber(1*cd['f_p_Total_SysH_EC_'+i]*1*cd['q_del_h_'+i]));
-
+		cd['q_sum_p_total_h'] += 1*cd['q_p_total_'+i];
+		
 		addS('f_p_NonRen_SysH_EC_'+i, getNumber(row['EC_f_p_NonRen']));
 		addS('q_p_nonren_'+i,  getNumber(1*cd['f_p_NonRen_SysH_EC_'+i]*1*cd['q_del_h_'+i]));
+		cd['q_sum_p_nonren_h'] += 1*cd['q_p_nonren_'+i];
 
 		addS('f_CO2_SysH_EC_'+i, getNumber(row['EC_f_CO2']));
 		addS('m_CO2_'+i,  getNumber(1*cd['f_CO2_SysH_EC_'+i]*1*cd['q_del_h_'+i]/1000));
+		cd['m_sum_CO2_h'] += 1*cd['m_CO2_'+i];
 		
 		addS('price_SysH_EC_'+i, getNumber(row['EC_price']));
 		addS('c_price_'+i,  getNumber(1*cd['price_SysH_EC_'+i]*1*cd['q_del_h_'+i]/100));
+		cd['c_sum_price_h'] += 1*cd['c_price_'+i];
 		
+		cd['q_sum_h_del'] += 1*cd['q_del_h_'+i];
 	}
 	
 
@@ -286,22 +297,60 @@ function calcSDataSheet3(){
 	addS('q_del_w_Heat_5', 1*cd['q_prod_w_Electricity_1']+1*cd['q_prod_w_Electricity_2']+1*cd['q_prod_w_Electricity_3']);
 	
 
+	cd['q_sum_w_del'] = 0;
+	cd['q_sum_p_total_w'] = 0;
+	cd['q_sum_p_nonren_w'] = 0;
+	cd['m_sum_CO2_w'] = 0;
+	cd['c_sum_price_w'] = 0;
 	for (var i=1; i<6 ; i++){
 		row = getArrayRow(data['Tab_System_EC_view'], 'Code_EnergyCarrier_Specification', cd['Code_Specification_SysH_EC_'+i]);
+		
+		addS('q_del_w_Heat_'+i,getNumber(cd['q_del_w_Heat_'+i]));
 
 		addS('f_p_Total_SysW_EC_'+i, getNumber(row['EC_f_p_Total']));
 		addS('q_p_total_w_'+i,  getNumber(1*cd['f_p_Total_SysW_EC_'+i]*1*cd['q_del_w_Heat_'+i]));
+		cd['q_sum_p_total_w'] += 1*cd['q_p_total_w_'+i];
 
 		addS('f_p_NonRen_SysW_EC_'+i, getNumber(row['EC_f_p_NonRen']));
 		addS('q_p_nonren_w_'+i,  getNumber(1*cd['f_p_NonRen_SysW_EC_'+i]*1*cd['q_del_w_Heat_'+i]));
+		cd['q_sum_p_nonren_w'] += 1*cd['q_p_nonren_w_'+i];
 
 		addS('f_CO2_SysW_EC_'+i, getNumber(row['EC_f_CO2']));
 		addS('m_CO2_w_'+i,  getNumber(1*cd['f_CO2_SysW_EC_'+i]*1*cd['q_del_w_Heat_'+i]/1000));
-		
+		cd['m_sum_CO2_w'] += 1*cd['m_CO2_w_'+i];
+
 		addS('price_SysW_EC_'+i, getNumber(row['EC_price']));
 		addS('c_price_w_'+i,  getNumber(1*cd['price_SysH_EC_'+i]*1*cd['q_del_w_Heat_'+i]/100));
-		
+		cd['c_sum_price_w'] += 1*cd['c_price_w_'+i];
+
+		cd['q_sum_w_del'] += 1*cd['q_del_w_Heat_'+i];
 	}
+	
+	
+	addS('q_sum_nd',1*cd['q_h_nd']+1*cd['q_w_nd']);
+	addS('q_sum_del',1*cd['q_sum_w_del']+1*cd['q_sum_h_del']);
+
+	addS('e_sum_p_total_w',1*cd['q_sum_p_total_w']/cd['q_w_nd']);
+	addS('e_sum_p_total_h',1*cd['q_sum_p_total_h']/cd['q_h_nd']);
+	addS('e_sum_p_nonren_w',1*cd['q_sum_p_nonren_w']/cd['q_w_nd']);
+	addS('e_sum_p_nonren_h',1*cd['q_sum_p_nonren_h']/cd['q_h_nd']);
+	addS('f_sum_CO2_w',1*cd['m_sum_CO2_w']/cd['q_w_nd']);
+	addS('f_sum_CO2_h',1*cd['m_sum_CO2_h']/cd['q_h_nd']);
+	addS('p_sum_price_w',1*cd['c_sum_price_w']/cd['q_w_nd']);
+	addS('p_sum_price_h',1*cd['c_sum_price_h']/cd['q_h_nd']);
+
+	
+	addS('q_sum_p_total',1*cd['q_sum_p_total_h']+cd['q_sum_p_total_w']);
+	addS('q_sum_p_nonren',1*cd['q_sum_p_nonren_h']+cd['q_sum_p_nonren_w']);
+	addS('m_sum_CO2',1*cd['m_sum_CO2_h']+cd['m_sum_CO2_w']);
+	addS('c_sum_price',1*cd['c_sum_price_h']+cd['c_sum_price_w']);
+	
+	addS('e_sum_p_total',1*cd['e_sum_p_total_h']+cd['e_sum_p_total_w']);
+	addS('e_sum_p_nonren',1*cd['e_sum_p_nonren_h']+cd['e_sum_p_nonren_w']);
+	addS('f_sum_CO2',1*cd['f_sum_CO2_h']+cd['f_sum_CO2_w']);
+	addS('p_sum_price',1*cd['p_sum_price_h']+cd['p_sum_price_w']);
+	
+	addS('current_value', 1*cd['q_del_h_1']+1*cd['q_del_h_2']+1*cd['q_del_h_3']+1*cd['q_del_w_Heat_1']+1*cd['q_del_w_Heat_2']+1*cd['q_del_w_Heat_3']);
 	
 }
 
@@ -342,14 +391,11 @@ function fillDataSet(){
 	addArrayToSdata(data['Tab_System_WD_view'],'Code_SysW_D',cd['Code_SysW_D']);
 	addArrayToSdata(data['Tab_System_WS_view'],'Code_SysW_S',cd['Code_SysW_S']);
 	
-	//console.log(data['Tab_System_WD_view']);
 
 	calcSDataSheet1();
 	calcSDataSheet2();
 	calcSDataSheet3();
 
-
-	//console.log(cur,cd);
 
 	$("[id=Building]").val("aaaaaaaa");
 
