@@ -162,8 +162,8 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 				<div id="neeee"></div>
 			
 				<!-- 3. Add the container -->
-				<div id="chart_1_container_0" style="width: 540px; height: 600px; float:left; margin: 0 auto"></div>
-				<div id="chart_2_container_0" style="width: 340px; height: 600px; float:left; margin: 0 auto"></div>
+				<div id="chart_1_container_0" style="width: 500px; height: 600px; float:left; margin: 0 auto"></div>
+				<div id="chart_2_container_0" style="width: 500px; height: 600px; float:left; margin: 0 auto"></div>
 		
 
 			</div>

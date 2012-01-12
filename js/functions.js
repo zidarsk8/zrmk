@@ -352,6 +352,42 @@ function calcSDataSheet3(){
 	
 	addS('current_value', 1*cd['q_del_h_1']+1*cd['q_del_h_2']+1*cd['q_del_h_3']+1*cd['q_del_w_Heat_1']+1*cd['q_del_w_Heat_2']+1*cd['q_del_w_Heat_3']);
 	
+	
+	
+	var summary = {
+			Gas_h_sum : 0 ,
+			Gas_dhw_sum : 0 ,
+			Oil_h_sum : 0 ,
+			Oil_dhw_sum : 0 ,
+			Coal_h_sum : 0 ,
+			Coal_dhw_sum : 0 ,
+			Bio_h_sum : 0 ,
+			Bio_dhw_sum : 0 ,
+			El_h_sum : 0 ,
+			El_dhw_sum : 0 ,
+			DH_h_sum : 0 ,
+			DH_dhw_sum : 0 ,
+			Other_h_sum : 0 ,
+			Other_dhw_sum : 0,
+			Aux_e_h_sum : 0 ,
+			Aux_e_dhw_sum : 0 ,
+			Prod_h_sum : 0 ,
+			Prod_dhw_sum : 0 
+	};
+	cd['Code_SysH_EC4'] = "Aux_e";
+	cd['Code_SysH_EC5'] = "Prod";
+	
+	for (var i=1 ; i<6 ; i++){
+		console.log(cd['Code_SysH_EC'+i])
+		if (typeof cd['Code_SysH_EC'+i] == "string" && cd['Code_SysH_EC'+i] != ""){
+			summary[cd['Code_SysH_EC'+i]+"_h_sum"]+= cd["q_del_h_"+i];
+			summary[cd['Code_SysH_EC'+i]+"_dhw_sum"]+= cd["q_del_w_Heat_"+i];
+			summary[cd['Code_SysH_EC'+i]+"_sum"] = summary[cd['Code_SysH_EC'+i]+"_h_sum"]+summary[cd['Code_SysH_EC'+i]+"_dhw_sum"];
+		}
+	}
+	console.log("aa",summary)
+	addS("sum",summary);
+	
 }
 
 
