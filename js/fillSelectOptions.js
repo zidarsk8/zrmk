@@ -22,8 +22,9 @@ $(document).ready(function(){
 					$("#"+i).html(tmp[i]);
 					addS(i,tmp[i]);
 				}
+				if (!automatic) fillDataSet();
 			});
-	    }).trigger('change');
+	    })//.trigger('change');
 	}
 	
 	fillDropDown('Tab_Building','Code_Building','Code_Building');
@@ -50,15 +51,18 @@ $(document).ready(function(){
 			$("#"+table+"_data_table").toggle();
 		});
 		$(optionId).change(function () {
+			//console.log("change ",optionId);
 			$(optionId+" option:selected").each(function () {
+				//console.log("selected ",optionId);
 				var tmp = data[table+"_view"][this.value];        	
 				$("#"+table+"_data_table").html(CreateKeyValueTableView(tmp));	
 				for (var i in tmp){
-					console.log(i,tmp[i]);
+					//console.log(i,tmp[i]);
 					$("#"+i).html(tmp[i]);
 				}
+				if (!automatic) fillDataSet();
 			});
-	    }).trigger('change');
+	    })//.trigger('change');
 	}
 	
 	//Ceiling Door Floor Roof Wall Window

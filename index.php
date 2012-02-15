@@ -31,6 +31,7 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 	<link rel="stylesheet" href="css/calcDemoSystem.css" type="text/css" />
 	<link rel="stylesheet" href="css/buldingTweak.css" type="text/css" />
 	<script type="application/javascript" language="JavaScript">
+		var automatic = false;
 		var numberOfSets = 3; //could be higher
 		var data = <?=json_encode($arrTables);?>;
 		var sData = new Array(); //selected data used for calculations
@@ -93,7 +94,6 @@ while ($tablesRow = mysql_fetch_assoc($tablesQuery)) {
 			sData[i]['c500'] = 500;
 
 			sData[i]['F_CalcAdapt_M'] = 1.0;
-
 			
 		};
 		var cur = 0;

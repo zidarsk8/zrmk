@@ -13,7 +13,7 @@ function roundTo(num, dec) {
 
 function addS(key,val){
 	if (typeof val == 'object' ){
-		console.log("adding object to sData");
+		//console.log("adding object to sData");
 		for (i in val){
 			addS(i,val[i]);
 		}
@@ -221,7 +221,7 @@ function calcSDataSheet2(){
 	row = getArrayRow(data['Tab_System_HS_view'], 'Code_SysHS', cd['Code_SysH_S']);
 	addS('q_s_h',row['q_s_h']);
 	
-	addS('q_g_h_out',cd['q_s_h']*1+cd['q_d_h']*1+cd['q_ve_h_rec']*1+cd['q_w_h_x']*1+cd['q_h_nd']*1);
+	addS('q_g_h_out',cd['q_s_h']*1+cd['q_d_h']*1-cd['q_ve_h_rec']*1-cd['q_w_h_x']*1+cd['q_h_nd']*1);
 	
 	addS('Fraction_SysH_G1',1-1*cd['Fraction_SysH_G2']-1*cd['Fraction_SysH_G3']);
 	
@@ -378,14 +378,14 @@ function calcSDataSheet3(){
 	cd['Code_SysH_EC5'] = "Prod";
 	
 	for (var i=1 ; i<6 ; i++){
-		console.log(cd['Code_SysH_EC'+i])
+		//console.log(cd['Code_SysH_EC'+i])
 		if (typeof cd['Code_SysH_EC'+i] == "string" && cd['Code_SysH_EC'+i] != ""){
 			summary[cd['Code_SysH_EC'+i]+"_h_sum"]+= cd["q_del_h_"+i];
 			summary[cd['Code_SysH_EC'+i]+"_dhw_sum"]+= cd["q_del_w_Heat_"+i];
 			summary[cd['Code_SysH_EC'+i]+"_sum"] = summary[cd['Code_SysH_EC'+i]+"_h_sum"]+summary[cd['Code_SysH_EC'+i]+"_dhw_sum"];
 		}
 	}
-	console.log("aa",summary)
+	//console.log("aa",summary)
 	addS("sum",summary);
 	
 }
@@ -414,6 +414,8 @@ function fillDataSet(){
 	if (working) return;
 	working = true;
 
+	console.log("fill data set");
+	
 	var cd = sData[cur];
 	if ( typeof cd['Code_Building'] == 'undefined' || cd['Code_Building'] == ""){
 		toggleStuff($('#button_toggle_bsc')[0] ,true);

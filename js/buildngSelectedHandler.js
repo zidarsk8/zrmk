@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	
 	$(".buildings_table_element").click(function(){
+		automatic = true;
 		var buildingID = this.firstChild.id;
 		var building;
 		var cd = sData[cur];
@@ -41,7 +42,8 @@ $(document).ready(function(){
 		}
 		
 		fillDataSet();
-		
+
+		automatic = false;
 		//location.href = "#building_selection_container";
 	});
 });
